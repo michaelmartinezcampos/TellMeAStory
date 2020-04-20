@@ -1,0 +1,455 @@
+/*position: absolute;
+    z-index: 0;
+    left: 25%;
+    transform: perspective(200px) rotateZ(4deg);
+    width: 15%;
+    color: #ddd;
+    font-size: 2vw;*/
+
+
+
+
+@font-face {
+    font-family: 'century_gothicregular';
+    src: url('gothic-webfont.woff2') format('woff2'),
+         url('gothic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*@font-face {
+    font-family: 'indieFlower-regular';
+    src: url('IndieFlower-Regular') format('ttf')
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+
+
+body {
+  background-color: #fff;
+  cursor: url("../img/mouse/Cursor-(blue).png"), default;
+  
+}
+
+a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+       
+    /*cursor: url("../img/mouse/Cursor-(white).png"), default;*/
+}
+
+
+#content{
+	/*min-height: 2000px;*/
+	
+	width:100%;
+	height:auto;
+	padding-top: 56.25%; /* 1:1 Aspect Ratio */
+	/*top:50px;*/
+	left:10px;
+	position: absolute;
+	z-index: 100;
+}
+a {
+	color: #aa5543;
+	text-decoration: none;
+
+
+}
+div#background_img{
+	left: 0px;
+	top: 0px;
+	width:100%;
+	height: auto;
+}
+
+.background-img{
+	width:100%;
+}
+
+
+div#main_text{
+	/*cursor: url("../img/mouse/Cursor-(white).png"), default;*/
+	font-family: 'Indie Flower', cursive;
+	position: absolute;
+    z-index: 0;
+    left: 25%;
+    top: 0%;
+    padding-top: 7%;
+    transform: perspective(200px) rotateZ(4deg);
+    width: 15%;
+    color: #ddd;
+    font-size: 2vw;
+}
+.text-clickable{
+	background-color:#5c6f91;
+}
+.text{
+	background-color:#a8b8f7;
+}
+.img-background{
+	/*background-color:#d63636;*/
+	/*border-style: groove;*/
+
+}
+.img-background img{
+	width:100%;
+	height:100%;
+}
+
+.clear-text{
+	background-color:#919191;
+}
+.content-container{
+
+
+	/*white-space: normal;*/
+  /*	overflow: hidden;*/
+
+  	/*min-height: 100vh;*/
+  	
+  	position: absolute;
+  	top:0px;
+  	z-index: 50; 
+  	/*transform: rotate(5deg);*/
+
+}
+.content-container:hover{
+	/*position: absolute;*/
+	z-index: 50; 
+
+  	/*transform: rotate(0deg)*/
+
+}
+.content-icon{
+	width:100px;
+	height:75px;
+	overflow: hidden;
+	border-style: groove;
+
+	/*white-space: normal;*/
+  	/*overflow: hidden;
+  	border-style: groove;
+  	position: absolute;
+  	opacity: 60%;
+
+  	z-index: -10; */
+  	opacity: 30%;
+
+	position: absolute;
+
+	z-index: 0; 
+
+  	/*draggable:true;*/
+
+  	/*background: transparent url(../img/transparent.gif) repeat;*/
+}
+.draggable-bar{
+	width: 20px;
+	height: 6px;
+	background: black;
+	position: absolute;
+	left:-10px;
+	opacity: 30%;
+}
+.draggable-bar:hover{
+	cursor:s-resize;
+	opacity: 100%;
+	width: 40px;
+	
+	left:-20px;
+}
+.content-container! >.draggable-bar:hover{
+	width: 400px;
+	height: 400px;
+	background: red;
+}
+/*
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+ /* -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}*/
+
+
+
+
+.content-icon.infocus{
+  	opacity: 80%;
+  
+	
+	z-index: 90; 
+	background-color: white;
+	
+
+	/*font-size: 20px;*/
+	/*border: groove;*/
+	/*contentEditable:true;*/
+}
+.connector-line.infocus{
+  	opacity: 90%;
+  
+	
+	z-index: 90; 
+}
+
+.content-icon:hover{
+  	opacity: 100%;
+  
+	
+	z-index: 100; 
+}
+
+
+
+
+.connector-line{
+	position: absolute;
+	overflow: scroll;
+	z-index: 50; 
+	stroke-width: 4;
+	pointer-events:none;
+	opacity: 20%;
+	/*background: green;*/
+	/*stroke: green;*/
+}
+
+
+.time-delay{
+	position: absolute;
+}
+.time-delay-text{
+
+	position: absolute;
+	margin: auto;
+	background: rgba(255,255,255,.8);
+	width:50px;
+	z-index: 100; 
+	text-align: right;
+}
+.time-delay-arrow{
+	position: absolute;
+	overflow: scroll;
+	z-index: 97; 
+	stroke-width: 4;
+	/*height: 200px;*/
+	pointer-events:none;
+	stroke: gray;
+	top:0px;
+	left: -20px;
+}
+
+.connector-line .time{
+	stroke: blue;
+}
+.connector-line .click{
+	stroke: red;
+}
+.connector-line .click.delay{
+	stroke: blue;
+}
+.connector-line .self-driven{
+	stroke: gray;
+	stroke-dasharray:15,5;
+}
+
+.event-content{
+	position: absolute;
+	left:100px;
+	width: 300px;
+	/*height: 200px;*/
+	z-index: 101; 
+	font-size: 20px;
+	border: groove;
+	contentEditable:true;
+
+}
+
+.content-editor{
+	top:0px;
+	right:0px;
+	position:fixed;
+	height:1000px;
+	width:1200px;
+	background-color: white;
+	z-index: 2000;
+	border: double;
+}
+
+.content-audio .content-icon{
+	background-color: red;
+} 
+.viewport{
+	/*background-color: blue;*/
+	/*border: ridge;*/
+	/*padding: 20px;*/
+	top:0px;
+	right:0px;
+	position:absolute;
+	height:800px;
+	width:900px;
+	overflow-y: scroll;
+	
+	font-size: 30px;
+	margin: -6px;
+}
+/*.viewport .canvas-wrap{
+	overflow-y: scroll;
+}*/
+
+/*content-tool-box*/
+.content-editor .text-editor{
+	height:100%;
+	width:100%;;
+	font-size: 30px;
+	top:0px;
+	right:0px;
+	background-color: red;
+	position: absolute;
+	overflow: unset;
+
+}
+.content-editor .text-editor.clickable{
+	height:900px;
+	width:900px;
+	font-size: 30px;
+	background-color: green;
+
+}
+
+.content-editor .link{
+	height:60px;
+	width:900px;
+	font-size: 30px;
+	background-color: blue;
+
+}
+
+.content-tool-box{
+	height:200px;
+	width:900px;
+	background-color: yellow;
+	bottom:0px;
+	right:0px;
+	position: absolute;
+}
+
+.glow {
+  /*font-size: 80px;*/
+  /*color: #fff;*/
+  /*text-align: center;*/
+  cursor: url("../img/mouse/Cursor-(white).png"), default;
+  -webkit-animation: glow 2s ease-in-out infinite alternate;
+  -moz-animation: glow 2s ease-in-out infinite alternate;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+
+@-webkit-keyframes glow {
+  from {
+    /*text-shadow: 0 0 20px #fff, 0 0 20px #fff,0 0 40px #00dbe6;*/
+    text-shadow: 0 0 10px #fff;
+  }
+  to {
+    text-shadow: 0 0 30px #fff, 0 0 30px #fff;
+  }
+}
+
+
+
+
+.glow-gif{
+	cursor: url("../img/mouse/Cursor-(white).png"), default;
+	z-index: 100;
+	-webkit-animation: glow-gif 2s ease-in-out infinite alternate;
+  -moz-animation: glow-gif 2s ease-in-out infinite alternate;
+  animation: glow-gif 2s ease-in-out infinite alternate;
+  /*opacity: 90%*/
+}
+
+.glow-gif:hover {
+	-webkit-animation: glow-gif-blue 2s ease-in-out infinite alternate;
+  -moz-animation: glow-gif-blue 2s ease-in-out infinite alternate;
+  animation: glow-gif-blue 2s ease-in-out infinite alternate;
+  /*opacity: 100%*/
+}
+
+
+
+@-webkit-keyframes glow-gif {
+  from {
+    /*text-shadow: 0 0 20px #fff, 0 0 20px #fff,0 0 40px #00dbe6;*/
+    /*text-shadow: 0 0 10px #fff;*/
+    -webkit-filter: drop-shadow(0px 0px 20px #fff);
+    /*filter: url(#drop-shadow);*/
+   
+  }
+  to {
+    -webkit-filter: drop-shadow(0px 0px 0px #fff);
+  }
+}
+
+@-webkit-keyframes glow-gif-red {
+  from {
+    /*text-shadow: 0 0 20px #fff, 0 0 20px #fff,0 0 40px #00dbe6;*/
+    /*text-shadow: 0 0 10px #fff;*/
+    -webkit-filter: drop-shadow(0px 0px 20px #ff0000);
+    /*filter: url(#drop-shadow);*/
+   
+  }
+  to {
+    -webkit-filter: drop-shadow(0px 0px 0px #ff0000);
+  }
+}
+
+@-webkit-keyframes glow-gif-blue {
+  from {
+    /*text-shadow: 0 0 20px #fff, 0 0 20px #fff,0 0 40px #00dbe6;*/
+    /*text-shadow: 0 0 10px #fff;*/
+    -webkit-filter: drop-shadow(0px 0px 20px #0000ff);
+    /*filter: url(#drop-shadow);*/
+   
+  }
+  to {
+    -webkit-filter: drop-shadow(0px 0px 0px #0000ff);
+  }
+}
+
+
+
+/*@-webkit-keyframes glow-gif {
+  from {
+    text-shadow: 0 0 20px #fff, 0 0 20px #fff,0 0 40px #00dbe6;
+    text-shadow: 0 0 10px #fff;
+  }
+  to {
+    text-shadow: 0 0 30px #fff, 0 0 30px #fff;
+  }
+}*/
+
+
+
+
+
+::selection {
+    /*color: green;*/
+    background: lightgray;
+}
+/* For Mozilla Firefox */
+::-moz-selection {
+    color: none;
+    background: none;
+}
+
+/*a {
+  cursor: url(../img/wand-on.png), auto;	
+}
+
+div{
+  cursor: url(../img/wand-off.png), auto;
+}
+*/
