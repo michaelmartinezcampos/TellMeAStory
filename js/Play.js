@@ -9,7 +9,6 @@ var pageLoaded=false;
 
 window.onload=function(){
 	pageLoaded=true;
-	document.documentElement.requestFullscreen();
 }
 
 function keyPressed(e) {
