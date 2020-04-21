@@ -5,6 +5,12 @@ var timeDelays={};
 
 document.addEventListener('keypress', keyPressed);
 
+var pageLoaded=false;
+
+window.onload=function(){
+	pageLoaded=true;
+}
+
 function keyPressed(e) {
 	if(e.key=="s"){
 		skip();
@@ -251,11 +257,22 @@ fetch("json/scenes.json")
 		// 
 		// currentPlay.applyProperties();
 		
+		if(pageLoaded==false){
+			window.onload=function(){
 
-		window.onload=function(){
+				console.log("window loaded")
+				//currentPlay.createProperties();
+				currentPlay.newScene('aa');
 
-			console.log("window loaded")
-			//currentPlay.createProperties();
+				currentPlay.windowManager=new WindowManager();
+
+				currentPlay.windowManager.createMainButtons();
+
+				currentPlay.windowManager.toggleStoryBackEndButtons('backEnd');
+			}
+		}else{
+			console.log("already loaded")
+				//currentPlay.createProperties();
 			currentPlay.newScene('aa');
 
 			currentPlay.windowManager=new WindowManager();
