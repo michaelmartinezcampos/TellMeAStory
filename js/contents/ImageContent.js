@@ -3,30 +3,29 @@ class ImageContent extends Content{
 		super(contentJson_,parentScene_)
 	}
 
+	getEffect(effectName_,effectJSON_){
+		if(effectName_=="position"){
+			return new PositionImageEffect(effectJSON_,this)
+		}else if(effectName_=="glow"){
+			return new GlowImageEffect(effectJSON_,this)
+		}
+		else{
+			return new ImageEffect(effectJSON_,this)
+		}
+	}
+
 
 	createEffects(){
 		// console.log(this.JSONData)
 		for(let effect in this.JSONData.effects.general){
-			if(effect=="position"){
-				this.effects.general[effect]=new PositionImageEffect(this.JSONData.effects.general[effect],this)
-			}else if(effect=="glow"){
-				this.effects.general[effect]=new GlowImageEffect(this.JSONData.effects.general[effect],this)
-			}
-			else{
-				this.effects.general[effect]=new ImageEffect(this.JSONData.effects.general[effect],this)
-			}
+			this.effects.general[effect] = this.getEffect(effect,this.JSONData.effects.general[effect])
 		}
 
 		this.effects.clickable.generic={}
 		for(let effect in this.JSONData.effects.clickable.generic){
-			if(effect=="position"){
-				this.effects.clickable.generic[effect]=new PositionImageEffect(this.JSONData.effects.clickable.generic[effect],this)
-			}else if(effect=="glow"){
-				this.effects.clickable.generic[effect]=new GlowImageEffect(this.JSONData.effects.clickable.generic[effect],this)
-			}
-			else{
-				this.effects.clickable.generic[effect]=new ImageEffect(this.JSONData.effects.clickable.generic[effect],this)
-			}
+
+			this.effects.clickable.generic[effect]=this.getEffect(effect, this.JSONData.effects.clickable.generic[effect]);
+			
 		}
 
 		// for(let effect in this.JSONData.effects.entrance){
