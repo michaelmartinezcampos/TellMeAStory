@@ -30,7 +30,7 @@
           "id": "902",
           "content": {
             "type": "img",
-            "value": "img/Ballerina.GIF"
+            "value": "img/Ballerina.gif"
           },
           "effects": {
             "general": {
@@ -67,7 +67,7 @@
           "id": "903",
           "content": {
             "type": "img",
-            "value": "img/Corgi_animated.GIF"
+            "value": "img/Corgi_animated.gif"
           },
           "effects": {
             "general": {
@@ -85,7 +85,7 @@
                   "className": "glow-gif"
                 },
                 "replace":{
-                  "url": "img/Corgi_animated.GIF"
+                  "url": "img/Corgi_animated.gif"
                 }
               },
               "hover": {},
@@ -107,7 +107,7 @@
           "id": "904",
           "content": {
             "type": "img",
-            "value": "img/Brushes.GIF"
+            "value": "img/Brushes.gif"
           },
           "effects": {
             "general": {
@@ -128,7 +128,7 @@
           "id": "905",
           "content": {
             "type": "img",
-            "value": "img/Clock.GIF"
+            "value": "img/Clock.gif"
           },
           "effects": {
             "general": {
@@ -165,7 +165,7 @@
           "id": "906",
           "content": {
             "type": "img",
-            "value": "img/Helmet.GIF"
+            "value": "img/Helmet.gif"
           },
           "effects": {
             "general": {
@@ -202,7 +202,7 @@
           "id": "907",
           "content": {
             "type": "img",
-            "value": "img/Juice.GIF"
+            "value": "img/Juice.gif"
           },
           "effects": {
             "general": {
@@ -239,7 +239,7 @@
           "id": "908",
           "content": {
             "type": "img",
-            "value": "img/Laundry.GIF"
+            "value": "img/Laundry.gif"
           },
           "effects": {
             "general": {
@@ -276,7 +276,7 @@
           "id": "909",
           "content": {
             "type": "img",
-            "value": "img/Poster.GIF"
+            "value": "img/Poster.gif"
           },
           "effects": {
             "general": {
@@ -313,7 +313,7 @@
           "id": "910",
           "content": {
             "type": "img",
-            "value": "img/Racecar.GIF"
+            "value": "img/Racecar.gif"
           },
           "effects": {
             "general": {
@@ -350,7 +350,7 @@
           "id": "911",
           "content": {
             "type": "img",
-            "value": "img/Sweater.GIF"
+            "value": "img/Sweater.gif"
           },
           "effects": {
             "general": {
@@ -387,7 +387,7 @@
           "id": "912",
           "content": {
             "type": "img",
-            "value": "img/Toy-Soldier.GIF"
+            "value": "img/Toy-Soldier.gif"
           },
           "effects": {
             "general": {
@@ -424,7 +424,7 @@
           "id": "913",
           "content": {
             "type": "img",
-            "value": "img/Ukulele.GIF"
+            "value": "img/Ukulele.gif"
           },
           "effects": {
             "general": {
