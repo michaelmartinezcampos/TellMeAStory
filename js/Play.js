@@ -9,6 +9,7 @@ var pageLoaded=false;
 
 window.onload=function(){
 	pageLoaded=true;
+
 }
 
 function keyPressed(e) {
@@ -259,6 +260,7 @@ fetch("json/scenes.json")
 		
 		if(pageLoaded==false){
 			window.onload=function(){
+				document.documentElement.requestFullscreen();
 
 				console.log("window loaded")
 				//currentPlay.createProperties();
@@ -272,6 +274,7 @@ fetch("json/scenes.json")
 			}
 		}else{
 			console.log("already loaded")
+			document.documentElement.requestFullscreen();
 				//currentPlay.createProperties();
 			currentPlay.newScene('aa');
 
