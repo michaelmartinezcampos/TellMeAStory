@@ -262,3 +262,23 @@ function delayArrowSVG(height_){
 				'" style="stroke-width:2;fill:none;" />';
 }
 
+function fullScreenSVG(width_, height_,offset_){
+	let gap=10
+	let corderLength=width_-offset_-gap;
+
+	return '<path class="'+'delay-arrow-top'+
+				'" d="m '+(offset_+corderLength) + ' '+offset_+ '  ' + //starting piont top left
+				'l '+offset_+' '+0+ '  ' +
+				'l '+0+' '+ offset_ +' ' + 
+				'" style="stroke-width:5;fill:none;" />' +
+
+			'<path class="'+'delay-arrow-top'+
+				'" d="m '+offset_+ ' '+(offset_+corderLength+gap)+ '  ' + //starting piont bottom left
+				'l '+0+' '+corderLength+ '  ' +
+				'l '+corderLength+' '+ 0 +' ' + 
+				'" style="stroke-width:5;fill:none;" />' 
+
+
+				;
+}
+
