@@ -76,14 +76,6 @@ class Content{
 		action_.activate();
 	}
 
-	// addClickableEventListener(action_){
-	// 	action_.onClickEventBind = this.onClickEvent.bind(this, action_)
-	// 	this.html.fe.addEventListener("click", action_.onClickEventBind );
-	// }
-	// removeClickableEventListener(action_){
-	// 	this.html.fe.removeEventListener("click", action_.onClickEventBind );
-	// }
-
 	activateClickable(){
 		this.isClickable=true;
 
@@ -100,7 +92,8 @@ class Content{
 					//this.addClickableEventListener(this.actionsOut[action]);
 				}
 			}else{
-				console.log(this.actionsOut[action].scene.id + "  : :  " + currentPlay.currentScene.id)
+				//this if statment blocks actions for universal shared objects from firing
+				//console.log(this.actionsOut[action].scene.id + "  : :  " + currentPlay.currentScene.id)
 			}
 		}
 	}
@@ -367,9 +360,7 @@ Content.prototype.createFrontEndHTML=function(){
 
 
 Content.prototype.displayFrontEndHTML=function(){
-	// console.log("Display front end HTML : ")
-	// console.log(this)
-	console.log()
+
 	if(this.content.type=="text"){
 		//moved to child class
 		//document.getElementById("main_text").append(this.html.fe);
@@ -389,7 +380,7 @@ Content.prototype.displayFrontEndHTML=function(){
 
 
 Content.prototype.activateActionsOut=function(){
-	// console.log("activate actions out of content for " +this.id);
+	
 	for(let i=0;i<this.actionsOut.length;i++){
 		// console.log("action");
 		// console.log(this.actionsOut[i]);

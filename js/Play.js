@@ -260,7 +260,7 @@ fetch("json/scenes.json")
 		
 		if(pageLoaded==false){
 			window.onload=function(){
-				document.documentElement.requestFullscreen();
+				//document.documentElement.requestFullscreen();
 
 				console.log("window loaded")
 				//currentPlay.createProperties();
