@@ -270,7 +270,7 @@ fetch("json/scenes.json")
 
 				currentPlay.windowManager.createMainButtons();
 
-				currentPlay.windowManager.toggleStoryBackEndButtons('backEnd');
+				// currentPlay.windowManager.toggleStoryBackEndButtons('backEnd');
 			}
 		}else{
 			console.log("already loaded")
@@ -282,7 +282,7 @@ fetch("json/scenes.json")
 
 			currentPlay.windowManager.createMainButtons();
 
-			currentPlay.windowManager.toggleStoryBackEndButtons('backEnd');
+			// currentPlay.windowManager.toggleStoryBackEndButtons('backEnd');
 		}
 
 		

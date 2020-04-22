@@ -10,6 +10,8 @@ function WindowManager(){
 	this.html.content=document.getElementById('content');
 	this.currentScene;
 
+	this.addFullScreen();
+
 
 	this.replaceContent=function(content_){
 		this.html.content.innerHTML=""
@@ -29,6 +31,16 @@ function WindowManager(){
 	this.createTopButtons=function(){
 		//if scense modual
 		this.sceneModual.createTopButtons();
+	}
+
+	this.addFullScreen=function(){
+		let bottomBar=document.getElementById("bottom_bar");
+		let fullScreenButton= document.createElement("svg");
+		fullScreenButton.style.width=24;
+		fullScreenButton.style.height=24;
+		console.log(fullScreenSVG(20,20,2))
+		fullScreenButton.innerHTML=fullScreenSVG(20,20,2);
+		bottomBar.append(fullScreenButton)
 	}
 
 	this.toggleStoryBackEndButtons=function(button_){
