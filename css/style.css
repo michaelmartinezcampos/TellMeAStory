@@ -75,6 +75,7 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 #svgFullScreen:hover .fullscreen-tl {
   transition: 0.2s;
   d: path("m 20 2  l -18 0  l 0 18");
+  opacity: 1;
 }
 #svgFullScreen:hover .fullscreen-bl {
   transition: 0.2s;
