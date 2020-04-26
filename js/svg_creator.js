@@ -262,23 +262,33 @@ function delayArrowSVG(height_){
 				'" style="stroke-width:2;fill:none;" />';
 }
 
-function fullScreenSVG(width_, height_,offset_){
-	let gap=10
-	let corderLength=width_-offset_-gap;
+function fullScreenSVG(width_, height_,padding_){
+	let gap=10;// gapp between 
+	let corderLength=width_-padding_-gap;
 
-	return '<path class="'+'delay-arrow-top'+
-				'" d="m '+(offset_+corderLength) + ' '+offset_+ '  ' + //starting piont top left
-				'l '+offset_+' '+0+ '  ' +
-				'l '+0+' '+ offset_ +' ' + 
-				'" style="stroke-width:5;fill:none;" />' +
+	return '<path class="'+'fullscreen-tl'+
+				'" d="m '+(padding_+corderLength) + ' '+padding_+ '  ' + //starting piont top left
+				'l '+ -1*corderLength+' '+0+ '  ' +
+				'l '+0+' '+ corderLength +'" ' + 
+				'opacity="0.5" stroke-width="3.5" stroke="#000" fill="none" />' +
 
-			'<path class="'+'delay-arrow-top'+
-				'" d="m '+offset_+ ' '+(offset_+corderLength+gap)+ '  ' + //starting piont bottom left
+			'<path class="'+'fullscreen-bl'+
+				'" d="m '+padding_+ ' '+(padding_+corderLength+gap)+ '  ' + //starting piont bottom left
 				'l '+0+' '+corderLength+ '  ' +
-				'l '+corderLength+' '+ 0 +' ' + 
-				'" style="stroke-width:5;fill:none;" />' 
+				'l '+corderLength+' '+ 0 +'" ' + 
+				'opacity="0.5" stroke-width="3.5" stroke="#000" fill="none" />' +
+	
+			'<path class="'+'fullscreen-tr'+
+				'" d="m '+(padding_+corderLength+gap) + ' '+padding_+ '  ' + //starting piont top left
+				'l '+ corderLength+' '+0+ '  ' +
+				'l '+0+' '+ corderLength +'" ' + 
+				'opacity="0.5" stroke-width="3.5" stroke="#000" fill="none" />' +
 
-
+			'<path class="'+'fullscreen-br'+
+				'" d="m '+(padding_+corderLength*2+gap)+ ' '+(padding_+corderLength+gap)+ '  ' + //starting piont bottom left
+				'l '+0+' '+corderLength+ '  ' +
+				'l '+(-1)*corderLength+' '+ 0 +'" ' + 
+				'opacity="0.5" stroke-width="3.5" stroke="#000" fill="none" />' 
 				;
 }
 
