@@ -3732,7 +3732,9 @@
                 "type": "absolute",
                 "top": "0%",
                 "left": "0%"
-              }
+              },
+              "opasity":"0.5"
+
             },
             "entrance": {},
             "exit": {},

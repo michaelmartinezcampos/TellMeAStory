@@ -38,7 +38,7 @@ class WindowManager{
 	}
 	createTopButtons(){
 		//if scense modual
-		this.sceneModual.createTopButtons();
+		// this.sceneModual.createTopButtons();
 	}
 
 	addFullScreen(){

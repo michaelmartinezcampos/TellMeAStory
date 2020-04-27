@@ -12,6 +12,8 @@ class ImageContent extends Content{
 			return new GlowImageEffect(effectJSON_,this)
 		}else if(effectName_=="replace"){
 			return new ReplaceImageEffect(effectJSON_,this)
+		}else if(effectName_=="opacity"){
+			return new OpacityImageEffect(effectJSON_,this)
 		}
 		else{
 			return new ImageEffect(effectJSON_,this)

@@ -274,7 +274,7 @@ fetch("json/scenes.json")
 			}
 		}else{
 			console.log("already loaded")
-			document.documentElement.requestFullscreen();
+			//document.documentElement.requestFullscreen();
 				//currentPlay.createProperties();
 			currentPlay.newScene('aa');
 
