@@ -5,7 +5,6 @@ class ImageContent extends Content{
 	}
 
 	getEffect(effectName_,effectJSON_){
-
 		if(effectName_=="position"){
 			return new PositionImageEffect(effectJSON_,this)
 		}else if(effectName_=="glow"){
@@ -14,6 +13,8 @@ class ImageContent extends Content{
 			return new ReplaceImageEffect(effectJSON_,this)
 		}else if(effectName_=="opacity"){
 			return new OpacityImageEffect(effectJSON_,this)
+		}else if(effectName_=="hide"){
+			return new HideImageEffect(effectJSON_,this)
 		}
 		else{
 			return new ImageEffect(effectJSON_,this)
@@ -30,8 +31,30 @@ class ImageContent extends Content{
 		for(let effect in this.JSONData.effects.clickable.generic){
 			this.effects.clickable.generic[effect]=this.getEffect(effect, this.JSONData.effects.clickable.generic[effect]);
 		}
-
-	
+		this.effects.clickable.hover={}
+		for(let effect in this.JSONData.effects.clickable.hover){
+			this.effects.clickable.hover[effect]=this.getEffect(effect, this.JSONData.effects.clickable.hover[effect]);
+		}
+		this.effects.clickable.pressed={}
+		for(let effect in this.JSONData.effects.clickable.pressed){
+			this.effects.clickable.pressed[effect]=this.getEffect(effect, this.JSONData.effects.clickable.pressed[effect]);
+		}
+		this.effects.hover={}
+		for(let effect in this.JSONData.effects.hover){
+			this.effects.hover[effect]=this.getEffect(effect, this.JSONData.effects.hover[effect]);
+		}
+		this.effects.mousePressed={}
+		for(let effect in this.JSONData.effects.mousePressed){
+			this.effects.mousePressed[effect]=this.getEffect(effect, this.JSONData.effects.mousePressed[effect]);
+		}
+		this.effects.entrance={}
+		for(let effect in this.JSONData.effects.entrance){
+			this.effects.entrance[effect]=this.getEffect(effect, this.JSONData.effects.entrance[effect]);
+		}
+		this.effects.exit={}
+		for(let effect in this.JSONData.effects.exit){
+			this.effects.exit[effect]=this.getEffect(effect, this.JSONData.effects.exit[effect]);
+		}
 	
 	}
 

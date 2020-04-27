@@ -66,7 +66,9 @@ class Content{
 	}
 	activateExitEffects(){
 		//console.log("Activating exit")
+		console.log(this.effects.exit)
 		for(let effect in this.effects.exit){
+			console.log(this.effects.exit[effect])
 			this.effects.exit[effect].apply();
 		}
 	}

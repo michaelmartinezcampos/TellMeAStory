@@ -3716,6 +3716,38 @@
           "elicit": "clickable",
           "delay": 0,
           "info": "Goodnight"
+        },{
+          "id": "500",
+          "tailID": "502",
+          "headID": "501",
+          "trigger": "click",
+          "elicit": "hide",
+          "delay": 0,
+          "info": "hide background"
+        },{
+          "id": "500",
+          "tailID": "502",
+          "headID": "502",
+          "trigger": "click",
+          "elicit": "hide",
+          "delay": 0,
+          "info": "hide another story"
+        },{
+          "id": "500",
+          "tailID": "502",
+          "headID": "503",
+          "trigger": "click",
+          "elicit": "hide",
+          "delay": 0,
+          "info": "hide goodnight"
+        },{
+          "id": "500",
+          "tailID": "502",
+          "headID": "aa",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 0,
+          "info": "intro scene"
         }
       ],
       "contents": [
@@ -3733,11 +3765,15 @@
                 "top": "0%",
                 "left": "0%"
               },
-              "opasity":"0.5"
+              "opacity":{
+                "opacity":"0.5"
+              }
 
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -3754,10 +3790,15 @@
                 "type": "absolute",
                 "top": "40%",
                 "left": "30%"
+              }, 
+              "opacity":{
+                "opacity":"0.7"
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {
@@ -3790,10 +3831,15 @@
                 "type": "absolute",
                 "top": "40%",
                 "left": "55%"
+              }, 
+              "opacity":{
+                "opacity":"0.7"
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {

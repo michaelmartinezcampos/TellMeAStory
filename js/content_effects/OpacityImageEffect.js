@@ -5,8 +5,8 @@ class OpacityImageEffect extends ImageEffect{
 		this.opacity=JSON_.opacity;
 	}
 	apply(){
-		// console.log("applying glow image effect with class " + this.vareables.className)
-		this.parentContent.html.fe.style.opacity=this.opacity;
+		console.log("applying opacity effect !!!!!!!!!!!!!! " + this.vareables.opacity)
+		this.parentContent.html.fe.style.opacity=this.vareables.opacity;
 	}
 	remove(){
 		this.parentContent.html.fe.style.opacity=1;
