@@ -3044,7 +3044,7 @@
           "headID": "911",
           "trigger": "click",
           "elicit": "clickable",
-          "delay": 121,
+          "delay": 120.5,
           "info": "clickable sweater"
         },
         {
@@ -3053,7 +3053,7 @@
           "headID": "913",
           "trigger": "click",
           "elicit": "clickable",
-          "delay": 124,
+          "delay": 120.5,
           "info": "clickable Ukulele"
         },
         {
@@ -3536,7 +3536,7 @@
           "id": "701",
           "content": {
             "type": "audio",
-            "value": "audio/OMS-TS-RC-FIS.mp3"
+            "value": "audio/OMS-TS-RC-U_mixdown.mp3"
           },
           "effects": {
             "general": {
@@ -3555,7 +3555,7 @@
           "id": "702",
           "content": {
             "type": "audio",
-            "value": "audio/OMS-TS-RC-FIS.mp3"
+            "value": "audio/OMS-TS-RC-U_mixdown.mp3"
           },
           "effects": {
             "general": {
@@ -3574,7 +3574,7 @@
           "id": "703",
           "content": {
             "type": "audio",
-            "value": "audio/OMS-TS-RC-FIS.mp3"
+            "value": "audio/OMS-TS-RC-U_mixdown.mp3"
           },
           "effects": {
             "general": {

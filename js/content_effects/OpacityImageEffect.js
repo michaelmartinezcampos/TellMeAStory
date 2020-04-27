@@ -5,7 +5,6 @@ class OpacityImageEffect extends ImageEffect{
 		this.opacity=JSON_.opacity;
 	}
 	apply(){
-		console.log("applying opacity effect !!!!!!!!!!!!!! " + this.vareables.opacity)
 		this.parentContent.html.fe.style.opacity=this.vareables.opacity;
 	}
 	remove(){

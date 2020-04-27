@@ -80,6 +80,7 @@ class TextContent extends Content{
 	
 
 	displayFrontEndHTML(){
+		//if position is main text
 		document.getElementById("main_text").append(this.html.fe);
 		this.html.fe.style.display="block";
 		

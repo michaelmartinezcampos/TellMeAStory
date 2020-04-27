@@ -193,14 +193,16 @@ class Action{
 		setTimeout(function(){
 			// console.log(typeof(timeDelays[0]))
 			delete timeDelays[this.scene.id+this.head.id+this.tail.id];
+
+
 			if(this.head instanceof Content){
+				console.log(this.head.id)
 				this.head.displayFrontEndHTML();
+
+				//these should just be the actions out not the clickable **
 				this.head.activateActionsOut();
 			}else if(this.head instanceof Scene){
-
-				//new scene
-				// console.log(this.id);
-				// console.log(this.passOnInheritance);
+				console.log(this.head.id)
 				currentPlay.newScene(this.head,this.passOnInheritance);
 			}
 
