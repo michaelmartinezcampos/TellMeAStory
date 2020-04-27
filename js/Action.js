@@ -214,7 +214,7 @@ class Action{
 		}
 		setTimeout(function(){
 			if(this.head instanceof Content){
-				console.log("activating exit effect")
+				
 				this.head.activateExitEffects();
 			}else if(this.head instanceof Scene){
 				console.log("Trying to hide a scene??")

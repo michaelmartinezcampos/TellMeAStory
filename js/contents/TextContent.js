@@ -82,6 +82,7 @@ class TextContent extends Content{
 	displayFrontEndHTML(){
 		document.getElementById("main_text").append(this.html.fe);
 		this.html.fe.style.display="block";
+		
 	}
 
 }
