@@ -284,14 +284,10 @@ fetch("json/scenes.json")
 		// currentPlay.createScenesBackEndHTMLs();
 		// 
 		// currentPlay.applyProperties();
-		
-		if(pageLoaded==false){
-			window.onload=function(){
-				//document.documentElement.requestFullscreen();
 
-				console.log("window loaded**")
-				//updateContentSize();
-				//currentPlay.createProperties();
+		if(document.readyState=== 'complete'){//run imedeatly
+			
+
 				currentPlay.newScene('aa');
 
 				currentPlay.windowManager=new WindowManager();
@@ -300,19 +296,18 @@ fetch("json/scenes.json")
 
 				updateContentSize();
 
-				// currentPlay.windowManager.toggleStoryBackEndButtons('backEnd');
+		}else{//wait for page load
+			window.onload=function(){
+				
+
+				currentPlay.newScene('aa');
+
+				currentPlay.windowManager=new WindowManager();
+
+				currentPlay.windowManager.createMainButtons();
+
+				updateContentSize();
 			}
-		}else{
-			console.log("already loaded %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-			//document.documentElement.requestFullscreen();
-				//currentPlay.createProperties();
-			currentPlay.newScene('aa');
-
-			currentPlay.windowManager=new WindowManager();
-
-			currentPlay.windowManager.createMainButtons();
-
-			// currentPlay.windowManager.toggleStoryBackEndButtons('backEnd');
 		}
 
 		
