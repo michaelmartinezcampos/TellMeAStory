@@ -403,6 +403,9 @@
               "generic": {
                 "glow": {
                   "className": "glow-gif"
+                },
+                "replace":{
+                  "url": "img/Toy-Soldier-animated.gif"
                 }
               },
               "hover": {},

@@ -5,12 +5,8 @@ var timeDelays={};
 
 document.addEventListener('keypress', keyPressed);
 
-var pageLoaded=false;
 
-window.onload=function(){
-	pageLoaded=true;
 
-}
 
 function keyPressed(e) {
 	if(e.key=="s"){
@@ -43,16 +39,38 @@ function stopAudio(){
 }
 
 var _setTimeout = window.setTimeout;
-var timeouts = [];
-window.setTimeout = function(fn, ms, premature) {
-	
-    var id = _setTimeout(fn, ms);
-    //console.log(id);
-    if(premature){
-    	// console.log("ADDING  " + id);
-    	// console.log(fn);
-	    timeouts[id] = fn;
-	}
+var timeouts = {};
+
+
+window.setTimeout = function(fn, ms) {
+
+	//for (let i=2; i<arguments.length; i++) console.log(arguments[i]);
+	arguments[0]
+	//console.log(typeof(arguments[0]))
+	arguments[0].added=function(){
+		console.log("hi")
+	};
+	//arguments[0]=arguments[0]
+    var id = _setTimeout.apply(null, arguments);
+
+
+    //remove from timeouts once executed
+    var id2=_setTimeout(function(id_){
+    	delete timeouts[id_];
+    },ms,id);
+    //
+
+    //fn.id=id;
+    timeouts[id] = fn;
+
+
+
+ //    //console.log(id);
+ //    if(premature){
+ //    	// console.log("ADDING  " + id);
+ //    	// console.log(fn);
+	    
+	// }
 	return id;
 	
 };
@@ -60,12 +78,15 @@ window.setTimeout = function(fn, ms, premature) {
 window.premature = function(id) {
 	if(id==undefined){
 
+		//console.log("# time outes : " + timeouts.length)
 		for(let id in timeouts){
+			console.log(id)
 
 			var fn = timeouts[id];
 
 			
 	        clearTimeout(id);
+	        //console.log(fn)
 	        if (fn instanceof String) {
 	            eval(fn);
 	        } else {
@@ -76,6 +97,7 @@ window.premature = function(id) {
 		}
 
 	}else{
+		console.log("id defined")
 	    var fn = timeouts[id];
 	    if (fn) {
 	        clearTimeout(id);
@@ -105,111 +127,116 @@ function playStory(){
   
   
 }
+
 class Play{
 
 	constructor(scenesData_){
 		this.contentEditorOverlay=new ContentEditorOverlay();
 		this.path="";//this will keep track of the path that has been taken
 	}
-}
 
+	loadScenesLib(scenesData_){
+		this.scenesLib={};
+	  	for(let i=0; i<scenesData_.length;i++){//think about the order of loading. right now to goes through scene by scene maybe load all scens first and then do content
+	  		this.scenesLib[scenesData_[i].id]=new Scene(scenesData_[i], this)
+	  	}
 
+	  	for(let i=0; i<scenesData_.length;i++){//think about the order of loading. right now to goes through scene by scene maybe load all scens first and then do content
+	  		this.scenesLib[scenesData_[i].id].addContents(scenesData_[i]);
+	  	}
+	  	//add universal content to every scene
+	  	if(this.scenesLib["uni"] != undefined){
+	  		for(let sceneID in this.scenesLib){
+	  			if(sceneID != "uni"){
 
-Play.prototype.loadScenesLib=function(scenesData_){
-	this.scenesLib={};
-  	for(let i=0; i<scenesData_.length;i++){//think about the order of loading. right now to goes through scene by scene maybe load all scens first and then do content
-  		this.scenesLib[scenesData_[i].id]=new Scene(scenesData_[i], this)
-  	}
+	  				for(let contentID in this.scenesLib["uni"].contentsLib){
+	  					
+	  					this.scenesLib[sceneID].contentsLib[contentID] = this.scenesLib["uni"].contentsLib[contentID]
+	  				}
+	  				//console.log(this.scenesLib[sceneID])
+	  			}
+	  		}
+	  		//console.log("*************************")
+	  	}
 
-  	for(let i=0; i<scenesData_.length;i++){//think about the order of loading. right now to goes through scene by scene maybe load all scens first and then do content
-  		this.scenesLib[scenesData_[i].id].addContents(scenesData_[i]);
-  	}
-  	//add universal content to every scene
-  	if(this.scenesLib["uni"] != undefined){
-  		for(let sceneID in this.scenesLib){
-  			if(sceneID != "uni"){
+	  	for(let i=0; i<scenesData_.length;i++){//think about the order of loading. right now to goes through scene by scene maybe load all scens first and then do content
+	  		this.scenesLib[scenesData_[i].id].addActions(scenesData_[i])
+	  	}
 
-  				for(let contentID in this.scenesLib["uni"].contentsLib){
-  					
-  					this.scenesLib[sceneID].contentsLib[contentID] = this.scenesLib["uni"].contentsLib[contentID]
-  				}
-  				//console.log(this.scenesLib[sceneID])
-  			}
-  		}
-  		//console.log("*************************")
-  	}
-
-  	for(let i=0; i<scenesData_.length;i++){//think about the order of loading. right now to goes through scene by scene maybe load all scens first and then do content
-  		this.scenesLib[scenesData_[i].id].addActions(scenesData_[i])
-  	}
-
-}
-
-
-Play.prototype.createScenesFrontEndHTMLs=function(){
-	for(let sceneKey in this.scenesLib){//this will create the divs for all the scenes. they could be created on each scene load
-		this.scenesLib[sceneKey].createFrontEndHTML();//scene will cycle through each content (and action?) and create a div/span for each
-	}
-}
-Play.prototype.createScenesBackEndHTMLs=function(){
-	for(let sceneKey in this.scenesLib){//this will create the divs for all the scenes. they could be created on each scene load
-		this.scenesLib[sceneKey].createBackEndHTML();//scene will cycle through each content (and action?) and create a div/span for each
-	}
-}
-Play.prototype.createProperties=function(){
-	for(let sceneKey in this.scenesLib){//this will create the divs for all the scenes. they could be created on each scene load
-		this.scenesLib[sceneKey].createProperties();//scene will cycle through each content (and action?) and create a div/span for each
-	}
-}
-Play.prototype.applyProperties=function(){
-	for(let sceneKey in this.scenesLib){//this will create the divs for all the scenes. they could be created on each scene load
-		this.scenesLib[sceneKey].applyProperties();//scene will cycle through each content (and action?) and create a div/span for each
-	}
-}
-
-
-Play.prototype.displayCurrentScene=function(){
-	this.currentScene.displayFrontEnd();
-}
-
-
-
-//loads the new scene and tracks path (maybe just use this to start and track elseware?)
-Play.prototype.newScene=function(newScene_, inheritedContent_){
-	// console.log(newScene_)
-	if(newScene_ instanceof Scene){
-		// console.log(inheritedContent_)
-		newScene_.addInheritance(inheritedContent_)
-		this.currentScene=newScene_;
-		this.path=this.path+"."+newScene_.id;
-
-		this.displayCurrentScene();
-	}else if(typeof(newScene_) == "string"){
-		this.newScene(this.scenesLib[newScene_])
-	}
-}
-
-Play.prototype.getJSON=function(){
-// {
-//   "scenes":[]
-
-// }
-	let jsonPlay={}
-	
-	jsonPlay.scenes=[];
-	let index=0;
-	for(let id in this.scenesLib){
-	 	jsonPlay.scenes[index]=this.scenesLib[id].getJSON()
-	 	index++;
 	}
 
-	return jsonPlay;
 
-}
-Play.prototype.saveJSON=function(){
-	//(content, fileName, contentType) {
-    download( JSON.stringify(this.getJSON()),"scenes_" + Date.now() + ".json"); 
-}
+	createScenesFrontEndHTMLs(){
+		for(let sceneKey in this.scenesLib){//this will create the divs for all the scenes. they could be created on each scene load
+			this.scenesLib[sceneKey].createFrontEndHTML();//scene will cycle through each content (and action?) and create a div/span for each
+		}
+	}
+	createScenesBackEndHTMLs(){
+		for(let sceneKey in this.scenesLib){//this will create the divs for all the scenes. they could be created on each scene load
+			this.scenesLib[sceneKey].createBackEndHTML();//scene will cycle through each content (and action?) and create a div/span for each
+		}
+	}
+	createProperties(){
+		for(let sceneKey in this.scenesLib){//this will create the divs for all the scenes. they could be created on each scene load
+			this.scenesLib[sceneKey].createProperties();//scene will cycle through each content (and action?) and create a div/span for each
+		}
+	}
+	applyProperties(){
+		for(let sceneKey in this.scenesLib){//this will create the divs for all the scenes. they could be created on each scene load
+			this.scenesLib[sceneKey].applyProperties();//scene will cycle through each content (and action?) and create a div/span for each
+		}
+	}
+
+
+	displayCurrentScene(){
+		this.currentScene.displayFrontEnd();
+	}
+
+
+
+	//loads the new scene and tracks path (maybe just use this to start and track elseware?)
+	newScene(newScene_, inheritedContent_){
+		// console.log(newScene_)
+		if(newScene_ instanceof Scene){
+
+			console.log("new scene " + newScene_.id + " @ " + Date.now())
+			// console.log(inheritedContent_)
+			newScene_.addInheritance(inheritedContent_)
+			this.currentScene=newScene_;
+			this.path=this.path+"."+newScene_.id;
+
+			this.displayCurrentScene();
+		}else if(typeof(newScene_) == "string"){
+			this.newScene(this.scenesLib[newScene_])
+		}
+	}
+
+	getJSON(){
+	// {
+	//   "scenes":[]
+
+	// }
+		let jsonPlay={}
+		
+		jsonPlay.scenes=[];
+		let index=0;
+		for(let id in this.scenesLib){
+		 	jsonPlay.scenes[index]=this.scenesLib[id].getJSON()
+		 	index++;
+		}
+
+		return jsonPlay;
+
+	}
+	saveJSON(){
+		//(content, fileName, contentType) {
+	    download( JSON.stringify(this.getJSON()),"scenes_" + Date.now() + ".json"); 
+	}
+};
+
+
+
+
 
 
 
@@ -262,7 +289,8 @@ fetch("json/scenes.json")
 			window.onload=function(){
 				//document.documentElement.requestFullscreen();
 
-				console.log("window loaded")
+				console.log("window loaded**")
+				//updateContentSize();
 				//currentPlay.createProperties();
 				currentPlay.newScene('aa');
 
@@ -270,10 +298,12 @@ fetch("json/scenes.json")
 
 				currentPlay.windowManager.createMainButtons();
 
+				updateContentSize();
+
 				// currentPlay.windowManager.toggleStoryBackEndButtons('backEnd');
 			}
 		}else{
-			console.log("already loaded")
+			console.log("already loaded %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 			//document.documentElement.requestFullscreen();
 				//currentPlay.createProperties();
 			currentPlay.newScene('aa');

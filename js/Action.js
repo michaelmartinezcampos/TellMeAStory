@@ -196,7 +196,7 @@ class Action{
 
 
 			if(this.head instanceof Content){
-				console.log(this.head.id)
+				//console.log(this.head.id)
 				this.head.displayFrontEndHTML();
 
 				//these should just be the actions out not the clickable **
@@ -250,9 +250,9 @@ class Action{
 
 
 
-	triggerScene(){//trigers a new scene
-		this.scene.play.newScene(this.head)    //the current play
-	}
+	// triggerScene(){//trigers a new scene
+	// 	this.scene.play.newScene(this.head)    //the current play
+	// }
 	triggerContent(delay_){//trigers content
 
 
@@ -286,7 +286,7 @@ class Action{
 			// }
 		// }
 	}
-}
+};
 
 Action.prototype.updateOutInIndexes=function(){
 

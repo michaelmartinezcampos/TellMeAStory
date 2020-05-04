@@ -99,6 +99,9 @@ class ImageContent extends Content{
 	displayFrontEndHTML(){
 		//console.log(this.html.fe)
 		//document.getElementById("background_img").append(this.html.fe);
+
+
+		//make sure this loads first ****
 		this.htmlParent.append(this.html.fe);
 		this.html.fe.style.display="block";
 	}
