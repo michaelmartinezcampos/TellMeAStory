@@ -16,11 +16,17 @@
     font-style: normal;
 }*/
 
-@font-face {
+/*@font-face {
     font-family: 'indieFlower-regular';
     src: url('../fonts/IndieFlower-Regular.ttf') format('ttf')
     font-weight: normal;
     font-style: normal;
+}*/
+
+@font-face {
+  font-family: indieFlower;
+  src: url('../fonts/IndieFlower-Regular.ttf');
+  font-weight: normal;
 }
 
 /*@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');*/
@@ -191,7 +197,7 @@ div#background_img{
 
 div#main_text{
 	/*cursor: url("../img/mouse/Cursor-(white).png"), default;*/
-	font-family: 'Indie Flower', cursive;
+	font-family: 'indieFlower', cursive;
 	position: absolute;
     z-index: 0;
     left: 25%;
