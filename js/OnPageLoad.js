@@ -4,17 +4,32 @@ function updateContentSize(){
 	
 	let contentDiv=document.getElementById("content");
 
-	if(window.innerWidth/16<=window.innerHeight/9){
+	if(window.innerWidth/16<=window.innerHeight/9){//scale based on width
 
-		document.getElementById("content").style.width=window.innerWidth+'px';
-		document.getElementById("content").style.height=(window.innerWidth*9/16)+'px';
+		let width=window.innerWidth;
+		let height=(window.innerWidth*9/16)
+
+		document.getElementById("content").style.width=width+'px';
+		document.getElementById("content").style.height=height+'px';
+
+		document.getElementById("content").style.top=(window.innerHeight-height)/2+'px';
+		document.getElementById("content").style.left=0+'px';
 
 
 		document.getElementById("main_text").style['font-size']=window.innerWidth*.02+'px';
+
+
 		
-	}else{
-		document.getElementById("content").style.width=(window.innerHeight*16/9)+'px';
-		document.getElementById("content").style.height=(window.innerHeight)+'px';
+	}else{//scale based on hieght
+		let width=(window.innerHeight*16/9);
+		let height=(window.innerHeight);
+
+		document.getElementById("content").style.width=width+'px';
+		document.getElementById("content").style.height=height+'px';
+
+
+		document.getElementById("content").style.top=0+'px';
+		document.getElementById("content").style.left=(window.innerWidth-width)/2+'px';
 
 		document.getElementById("main_text").style['font-size']=(window.innerHeight*16/9)*.02+'px';
 

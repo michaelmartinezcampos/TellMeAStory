@@ -58,16 +58,13 @@ class ImageContent extends Content{
 	
 	}
 
+	//this.frontEndLoaded=false;
+
 	createFrontEndHTML(){
+
+
 		
 		this.html.fe = document.createElement("img");
-		this.html.fe.src=this.content.value;
-		this.html.fe.classList.add('background-img')
-
-		// this.createEffects();
-		// this.applyGeneralEffects();
-
-
 
 		this.html.fe.onload =function(){
 			this.imgLoad();
@@ -77,6 +74,17 @@ class ImageContent extends Content{
 
 			
 		}.bind(this)
+
+
+		this.html.fe.src=this.content.value;
+		this.html.fe.classList.add('background-img')
+
+		// this.createEffects();
+		// this.applyGeneralEffects();
+
+
+
+		
 
 	}
 	imgLoad(){
