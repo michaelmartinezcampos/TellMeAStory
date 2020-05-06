@@ -15,6 +15,8 @@ function updateContentSize(){
 		document.getElementById("content").style.top=(window.innerHeight-height)/2+'px';
 		document.getElementById("content").style.left=0+'px';
 
+		document.getElementById("bottom_bar").style.height=height*.05+'px';
+
 
 		document.getElementById("main_text").style['font-size']=window.innerWidth*.02+'px';
 
@@ -30,6 +32,8 @@ function updateContentSize(){
 
 		document.getElementById("content").style.top=0+'px';
 		document.getElementById("content").style.left=(window.innerWidth-width)/2+'px';
+
+		document.getElementById("bottom_bar").style.height=height*.05+'px';
 
 		document.getElementById("main_text").style['font-size']=(window.innerHeight*16/9)*.02+'px';
 

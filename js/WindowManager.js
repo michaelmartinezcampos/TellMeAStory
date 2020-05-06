@@ -44,17 +44,25 @@ class WindowManager{
 	addFullScreen(){
 		//console.log("*************************************************************")
 		
-		this.fullScreenButton= document.createElementNS("http://www.w3.org/2000/svg", "svg");
-		this.fullScreenButton.style.width="60px";
-		this.fullScreenButton.style.height="60";
+		// this.fullScreenButton= document.createElementNS("http://www.w3.org/2000/svg", "svg");
+		this.fullScreenButton= document.createElement("img");
+		// console.log(this.fullScreenButton)
+		this.fullScreenButton.id="fullScreenButton";
+		// this.fullScreenButton.style.width="60px";
+		// this.fullScreenButton.style.height="60";
 		//console.log(fullScreenSVG(20,20,2))
+		this.fullScreenButton.src="../img/special/full-screen.png"
+
+		this.fullScreenButton.id="fullScreenButton";
+
+		document.getElementById("bottom_bar").append(this.fullScreenButton);
 		
-		this.fullScreenButton.innerHTML=fullScreenSVG(25,22,6);
-		this.html.bottomBar.append(this.fullScreenButton)
-		this.fullScreenButton.id="svgFullScreen"
-		this.fullScreenButton.style.top=5;
-		this.fullScreenButton.style.right=5;
-		this.fullScreenButton.style.position="absolute";
+		// this.fullScreenButton.innerHTML=fullScreenSVG(25,22,6);
+		// this.html.bottomBar.append(this.fullScreenButton)
+		// this.fullScreenButton.id="svgFullScreen"
+		// this.fullScreenButton.style.top=5;
+		// this.fullScreenButton.style.right=5;
+		// this.fullScreenButton.style.position="absolute";
 
 		this.fullScreenButton.addEventListener('click',function(){
 			toggleFullscreen();
