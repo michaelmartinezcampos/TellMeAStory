@@ -11,12 +11,28 @@ document.addEventListener('keypress', keyPressed);
 function keyPressed(e) {
 	if(e.key=="s"){
 		skip();
+	}else if(e.key==" "){
+		pause();
+		console.log("pause")
+	}else{
+		console.log(e.key);
 	}
   //console.log(e)
 }
 
 
-
+function pause(){
+	if(context.state=="suspended"){
+		context.resume().then(function() {
+	       console.log('Resume context');
+	    })
+	}else{
+		context.suspend().then(function() {
+	      console.log('Pause context');
+	    });
+	}
+	
+}
 function skip(){
 
 	// let promise = new Promise(function(resolve, reject) {
@@ -44,12 +60,14 @@ var timeouts = {};
 
 window.setTimeout = function(fn, ms) {
 
+	
+
 	//for (let i=2; i<arguments.length; i++) console.log(arguments[i]);
 	arguments[0]
 	//console.log(typeof(arguments[0]))
-	arguments[0].added=function(){
-		console.log("hi")
-	};
+	// arguments[0].added=function(){
+	// 	console.log("hi")
+	// };
 	//arguments[0]=arguments[0]
     var id = _setTimeout.apply(null, arguments);
 
