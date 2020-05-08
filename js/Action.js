@@ -190,7 +190,7 @@ class Action{
 			premature=false
 		}
 
-		setTimeout(function(){
+		this.timer=new Timer(function(){
 			// console.log(typeof(timeDelays[0]))
 			delete timeDelays[this.scene.id+this.head.id+this.tail.id];
 
@@ -206,7 +206,9 @@ class Action{
 				currentPlay.newScene(this.head,this.passOnInheritance);
 			}
 
-		}.bind(this), delay_*1000,premature)
+		}.bind(this), delay_*1000,premature);
+
+		this.timer.resume();
 		
 
 	}
@@ -214,7 +216,7 @@ class Action{
 		if(delay_==null){
 			delay_=0;
 		}
-		setTimeout(function(){
+		this.timer=new Timer(function(){
 			if(this.head instanceof Content){
 				
 				this.head.activateExitEffects();
@@ -223,24 +225,30 @@ class Action{
 			}
 		}.bind(this), delay_*1000,true);
 
+		this.timer.resume();
+
 	}
 	activateContent(delay_){
 		if(delay_==null){
 			delay_=0;
 		}
 
-		setTimeout(function(){
+		this.timer=new Timer(function(){
 			this.head.activateClickable();
 		}.bind(this), delay_*1000,true);
+
+		this.timer.resume();
 
 	}
 	deactivateContent(delay_){
 		if(delay_==null){
 			delay_=0; 
 		}
-		setTimeout(function(){
+		this.timer=new Timer(function(){
 			this.head.deactivateClickable();
 		}.bind(this), delay_*1000,true);
+
+		this.timer.resume();
 
 	}
 	makeClickableContent(){

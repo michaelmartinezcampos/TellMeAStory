@@ -54,44 +54,7 @@ function stopAudio(){
 	});
 }
 
-var _setTimeout = window.setTimeout;
-var timeouts = {};
 
-
-window.setTimeout = function(fn, ms) {
-
-	
-
-	//for (let i=2; i<arguments.length; i++) console.log(arguments[i]);
-	arguments[0]
-	//console.log(typeof(arguments[0]))
-	// arguments[0].added=function(){
-	// 	console.log("hi")
-	// };
-	//arguments[0]=arguments[0]
-    var id = _setTimeout.apply(null, arguments);
-
-
-    //remove from timeouts once executed
-    var id2=_setTimeout(function(id_){
-    	delete timeouts[id_];
-    },ms,id);
-    //
-
-    //fn.id=id;
-    timeouts[id] = fn;
-
-
-
- //    //console.log(id);
- //    if(premature){
- //    	// console.log("ADDING  " + id);
- //    	// console.log(fn);
-	    
-	// }
-	return id;
-	
-};
 
 window.premature = function(id) {
 	if(id==undefined){
