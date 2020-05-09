@@ -2162,7 +2162,7 @@
       "actions": [
         
         {
-          "id": "500",
+          "id": "u903_0",
           "tailID": "TS",
           "headID": "903",
           "trigger": "time",
@@ -2171,7 +2171,7 @@
           "info": "remove clickable corgi"
         },
         {
-          "id": "500",
+          "id": "u912_0",
           "tailID": "TS",
           "headID": "912",
           "trigger": "time",
@@ -2179,7 +2179,7 @@
           "delay": 0,
           "info": "make toy soder not clickable"
         },{
-          "id": "5001",
+          "id": "d701_0",
           "tailID": "TS",
           "headID": "701",
           "trigger": "time",
@@ -2187,7 +2187,7 @@
           "delay": 0,
           "info": "play audio"
         },{
-          "id": "5001",
+          "id": "d001_2",
           "tailID": "TS",
           "headID": "001",
           "trigger": "time",
@@ -2195,7 +2195,7 @@
           "delay": 2,
           "info": "what was his name?"
         },{
-          "id": "5001",
+          "id": "c001_2",
           "tailID": "TS",
           "headID": "001",
           "trigger": "time",
@@ -2203,7 +2203,7 @@
           "delay": 2,
           "info": "what was his my?"
         },{
-          "id": "5001",
+          "id": "h001_0",
           "tailID": "001",
           "headID": "001",
           "trigger": "click",
@@ -2211,7 +2211,7 @@
           "delay": 0,
           "info": "what was his my?"
         },{
-          "id": "5001",
+          "id": "d702_0",
           "tailID": "001",
           "headID": "702",
           "trigger": "click",
@@ -2220,7 +2220,7 @@
           "info": "play audio #2"
         },
         {
-          "id": "500",
+          "id": "c902_64",
           "tailID": "001",
           "headID": "902",
           "trigger": "click",
@@ -2229,7 +2229,7 @@
           "info": "make balaeriena clickable"
         },
         {
-          "id": "500",
+          "id": "c910_64",
           "tailID": "001",
           "headID": "910",
           "trigger": "click",
@@ -2238,7 +2238,7 @@
           "info": "make race car clickable"
         },
         {
-          "id": "500",
+          "id": "cTSBA_0",
           "tailID": "902",
           "headID": "TS-BA",
           "trigger": "click",
@@ -2247,7 +2247,7 @@
           "info": "if ballerian is clicked"
         },
         {
-          "id": "500",
+          "id": "dTSRC_0",
           "tailID": "910",
           "headID": "TS-RC",
           "trigger": "click",

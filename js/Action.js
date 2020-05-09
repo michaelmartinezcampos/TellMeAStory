@@ -2,7 +2,7 @@ class Action{
 
 	constructor(actionJSON_,scene_){
 		this.JSON=actionJSON_
-		this.id=actionJSON_.id;
+		this.id=Math.random();//actionJSON_.id;
 		this.tail;//either the scene itself or content object
 		this.head;//either content of a new scene
 		this.block;//this will turn off other actions deafalt is to just turn itself off 
