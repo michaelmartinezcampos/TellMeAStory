@@ -33,13 +33,39 @@ function pause(){
 	}
 	
 }
+function l(){
+
+	// let promise = new Promise(function(resolve, reject) {
+	//   // executor (the producing code, "singer")
+	// });
+	// premature()
+	//why do i need a timeout????? the above is not asincrunus is it???
+
+	for(let action in currentPlay.currentScene.actionsLib){
+		if(currentPlay.currentScene.actionsLib[action].timer!=undefined){
+			console.log(currentPlay.currentScene.actionsLib[action])
+		}
+		
+	}
+
+	
+	//setTimeout(stopAudio,10);
+	
+}
 function skip(){
 
 	// let promise = new Promise(function(resolve, reject) {
 	//   // executor (the producing code, "singer")
 	// });
-	premature()
+	// premature()
 	//why do i need a timeout????? the above is not asincrunus is it???
+
+	for(let action in currentPlay.currentScene.actionsLib){
+
+		currentPlay.currentScene.actionsLib[action].skip();
+	}
+
+
 	setTimeout(stopAudio,10);
 	
 }
@@ -56,40 +82,40 @@ function stopAudio(){
 
 
 
-window.premature = function(id) {
-	if(id==undefined){
+// window.premature = function(id) {
+// 	if(id==undefined){
 
-		//console.log("# time outes : " + timeouts.length)
-		for(let id in timeouts){
-			console.log(id)
+// 		//console.log("# time outes : " + timeouts.length)
+// 		// for(let id in timeouts){
+// 		// 	console.log(id)
 
-			var fn = timeouts[id];
+// 		// 	var fn = timeouts[id];
 
 			
-	        clearTimeout(id);
-	        //console.log(fn)
-	        if (fn instanceof String) {
-	            eval(fn);
-	        } else {
-	            fn()
-	        }
+// 	 //        clearTimeout(id);
+// 	 //        //console.log(fn)
+// 	 //        if (fn instanceof String) {
+// 	 //            eval(fn);
+// 	 //        } else {
+// 	 //            fn()
+// 	 //        }
 		    
-		    delete timeouts[id];
-		}
+// 		//     delete timeouts[id];
+// 		// }
 
-	}else{
-		console.log("id defined")
-	    var fn = timeouts[id];
-	    if (fn) {
-	        clearTimeout(id);
-	        if (fn instanceof String) {
-	            eval(fn);
-	        } else {
-	            fn()
-	        }
-	    }
-	}
-};
+// 	}else{
+// 		console.log("id defined")
+// 	    var fn = timeouts[id];
+// 	    if (fn) {
+// 	        clearTimeout(id);
+// 	        if (fn instanceof String) {
+// 	            eval(fn);
+// 	        } else {
+// 	            fn()
+// 	        }
+// 	    }
+// 	}
+// };
 
 
 function clearTimeOut(){

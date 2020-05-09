@@ -1,12 +1,12 @@
 //var _setTimeout = window.setTimeout;
-var timeouts = {};
+//var timeouts = {};
 
 
 class Timer{
 
 
     constructor(callback_, delay_){
-        console.log(arguments)
+        // console.log(arguments)
         this.callback=callback_;
         this.delay=delay_;
         this.id;
@@ -20,7 +20,7 @@ class Timer{
     resume(){
         this.start = Date.now();
         window.clearTimeout(this.id);
-        this.id=setTimeout(this.callback,this.delay);
+        this.id=setTimeout(this.callback,this.remaining);
         this.status="resumed";
     }
 
@@ -28,6 +28,22 @@ class Timer{
         window.clearTimeout(this.id);
         this.remaining -= Date.now() - this.start;
         this.status="paused";
+    }
+
+    skip(skipTime_){
+        if(skipTime_==null){
+            window.clearTimeout(this.id);
+            this.callback();
+        }else{
+            
+            if(this.status=="resumed"){
+                this.pause();
+                this.remaining -= skipTime_;
+                this.resume();
+            }else if(this.status=="paused"){
+                this.remaining -= skipTime_;
+            }
+        }
     }
 
 

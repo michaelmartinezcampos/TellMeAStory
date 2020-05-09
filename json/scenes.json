@@ -513,7 +513,7 @@
       "id": "aa",
       "actions": [
         {
-          "id": "5001",
+          "id": "5000",
           "tailID": "aa",
           "headID": "001",
           "trigger": "time",
@@ -521,15 +521,15 @@
           "delay": 0
         },
         {
-          "id": "5002",
+          "id": "5001",
           "tailID": "aa",
           "headID": "001",
           "trigger": "time",
           "elicit": "clickable",
-          "delay": 1
+          "delay": 0
         },
         {
-          "id": "5002",
+          "id": "6003",
           "tailID": "001",
           "headID": "001",
           "trigger": "click",
@@ -537,7 +537,7 @@
           "delay": 0
         },
         {
-          "id": "543",
+          "id": "5002",
           "tailID": "aa",
           "headID": "901",
           "trigger": "time",
@@ -545,7 +545,7 @@
           "delay": 0
         },
         {
-          "id": "543",
+          "id": "5003",
           "tailID": "aa",
           "headID": "902",
           "trigger": "time",
@@ -553,7 +553,7 @@
           "delay": 0
         },
         {
-          "id": "543",
+          "id": "5004",
           "tailID": "aa",
           "headID": "903",
           "trigger": "time",
@@ -561,7 +561,7 @@
           "delay": 0
         },
         {
-          "id": "543",
+          "id": "5005",
           "tailID": "aa",
           "headID": "904",
           "trigger": "time",
@@ -569,7 +569,7 @@
           "delay": 0
         },
         {
-          "id": "543",
+          "id": "5006",
           "tailID": "aa",
           "headID": "905",
           "trigger": "time",
@@ -577,7 +577,7 @@
           "delay": 0
         },
         {
-          "id": "543",
+          "id": "5007",
           "tailID": "aa",
           "headID": "906",
           "trigger": "time",
@@ -585,7 +585,7 @@
           "delay": 0
         },
         {
-          "id": "543",
+          "id": "5008",
           "tailID": "aa",
           "headID": "907",
           "trigger": "time",
@@ -593,7 +593,7 @@
           "delay": 0
         },
         {
-          "id": "543",
+          "id": "5009",
           "tailID": "aa",
           "headID": "908",
           "trigger": "time",
@@ -601,7 +601,7 @@
           "delay": 0
         },
         {
-          "id": "543",
+          "id": "5010",
           "tailID": "aa",
           "headID": "909",
           "trigger": "time",
@@ -609,7 +609,7 @@
           "delay": 0
         },
         {
-          "id": "543",
+          "id": "5011",
           "tailID": "aa",
           "headID": "910",
           "trigger": "time",
@@ -617,7 +617,7 @@
           "delay": 0
         },
         {
-          "id": "543",
+          "id": "5012",
           "tailID": "aa",
           "headID": "911",
           "trigger": "time",
@@ -625,7 +625,7 @@
           "delay": 0
         },
         {
-          "id": "543",
+          "id": "5013",
           "tailID": "aa",
           "headID": "912",
           "trigger": "time",
@@ -633,7 +633,7 @@
           "delay": 0
         },
         {
-          "id": "543",
+          "id": "5014",
           "tailID": "aa",
           "headID": "913",
           "trigger": "time",
@@ -673,7 +673,7 @@
           "delay": 0
         },
         {
-          "id": "506",
+          "id": "d006_0",
           "tailID": "005",
           "headID": "006",
           "trigger": "click",
@@ -681,7 +681,7 @@
           "delay": 0
         },
         {
-          "id": "506",
+          "id": "d702_0",
           "tailID": "005",
           "headID": "702",
           "trigger": "click",
@@ -689,7 +689,7 @@
           "delay": 0
         },
         {
-          "id": "506",
+          "id": "c903_8",
           "tailID": "005",
           "headID": "903",
           "trigger": "click",
@@ -697,7 +697,7 @@
           "delay": 8
         },
         {
-          "id": "506",
+          "id": "c912_8",
           "tailID": "005",
           "headID": "912",
           "trigger": "click",
@@ -705,7 +705,7 @@
           "delay": 8
         },
         {
-          "id": "506",
+          "id": "d007_8",
           "tailID": "005",
           "headID": "007",
           "trigger": "click",
@@ -713,7 +713,7 @@
           "delay": 8
         },
         {
-          "id": "506",
+          "id": "h007_0",
           "tailID": "912",
           "headID": "007",
           "trigger": "click",
@@ -721,7 +721,7 @@
           "delay": 0
         },
         {
-          "id": "506",
+          "id": "h007_0",
           "tailID": "903",
           "headID": "007",
           "trigger": "click",
@@ -861,7 +861,7 @@
       "id": "SC",
       "actions": [
         {
-          "id": "500",
+          "id": "u903_0",
           "tailID": "SC",
           "headID": "903",
           "trigger": "time",
@@ -870,7 +870,7 @@
           "info": "remove clickable corgi"
         },
         {
-          "id": "500",
+          "id": "u912_0",
           "tailID": "SC",
           "headID": "912",
           "trigger": "time",
@@ -878,7 +878,7 @@
           "delay": 0,
           "info": "make toy soder not clickable"
         },{
-          "id": "5001",
+          "id": "d701_0",
           "tailID": "SC",
           "headID": "701",
           "trigger": "time",
@@ -886,7 +886,7 @@
           "delay": 0,
           "info": "start paying audio #1"
         },{
-          "id": "5001",
+          "id": "d001_46",
           "tailID": "SC",
           "headID": "001",
           "trigger": "time",
@@ -894,7 +894,7 @@
           "delay": 46,
           "info": "display: Do the voices"
         },{
-          "id": "5001",
+          "id": "c001_46",
           "tailID": "SC",
           "headID": "001",
           "trigger": "time",
@@ -902,7 +902,7 @@
           "delay": 46,
           "info": "clickable: Do the voices"
         },{
-          "id": "5001",
+          "id": "h001_0",
           "tailID": "001",
           "headID": "001",
           "trigger": "click",
@@ -910,7 +910,7 @@
           "delay": 0,
           "info": "hide: Do the voices"
         },{
-          "id": "5001",
+          "id": "d702_0",
           "tailID": "001",
           "headID": "702",
           "trigger": "click",
@@ -919,7 +919,7 @@
           "info": "play audio #2"
         },
         {
-          "id": "500",
+          "id": "c902_10",
           "tailID": "001",
           "headID": "902",
           "trigger": "click",
@@ -928,7 +928,7 @@
           "info": "make balaeriena clickable"
         },
         {
-          "id": "500",
+          "id": "c910_10",
           "tailID": "001",
           "headID": "910",
           "trigger": "click",
@@ -937,7 +937,7 @@
           "info": "make race car clickable"
         },
         {
-          "id": "500",
+          "id": "dSCBA_0",
           "tailID": "902",
           "headID": "SC-BA",
           "trigger": "click",
@@ -946,7 +946,7 @@
           "info": "if ballerian is clicked"
         },
         {
-          "id": "500",
+          "id": "dSCRC_0",
           "tailID": "910",
           "headID": "SC-RC",
           "trigger": "click",

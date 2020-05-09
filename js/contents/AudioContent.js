@@ -43,7 +43,7 @@ class AudioContent extends Content{
 
 			   	context.decodeAudioData(request.response, function(buffer_) {
 			    	buffer_.url=url_;
-			    	console.log(url_)
+			    	// console.log(url_)
 			    	this.audioContent.audioBuffer=buffer_;
 
 			    	audioRepo[url_]['audioBuffer']=buffer_;

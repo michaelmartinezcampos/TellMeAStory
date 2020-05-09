@@ -124,6 +124,12 @@ class Action{
 	// run(){
 
 	// }
+	skip(skipTime_){
+		if(this.timer!=undefined){
+			console.log("skip: " + this.id + " : " + this.timer)
+			this.timer.skip(skipTime_)
+		}
+	}
 	onEvent(){//this and action must be bound
 		//this.activateExitEffects();
 		this.activate();
@@ -191,12 +197,7 @@ class Action{
 		}
 
 		this.timer=new Timer(function(){
-			// console.log(typeof(timeDelays[0]))
-			delete timeDelays[this.scene.id+this.head.id+this.tail.id];
-
-
 			if(this.head instanceof Content){
-				//console.log(this.head.id)
 				this.head.displayFrontEndHTML();
 
 				//these should just be the actions out not the clickable **
@@ -205,6 +206,8 @@ class Action{
 				console.log(this.head.id)
 				currentPlay.newScene(this.head,this.passOnInheritance);
 			}
+
+			this.removeTimer()
 
 		}.bind(this), delay_*1000,premature);
 
@@ -216,6 +219,7 @@ class Action{
 		if(delay_==null){
 			delay_=0;
 		}
+		this.addTimer()
 		this.timer=new Timer(function(){
 			if(this.head instanceof Content){
 				
@@ -223,6 +227,9 @@ class Action{
 			}else if(this.head instanceof Scene){
 				console.log("Trying to hide a scene??")
 			}
+
+			this.removeTimer()
+
 		}.bind(this), delay_*1000,true);
 
 		this.timer.resume();
@@ -233,8 +240,10 @@ class Action{
 			delay_=0;
 		}
 
+		this.addTimer()
 		this.timer=new Timer(function(){
 			this.head.activateClickable();
+			this.removeTimer()
 		}.bind(this), delay_*1000,true);
 
 		this.timer.resume();
@@ -244,8 +253,11 @@ class Action{
 		if(delay_==null){
 			delay_=0; 
 		}
+
+		this.addTimer()
 		this.timer=new Timer(function(){
 			this.head.deactivateClickable();
+			this.removeTimer()
 		}.bind(this), delay_*1000,true);
 
 		this.timer.resume();
@@ -254,6 +266,16 @@ class Action{
 	makeClickableContent(){
 
 
+	}
+
+	addTimer(){
+		// console.log(this)
+		console.log("adding: " + this.id)
+	}
+	removeTimer(){
+		// console.log(this)
+		console.log("deleting: " + this.id)
+		this.timer=undefined;
 	}
 
 
