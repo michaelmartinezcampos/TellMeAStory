@@ -5,11 +5,16 @@
 class Timer{
 
 
-    constructor(callback_, delay_){
+    constructor(callback_, delay_,action_){
         // console.log(arguments)
+
+        // if(delay_>0){
+        //     console.log(this)
+        // }
         this.callback=callback_;
         this.delay=delay_;
         this.id;
+        this.action=action_;//this is probobly not necisary
 
         this.start = this.delay;
         this.remaining = this.delay;

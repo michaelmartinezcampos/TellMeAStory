@@ -45,7 +45,16 @@ class Scene{
 			
 			for(let action of this.sceneData.actions){
 				// console.log(this.id+ " : " + action.id)
-				this.actionsLib[action.id]=new Action(action,this)
+				if(this.actionsLib[action.id]==undefined){
+					this.actionsLib[action.id]=new Action(action,this)
+				}else{
+					let namingOffset=1;
+					while(this.actionsLib[action.id+namingOffset]!=undefined){
+						namingOffset++;
+					}
+					this.actionsLib[action.id+namingOffset]=new Action(action,this)
+				}
+				
 			}
 			
 		}

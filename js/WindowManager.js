@@ -13,6 +13,7 @@ class WindowManager{
 		// this.currentScene;
 
 		this.addFullScreen();
+		this.addPlayPauseButton();
 
 		//this.createSceneModual();
 		this.createTopButtons();
@@ -41,6 +42,24 @@ class WindowManager{
 		// this.sceneModual.createTopButtons();
 	}
 
+	addPlayPauseButton(){
+
+		this.playPause= document.createElement("img");
+
+		this.playPause.id="play-pause";
+		
+		this.playPause.src="../img/special/pause.png"
+
+		this.playPause.altSrc="../img/special/play.png"
+
+		document.getElementById("bottom_bar").append(this.playPause);
+		
+
+		this.playPause.addEventListener('click',function(){
+			togglePlayPause();
+		}.bind(this))
+	}
+
 	addFullScreen(){
 		//console.log("*************************************************************")
 		
@@ -53,7 +72,7 @@ class WindowManager{
 		//console.log(fullScreenSVG(20,20,2))
 		this.fullScreenButton.src="../img/special/full-screen.png"
 
-		this.fullScreenButton.id="fullScreenButton";
+		//this.fullScreenButton.id="fullScreenButton";
 
 		document.getElementById("bottom_bar").append(this.fullScreenButton);
 		
@@ -194,6 +213,14 @@ function toggleFullscreen() {
   } else {
     document.exitFullscreen();
   }
+}
+
+function togglePlayPause(){
+	pause();
+	let srcTemp = currentPlay.windowManager.playPause.src;
+	currentPlay.windowManager.playPause.src = currentPlay.windowManager.playPause.altSrc;
+	currentPlay.windowManager.playPause.altSrc = srcTemp;
+
 }
 
 

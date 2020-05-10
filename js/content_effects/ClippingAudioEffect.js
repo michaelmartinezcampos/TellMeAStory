@@ -13,5 +13,10 @@ class ClippingAudioEffect extends AudioEffect{
 		this.parentContent.start=this.vareables.start;
 		this.parentContent.duration=this.vareables.duration;
 
+		//console.log(this.parentContent)
+
+		this.parentContent.setInitalTimeVars();
+
+
 	}
 }

@@ -3,55 +3,75 @@ var currentPlay;
 
 var timeDelays={};
 
-document.addEventListener('keypress', keyPressed);
+// document.addEventListener('keypress', keyPressed);
 
 
 
 
-function keyPressed(e) {
-	if(e.key=="s"){
-		skip();
-	}else if(e.key==" "){
-		pause();
-		console.log("pause")
-	}else{
-		console.log(e.key);
-	}
-  //console.log(e)
-}
+// function keyPressed(e) {
+// 	if(e.key=="s"){
+// 		skip();
+// 	}else if(e.key==" "){
+// 		pause();
+// 		console.log("pause")
+// 	}else{
+// 		console.log(e.keyCode);
+// 	}
+//   //console.log(e)
+// }
+
+document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 37:
+            console.log('left');
+            break;
+        case 38:// up arrow 
+            pause();
+            break;
+        case 39:
+        	skip();
+            console.log('right');
+            break;
+        case 40:// down arrow 
+            pause();
+            break;
+        case 83://'s'
+            skip();
+            break;
+        case 32://' ' - space bar
+            pause();
+            break;
+        default:
+    		console.log(e.keyCode)
+    }
+};
 
 
 function pause(){
 	if(context.state=="suspended"){
 		context.resume().then(function() {
+			for(let action in currentPlay.currentScene.actionsLib){
+				if(currentPlay.currentScene.actionsLib[action].timer!=undefined){
+					//console.log(currentPlay.currentScene.actionsLib[action].timer);
+					currentPlay.currentScene.actionsLib[action].timer.resume();
+				}
+			}
 	       console.log('Resume context');
 	    })
 	}else{
 		context.suspend().then(function() {
+			for(let action in currentPlay.currentScene.actionsLib){
+				if(currentPlay.currentScene.actionsLib[action].timer!=undefined){
+					//console.log(currentPlay.currentScene.actionsLib[action].timer);
+					currentPlay.currentScene.actionsLib[action].timer.pause();
+				}
+			}
 	      console.log('Pause context');
 	    });
 	}
 	
 }
-function l(){
 
-	// let promise = new Promise(function(resolve, reject) {
-	//   // executor (the producing code, "singer")
-	// });
-	// premature()
-	//why do i need a timeout????? the above is not asincrunus is it???
-
-	for(let action in currentPlay.currentScene.actionsLib){
-		if(currentPlay.currentScene.actionsLib[action].timer!=undefined){
-			console.log(currentPlay.currentScene.actionsLib[action])
-		}
-		
-	}
-
-	
-	//setTimeout(stopAudio,10);
-	
-}
 function skip(){
 
 	// let promise = new Promise(function(resolve, reject) {
@@ -65,10 +85,22 @@ function skip(){
 		currentPlay.currentScene.actionsLib[action].skip();
 	}
 
+	stopAudio()
 
-	setTimeout(stopAudio,10);
+
+	//setTimeout(stopAudio,10);
 	
 }
+
+// function beginAudio(){
+//     context.trigger('pause');
+//     context.prop("currentTime",context.prop("currentTime")-context.prop("currentTime"));
+//     context.trigger('play');
+// }
+
+
+
+
 
 window.AudioContext = window.AudioContext||window.webkitAudioContext;
 

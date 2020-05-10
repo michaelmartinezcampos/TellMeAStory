@@ -1,8 +1,10 @@
 class Action{
 
 	constructor(actionJSON_,scene_){
-		this.JSON=actionJSON_
-		this.id=Math.random();//actionJSON_.id;
+		this.JSON=actionJSON_;
+		//actionJSON_.id=Math.random();
+		this.id=actionJSON_.id;
+		this.tempId=Math.round(Math.random(0, 1)*100);
 		this.tail;//either the scene itself or content object
 		this.head;//either content of a new scene
 		this.block;//this will turn off other actions deafalt is to just turn itself off 
@@ -126,7 +128,7 @@ class Action{
 	// }
 	skip(skipTime_){
 		if(this.timer!=undefined){
-			console.log("skip: " + this.id + " : " + this.timer)
+			//console.log("skip: " + this.id + " : " + this.timer)
 			this.timer.skip(skipTime_)
 		}
 	}
@@ -195,6 +197,8 @@ class Action{
 		if(this.head instanceof AudioContent){
 			premature=false
 		}
+		
+		// console.log("d_" + this.id)
 
 		this.timer=new Timer(function(){
 			if(this.head instanceof Content){
@@ -206,10 +210,12 @@ class Action{
 				console.log(this.head.id)
 				currentPlay.newScene(this.head,this.passOnInheritance);
 			}
-
+			//console.log(this)
 			this.removeTimer()
 
-		}.bind(this), delay_*1000,premature);
+		}.bind(this), delay_*1000,this);
+
+		
 
 		this.timer.resume();
 		
@@ -219,7 +225,8 @@ class Action{
 		if(delay_==null){
 			delay_=0;
 		}
-		this.addTimer()
+		
+		// console.log("h_" + this.id)
 		this.timer=new Timer(function(){
 			if(this.head instanceof Content){
 				
@@ -230,7 +237,7 @@ class Action{
 
 			this.removeTimer()
 
-		}.bind(this), delay_*1000,true);
+		}.bind(this), delay_*1000,this);
 
 		this.timer.resume();
 
@@ -240,11 +247,13 @@ class Action{
 			delay_=0;
 		}
 
-		this.addTimer()
+		// console.log("a_" + this.id)
 		this.timer=new Timer(function(){
 			this.head.activateClickable();
 			this.removeTimer()
-		}.bind(this), delay_*1000,true);
+		}.bind(this), delay_*1000,this);
+
+		//console.log(this)
 
 		this.timer.resume();
 
@@ -254,11 +263,12 @@ class Action{
 			delay_=0; 
 		}
 
-		this.addTimer()
+		
+		// console.log("da_" + this.id)
 		this.timer=new Timer(function(){
 			this.head.deactivateClickable();
 			this.removeTimer()
-		}.bind(this), delay_*1000,true);
+		}.bind(this), delay_*1000,this);
 
 		this.timer.resume();
 
@@ -268,13 +278,10 @@ class Action{
 
 	}
 
-	addTimer(){
-		// console.log(this)
-		console.log("adding: " + this.id)
-	}
+
 	removeTimer(){
 		// console.log(this)
-		console.log("deleting: " + this.id)
+		
 		this.timer=undefined;
 	}
 

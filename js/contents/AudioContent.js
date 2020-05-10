@@ -8,12 +8,18 @@ class AudioContent extends Content{
 
 		super(contentJson_,parentScene_)
 		this.loadAudio(this.content.value); //creates and loads the audioBuffer object
+
+		//this._audioContext = audioContext;
+	    //this._buffer = buffer; // AudioBuffer
+	    //this._source; // AudioBufferSourceNode
+
+	    
 	
 	}
 
 	displayFrontEndHTML(){
 		//this.applyProperties();
-		this.playSound();
+		this.play();
 	}
 
 
@@ -55,11 +61,6 @@ class AudioContent extends Content{
 			    		audioRepo[url_]['contentObjects'][i].applyGeneralEffects();
 			    	}
 
-
-
-			    	// this.audioContent.createEffects();
-			    	// this.audioContent.applyGeneralEffects();
-			    	//console.log(this.audioHandler)
 			    }.bind(this), onLoadError);
 			}
 			request.send();
@@ -77,27 +78,6 @@ class AudioContent extends Content{
 
 		
 
-		// var request = new XMLHttpRequest();
-		// request.open('GET', url_, true);
-		// request.responseType = 'arraybuffer';
-
-		// request.audioContent=this;
-
-		// // Decode asynchronously
-		// request.onload = function() {
-		//    	context.decodeAudioData(request.response, function(buffer_) {
-		//     	buffer_.url=url_;
-		//     	this.audioContent.audioBuffer=buffer_;
-		//     	// this.audioContent.start=0;
-		//     	// this.audioContent.duration=buffer_.duration;
-		//     	this.audioContent.createEffects();
-		//     	this.audioContent.applyGeneralEffects();
-		//     	//console.log(this.audioHandler)
-		//     }.bind(this), onLoadError);
-		// }
-		// request.send();
-		//}
-		//}
 	}
 
 
@@ -145,50 +125,143 @@ class AudioContent extends Content{
 	}
 
 
-	playSound(){
-		if (context.state === 'suspended') {
-	        context.resume();
-	    }
-	    this.play(this.start,this.duration)
+	// playSound(){
+	// 	if (context.state === 'suspended') {
+	//         context.resume();
+	//     }
+	//     this.play(this.start,this.duration)			
+	// }
 
-		// if(this.properties["clipping"] != undefined){
-		// 	//console.log(this.properties["clipping"].vareables)
-	    	
-	 //    }
-			
+	setInitalTimeVars(){
+		this.currentPlayTime = this.start; // time of the audio playback, seconds
+	    this.startTimestamp = this.start; // timestamp of last playback start, milliseconds
+	    this.durationLeft=this.duration;
+	    this.isPlaying = false;
+	    this.isActive = false;//false when audio is done
+	    
+	    //this.bufferDuration = 0; // seconds
 	}
-	play(startPosition_,duration_) {
+	skip(skipTime_){//seconds
+		if(skipTime_==null){
+			this.source.stop(); // should tringer onened event
+		}else{
+			this.pause()
+			console.log(this.currentPlayTime);
+			this.currentPlayTime += skipTime_;
+			this.durationLeft -= skipTime_;
+			console.log(this.currentPlayTime);
+			this.play();
+		}
+	}
+
+	pause(){
+		if(this.isPlaying){
+			this.isPlaying=false;
+
+
+			this.source.stop();
+			//console.log(this.currentPlayTime)
+			let timeElapsed=context.currentTime-this.startTimestamp
+			this.currentPlayTime = this.currentPlayTime + timeElapsed;
+			this.durationLeft=this.durationLeft-timeElapsed;
+			//this._playbackTime = pause ? (Date.now() - this._startTimestamp)/1000 + this._playbackTime : 0;
+			//console.log(this.currentPlayTime)
+		}else{
+			console.log("already paused");
+		}
+	}
+
+	play() { //startPosition_,duration_
+
+		if (context.state === 'suspended') {
+		    context.resume();
+		}
+
+
+		
+		// if(startPosition_==null){
+		// 	startPosition_ = this.start;
+		// }
+		// if(duration_==null){
+		// 	duration_ = this.duration;
+		// }
+		// if(startPosition_==null){
+		// 	startPosition_=0;
+		// }
+
+
+		
 		
 		//console.log("playSound")
 		//let audio = audio_
 		// console.log(startPosition_)
 
-		if(startPosition_==null){
-			startPosition_=0;
+		// this.createSource();//should i move to when the audio loads?
+		// this.connectBuffer()
+
+		
+		if(this.isPlaying){
+			console.log("already playing")
+		}else{
+			this.source = context.createBufferSource(); // creates a sound source
+			this.source.buffer = this.audioBuffer;                    // tell the source which sound to play
+			// this.analizer=context.createAnalyser()
+			//this.source.buffer = this.audioBuffer;                    // tell the source which sound to play
+			this.source.startingContextTime=context.currentTime;//add a startig time for time keeping
+			this.startTimestamp=context.currentTime;//dont need both this and above ???
+
+			this.source.startingPosition=this.currentPlayTime;//add a startig time for time keeping
+
+
+		 
+		 	this.isPlaying=true;
+		 	this.isActive=true;
+
+		 	this.source.playbackRate.value = 1;
+
+
+			this.source.connect(context.destination);       // connect the source to the context's destination (the speakers)
+
+
+		 	console.log(this.currentPlayTime)
+		 	this.source.start(0,this.currentPlayTime,this.durationLeft);  
+		 	//this.source.start(context.currentTime,this.currentPlayTime,this.durationLeft);                            // play the source now
+		                                           // note: on older systems, may have to use deprecated noteOn(time);
+
+
+		    this.source.onended=function(event_){
+
+		    	this.endOfPlayback();
+		 		// this.isPlaying=false;
+			}.bind(this);
 		}
-		this.source = context.createBufferSource(); // creates a sound source
+	}
 
-		// this.analizer=context.createAnalyser()
-		this.source.buffer = this.audioBuffer;                    // tell the source which sound to play
-		this.source.startingContextTime=context.currentTime;//add a startig time for time keeping
-		this.source.startingPosition=startPosition_;//add a startig time for time keeping
+	// createSource(){
+		
+	// }
 
-	 
-	 	this.isPlaying=true;
+	// connectBuffer(){
+		
+	// }
 
-	 	this.source.playbackRate.value = 1;
+	endOfPlayback(){
+		if(this.isPlaying){ //if isPlaying is true then its not just paused
+			console.log("end of playback " + this.id);
+			this.isActive=false;
+			//reset to begining
+			this.durationLeft=this.duration;
+			this.currentPlayTime=this.start;
+		}else{
+			//this.isActive=false;
+		}
+		
 
+		//this.isPlaying=false;
 
-		this.source.connect(context.destination);       // connect the source to the context's destination (the speakers)
-
-
-	 	
-	 	this.source.start(context.currentTime,startPosition_,duration_);                           // play the source now
-	                                           // note: on older systems, may have to use deprecated noteOn(time);
-
-	    this.source.onended=function(event_){
-	 		this.isPlaying=false;
-		}.bind(this);
+		//reset to beginging
+		// this.currentPlayTime = this.start;
+		// this.durationLeft=this.duration;		
 	}
 
 	updateAudioDisplay(){ 
@@ -224,39 +297,14 @@ class AudioContent extends Content{
 	
 		
 	}
-	
 
-	// createEffects(){
-	// 	//console.log(this)
-	// 	for(let effect in this.JSONData.effects){
-	// 		if(propertyType=="clipping")
-	// 		{
-
-	// 			this.properties[propertyType]=new ClippingAudioProperty(this.JSONData.properties[propertyType],this)
-	// 		}else{
-	// 			this.properties[propertyType]=new AudioProperty(this.JSONData.properties[propertyType],this)
-	// 		}
-			
-	// 	}
-	// }
-}
+};
 
 
 
 function onLoadError(error_){
 	console.log("error loading audio " + error_)
 }	
-
-
-
-
-
-
-
-
-
-
-
 
 function AudioDisplay(audioContent_){
 	//AudioObjectHandler.prototype.audioDisplay=function(startPosition_,duration_) {
