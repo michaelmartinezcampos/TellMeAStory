@@ -70,7 +70,7 @@ class WindowManager{
 		// this.fullScreenButton.style.width="60px";
 		// this.fullScreenButton.style.height="60";
 		//console.log(fullScreenSVG(20,20,2))
-		this.fullScreenButton.src="img/special/full-screen.png"
+		this.fullScreenButton.src="img/special/fullScreen.png"
 
 		//this.fullScreenButton.id="fullScreenButton";
 
