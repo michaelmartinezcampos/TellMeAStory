@@ -48,9 +48,9 @@ class WindowManager{
 
 		this.playPause.id="play-pause";
 		
-		this.playPause.src="/img/special/pause.png"
+		this.playPause.src="img/special/pause.png";
 
-		this.playPause.altSrc="/img/special/play.png"
+		this.playPause.altSrc="img/special/play.png";
 
 		document.getElementById("bottom_bar").append(this.playPause);
 		
