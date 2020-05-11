@@ -1,7 +1,4 @@
-//var backEnd;
 class WindowManager{
-	//is this a perperty of the backend object or of each scene?
-
 	constructor(){
 		// this.sceneModual={};
 		// this.activeModual;
@@ -10,29 +7,13 @@ class WindowManager{
 		this.html.topBar=document.getElementById('top-bar');
 		this.html.content=document.getElementById('content');
 		this.html.bottomBar=document.getElementById("bottom_bar");
-		// this.currentScene;
 
 		this.addFullScreen();
 		this.addPlayPauseButton();
-
 		//this.createSceneModual();
 		this.createTopButtons();
-
 	}
 	
-
-
-	// replaceContent(content_){
-	// 	this.html.content.innerHTML=""
-	// 	this.html.content.append(content_);
-	// }
-
-
-	// createSceneModual(){
-	// 	this.sceneModual=new BackEndSceneModual(currentPlay.scenesLib,this);
-	// }
-
-
 	createMainButtons(){
 		this.createGoToBackEndButton();
 		this.createBackToStoryButton();
@@ -47,18 +28,44 @@ class WindowManager{
 		this.playPause= document.createElement("img");
 
 		this.playPause.id="play-pause";
-		
-		this.playPause.src="img/special/pause.png";
 
-		this.playPause.altSrc="img/special/play.png";
+		this.playPause.srcPause="img/special/pause.png";
+
+		this.playPause.srcPlay="img/special/play.png";
+		
+		this.playPause.src=this.playPause.srcPause;
+
+		// this.playPause.altSrc="img/special/play.png";
 
 		document.getElementById("bottom_bar").append(this.playPause);
 		
 
 		this.playPause.addEventListener('click',function(){
-			togglePlayPause();
+
+			this.togglePlayPause();
 		}.bind(this))
 	}
+
+	togglePlayPause(){
+		currentStory.togglePlayPause();
+		//console.log(currentStory.playing)
+		
+
+		// currentStory.togglePlayPause();
+		// let srcTemp = currentStory.windowManager.playPause.src;
+		// currentStory.windowManager.playPause.src = currentStory.windowManager.playPause.altSrc;
+		// currentStory.windowManager.playPause.altSrc = srcTemp;
+	}
+	updatePlayPauseButton(){
+		if(currentStory.playing==false){
+			this.playPause.src=this.playPause.srcPlay;
+
+			//console.log(this.playPause.src)
+		}else{
+			this.playPause.src=this.playPause.srcPause;
+		}
+	}
+
 
 	addFullScreen(){
 		//console.log("*************************************************************")
@@ -162,8 +169,8 @@ class WindowManager{
 		   	//might need to be revised if path is imprtant
 		   
 		   resetContentDiv();
-		   currentPlay.newScene('aa')
-		   //displayScene(currentPlay.scenes[id])
+		   currentStory.newScene('aa')
+		   //displayScene(currentStory.scenes[id])
 		});
 
 	}
@@ -215,13 +222,7 @@ function toggleFullscreen() {
   }
 }
 
-function togglePlayPause(){
-	pause();
-	let srcTemp = currentPlay.windowManager.playPause.src;
-	currentPlay.windowManager.playPause.src = currentPlay.windowManager.playPause.altSrc;
-	currentPlay.windowManager.playPause.altSrc = srcTemp;
 
-}
 
 
 

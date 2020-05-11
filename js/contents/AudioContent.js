@@ -20,6 +20,8 @@ class AudioContent extends Content{
 	displayFrontEndHTML(){
 		//this.applyProperties();
 		this.play();
+		//this.playing=false;
+		
 	}
 
 
@@ -154,8 +156,10 @@ class AudioContent extends Content{
 		}
 	}
 
-	pause(){
+	pause(){//this pauses just this audio clip
 		if(this.isPlaying){
+			//console.log("pause")
+			//currentStory.audioCount--;
 			this.isPlaying=false;
 
 
@@ -172,7 +176,9 @@ class AudioContent extends Content{
 	}
 
 	play() { //startPosition_,duration_
-
+		//currentStory.playing=true;
+		currentStory.audioCount++;
+		currentStory.updatePlayPause();
 		if (context.state === 'suspended') {
 		    context.resume();
 		}
@@ -230,7 +236,8 @@ class AudioContent extends Content{
 
 
 		    this.source.onended=function(event_){
-
+		    	currentStory.audioCount--;
+		    	currentStory.updatePlayPause();
 		    	this.endOfPlayback();
 		 		// this.isPlaying=false;
 			}.bind(this);

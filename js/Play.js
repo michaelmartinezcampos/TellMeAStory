@@ -1,24 +1,9 @@
 //let scenes={};
-var currentPlay;
+var currentStory;
 
 var timeDelays={};
 
-// document.addEventListener('keypress', keyPressed);
 
-
-
-
-// function keyPressed(e) {
-// 	if(e.key=="s"){
-// 		skip();
-// 	}else if(e.key==" "){
-// 		pause();
-// 		console.log("pause")
-// 	}else{
-// 		console.log(e.keyCode);
-// 	}
-//   //console.log(e)
-// }
 
 document.onkeydown = function(e) {
     switch (e.keyCode) {
@@ -26,20 +11,20 @@ document.onkeydown = function(e) {
             console.log('left');
             break;
         case 38:// up arrow 
-            pause();
+            currentStory.togglePlayPause();
             break;
         case 39:
-        	skip();
+        	currentStory.skip();
             console.log('right');
             break;
         case 40:// down arrow 
-            pause();
+            currentStory.togglePlayPause();
             break;
         case 83://'s'
-            skip();
+            currentStory.skip();
             break;
         case 32://' ' - space bar
-            pause();
+            currentStory.togglePlayPause();
             break;
         default:
     		console.log(e.keyCode)
@@ -47,50 +32,7 @@ document.onkeydown = function(e) {
 };
 
 
-function pause(){
-	if(context.state=="suspended"){
-		context.resume().then(function() {
-			for(let action in currentPlay.currentScene.actionsLib){
-				if(currentPlay.currentScene.actionsLib[action].timer!=undefined){
-					//console.log(currentPlay.currentScene.actionsLib[action].timer);
-					currentPlay.currentScene.actionsLib[action].timer.resume();
-				}
-			}
-	       console.log('Resume context');
-	    })
-	}else{
-		context.suspend().then(function() {
-			for(let action in currentPlay.currentScene.actionsLib){
-				if(currentPlay.currentScene.actionsLib[action].timer!=undefined){
-					//console.log(currentPlay.currentScene.actionsLib[action].timer);
-					currentPlay.currentScene.actionsLib[action].timer.pause();
-				}
-			}
-	      console.log('Pause context');
-	    });
-	}
-	
-}
 
-function skip(){
-
-	// let promise = new Promise(function(resolve, reject) {
-	//   // executor (the producing code, "singer")
-	// });
-	// premature()
-	//why do i need a timeout????? the above is not asincrunus is it???
-
-	for(let action in currentPlay.currentScene.actionsLib){
-
-		currentPlay.currentScene.actionsLib[action].skip();
-	}
-
-	stopAudio()
-
-
-	//setTimeout(stopAudio,10);
-	
-}
 
 // function beginAudio(){
 //     context.trigger('pause');
@@ -112,44 +54,6 @@ function stopAudio(){
 	});
 }
 
-
-
-// window.premature = function(id) {
-// 	if(id==undefined){
-
-// 		//console.log("# time outes : " + timeouts.length)
-// 		// for(let id in timeouts){
-// 		// 	console.log(id)
-
-// 		// 	var fn = timeouts[id];
-
-			
-// 	 //        clearTimeout(id);
-// 	 //        //console.log(fn)
-// 	 //        if (fn instanceof String) {
-// 	 //            eval(fn);
-// 	 //        } else {
-// 	 //            fn()
-// 	 //        }
-		    
-// 		//     delete timeouts[id];
-// 		// }
-
-// 	}else{
-// 		console.log("id defined")
-// 	    var fn = timeouts[id];
-// 	    if (fn) {
-// 	        clearTimeout(id);
-// 	        if (fn instanceof String) {
-// 	            eval(fn);
-// 	        } else {
-// 	            fn()
-// 	        }
-// 	    }
-// 	}
-// };
-
-
 function clearTimeOut(){
 	for(let listenerID in timeDelays){
 		console.log("REMOVING");
@@ -158,20 +62,18 @@ function clearTimeOut(){
 	}
 }
 
-
-
-
-
 function playStory(){
   
   
 }
 
-class Play{
+class Story{
 
 	constructor(scenesData_){
 		this.contentEditorOverlay=new ContentEditorOverlay();
 		this.path="";//this will keep track of the path that has been taken
+		this.playing=false;
+		this.audioCount=0;
 	}
 
 	loadScenesLib(scenesData_){
@@ -204,6 +106,58 @@ class Play{
 
 	}
 
+	updatePlayPause(){
+		if(this.audioCount>0){
+			this.playing=true;
+		}else{
+			this.playing=false;
+		}
+	}
+
+	togglePlayPause(){
+		if(this.playing==true){
+		//if(context.state=="suspended"){
+			this.pause();
+		}else{
+			this.play();
+		}
+
+		this.windowManager.updatePlayPauseButton()
+	}
+
+	play(){
+		this.playing=true;
+		context.resume().then(function() {
+			for(let action in currentStory.currentScene.actionsLib){
+				if(currentStory.currentScene.actionsLib[action].timer!=undefined){
+					//console.log(currentStory.currentScene.actionsLib[action].timer);
+					currentStory.currentScene.actionsLib[action].timer.resume();
+				}
+			}
+	       console.log('Resume context');
+	    })
+	}
+
+	pause(){
+		this.playing=false;
+		context.suspend().then(function() {
+			for(let action in currentStory.currentScene.actionsLib){
+				if(currentStory.currentScene.actionsLib[action].timer!=undefined){
+					//console.log(currentStory.currentScene.actionsLib[action].timer);
+					currentStory.currentScene.actionsLib[action].timer.pause();
+				}
+			}
+	      console.log('Pause context');
+	    });
+	}
+
+	skip(){
+		this.playing=false;
+		for(let action in currentStory.currentScene.actionsLib){
+			currentStory.currentScene.actionsLib[action].skip();
+		}
+		stopAudio()
+	}
 
 	createScenesFrontEndHTMLs(){
 		for(let sceneKey in this.scenesLib){//this will create the divs for all the scenes. they could be created on each scene load
@@ -251,10 +205,6 @@ class Play{
 	}
 
 	getJSON(){
-	// {
-	//   "scenes":[]
-
-	// }
 		let jsonPlay={}
 		
 		jsonPlay.scenes=[];
@@ -314,37 +264,26 @@ fetch("json/scenes.json")
 		console.log(resp)
 	}).then(function(data){
 		//console.log(data.scenes)
-		currentPlay = new Play(data.scenes);//start reading from first scene
+		currentStory = new Story(data.scenes);//start reading from first scene
 
-		currentPlay.loadScenesLib(data.scenes);//one or the other
-		currentPlay.createScenesFrontEndHTMLs();
+		currentStory.loadScenesLib(data.scenes);//one or the other
+		currentStory.createScenesFrontEndHTMLs();
 
 		//when do we create the back end effects????
-		// currentPlay.createScenesBackEndHTMLs();
+		// currentStory.createScenesBackEndHTMLs();
 		// 
-		// currentPlay.applyProperties();
+		// currentStory.applyProperties();
 
 		if(document.readyState=== 'complete'){//run imedeatly
-			
-
-				currentPlay.newScene('aa');
-
-				currentPlay.windowManager=new WindowManager();
-
-				currentPlay.windowManager.createMainButtons();
-
+				currentStory.newScene('aa');
+				currentStory.windowManager=new WindowManager();
+				currentStory.windowManager.createMainButtons();
 				updateContentSize();
-
 		}else{//wait for page load
 			window.onload=function(){
-				
-
-				currentPlay.newScene('aa');
-
-				currentPlay.windowManager=new WindowManager();
-
-				currentPlay.windowManager.createMainButtons();
-
+				currentStory.newScene('aa');
+				currentStory.windowManager=new WindowManager();
+				currentStory.windowManager.createMainButtons();
 				updateContentSize();
 			}
 		}
@@ -359,8 +298,8 @@ fetch("json/scenes.json")
 		console.log(resp)
 	}).then(function(data){
 		
-		// console.log(currentPlay)
-		//currentPlay.start();
+		// console.log(currentStory)
+		//currentStory.start();
 		// reading.start();
 	}).catch(function(resp){
 		console.log("error while starting play")

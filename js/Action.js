@@ -78,54 +78,6 @@ class Action{
 
 	}
 
-	// takeActionLive(){
-	// 	if(this.elicit=="display"){
-	// 		this.head.displayFrontEndHTML();
-	// 	}else if(this.elicit=="clickable"){
-	// 		this.head.activate();
-	// 	}
-
-	// }
-
-
-
-
-
-
-	// triggerAction(){
-
-
-	// }
-
-	// takeActionLive(){
-
-		
-
-	// 		// else if(this.trigger=="click"){
-	// 		// 	//console.log("click")
-
-	// 		// 	clickableObject.addEventListener("click", displayOnTimer);
-				
-	// 		// 		console.log("getting activated")
-	// 		// 		let clickableObject=this.tail.html.fe;
-	// 		// 		console.log(this.tail)
-	// 		// 		console.log(clickableObject)
-
-	// 		// 		//document.getElementById(this.parentScene.code+'_'+this.id);
-	// 		// 		//console.log(clickableObject)
-	// 		// 		clickableObject.action=this;//asign this action to the html object
-
-	// 		// 		// console.log(" adding clickable object : " + this.targets[i].id)
-	// 		// 		 console.log(clickableObject)
-	// 		// 		
-
-	// 		// }
-	// 	//}
-	// }
-
-	// run(){
-
-	// }
 	skip(skipTime_){
 		if(this.timer!=undefined){
 			//console.log("skip: " + this.id + " : " + this.timer)
@@ -208,7 +160,7 @@ class Action{
 				this.head.activateActionsOut();
 			}else if(this.head instanceof Scene){
 				console.log(this.head.id)
-				currentPlay.newScene(this.head,this.passOnInheritance);
+				currentStory.newScene(this.head,this.passOnInheritance);
 			}
 			//console.log(this)
 			this.removeTimer()

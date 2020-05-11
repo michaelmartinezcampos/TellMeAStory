@@ -18,9 +18,9 @@ function updateContentSize(){
 		document.getElementById("bottom_bar").style.height=height*.05+'px';
 
 
-		currentPlay.windowManager.playPause.style['padding-top']=height*.01+'px';
-		currentPlay.windowManager.playPause.style['padding-left']=width*.5-height*.03*.5+'px';
-		currentPlay.windowManager.playPause.style.height=height*.03+'px';
+		currentStory.windowManager.playPause.style['padding-top']=height*.01+'px';
+		currentStory.windowManager.playPause.style['padding-left']=width*.5-height*.03*.5+'px';
+		currentStory.windowManager.playPause.style.height=height*.03+'px';
 
 
 		document.getElementById("main_text").style['font-size']=window.innerWidth*.02+'px';
@@ -41,9 +41,9 @@ function updateContentSize(){
 		document.getElementById("content").style.left=(window.innerWidth-width)/2+'px';
 
 		document.getElementById("bottom_bar").style.height=height*.05+'px';
-		currentPlay.windowManager.playPause.style['padding-top']=height*.01+'px';
-		currentPlay.windowManager.playPause.style['padding-left']=width*.5-height*.03*.5+'px';
-		currentPlay.windowManager.playPause.style.height=height*.03+'px';
+		currentStory.windowManager.playPause.style['padding-top']=height*.01+'px';
+		currentStory.windowManager.playPause.style['padding-left']=width*.5-height*.03*.5+'px';
+		currentStory.windowManager.playPause.style.height=height*.03+'px';
 
 		document.getElementById("main_text").style['font-size']=(window.innerHeight*16/9)*.02+'px';
 

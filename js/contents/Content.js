@@ -28,7 +28,7 @@ class Content{
 
 		
 		// do i need this?
-		this.contentEditorOverlay=currentPlay.contentEditorOverlay;//this is a univeral veiw (same for every content)
+		this.contentEditorOverlay=currentStory.contentEditorOverlay;//this is a univeral veiw (same for every content)
 		this.contentEditorModual=new ContentEditorModual(this, this.contentEditorOverlay);
 
 
@@ -88,14 +88,14 @@ class Content{
 		}
 		for(let action in this.actionsOut){
 			//should not need this should only activate events at this piont not all events out ????
-			if(this.actionsOut[action].scene==currentPlay.currentScene){
+			if(this.actionsOut[action].scene==currentStory.currentScene){
 				if(this.actionsOut[action].trigger=="click"){
 					this.actionsOut[action].addEventListener();
 					//this.addClickableEventListener(this.actionsOut[action]);
 				}
 			}else{
 				//this if statment blocks actions for universal shared objects from firing
-				//console.log(this.actionsOut[action].scene.id + "  : :  " + currentPlay.currentScene.id)
+				//console.log(this.actionsOut[action].scene.id + "  : :  " + currentStory.currentScene.id)
 			}
 		}
 	}
