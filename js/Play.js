@@ -266,6 +266,10 @@ fetch("json/scenes.json")
 		//console.log(data.scenes)
 		currentStory = new Story(data.scenes);//start reading from first scene
 
+		console.log("**")
+		currentStory.windowManager=new WindowManager();
+		loadScreen = new LoadScreen();
+
 		currentStory.loadScenesLib(data.scenes);//one or the other
 		currentStory.createScenesFrontEndHTMLs();
 
@@ -273,16 +277,18 @@ fetch("json/scenes.json")
 		// currentStory.createScenesBackEndHTMLs();
 		// 
 		// currentStory.applyProperties();
-
+		
 		if(document.readyState=== 'complete'){//run imedeatly
 				currentStory.newScene('aa');
 				currentStory.windowManager=new WindowManager();
+				loadScreen.hide();
 				currentStory.windowManager.createMainButtons();
 				updateContentSize();
 		}else{//wait for page load
 			window.onload=function(){
 				currentStory.newScene('aa');
 				currentStory.windowManager=new WindowManager();
+				loadScreen.hide();
 				currentStory.windowManager.createMainButtons();
 				updateContentSize();
 			}

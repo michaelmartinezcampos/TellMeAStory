@@ -47,7 +47,13 @@ class AudioContent extends Content{
 			request.audioContent=this;
 
 			// Decode asynchronously
+
+			console.log(loadScreen)
+			loadScreen.numAudioFiles++;
+			loadScreen.update();
 			request.onload = function() {
+				loadScreen.loadedAudioFiles++;
+				loadScreen.update();
 
 			   	context.decodeAudioData(request.response, function(buffer_) {
 			    	buffer_.url=url_;
