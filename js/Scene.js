@@ -16,6 +16,22 @@ class Scene{
 		//console.log(this.play);
 	}
 
+	displayFrontEnd(){
+		for(let i=0;i<this.actionsOut.length;i++){
+			// this.contents[i].createFrontEndHTML();
+			//console.log(this.actionsOut[i])
+			//console.log(this.id)
+			console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+			this.actionsOut[i].activate();
+			// if(this.actionsOut[i].head instanceof Content){
+			// 	//this.actionsOut[i].head.displayFrontEndHTML();//actoins out are the actions driven by the scene itself
+				
+			// 	//?? why activate actoins out for each head
+			// 	//this.actionsOut[i].head.activateActionsOut();
+			// }
+		}
+	}
+
 	addContents(sceneJson_){
 		if(this.sceneData.contents){
 
@@ -196,19 +212,7 @@ Scene.prototype.createBackEndHTML=function(){
 }
 
 
-Scene.prototype.displayFrontEnd=function(){
-	for(let i=0;i<this.actionsOut.length;i++){
-		// this.contents[i].createFrontEndHTML();
-		//console.log(this.actionsOut[i])
-		this.actionsOut[i].activate();
-		// if(this.actionsOut[i].head instanceof Content){
-		// 	//this.actionsOut[i].head.displayFrontEndHTML();//actoins out are the actions driven by the scene itself
-			
-		// 	//?? why activate actoins out for each head
-		// 	//this.actionsOut[i].head.activateActionsOut();
-		// }
-	}
-}
+
 Scene.prototype.setCleanJSON=function(){
 	this.JSON={}
 	this.JSON.name=this.name;

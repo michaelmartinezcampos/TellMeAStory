@@ -117,6 +117,7 @@ class Story{
 	togglePlayPause(){
 		if(this.playing==true){
 		//if(context.state=="suspended"){
+
 			this.pause();
 		}else{
 			this.play();
@@ -129,26 +130,31 @@ class Story{
 		this.playing=true;
 		context.resume().then(function() {
 			for(let action in currentStory.currentScene.actionsLib){
+				this.windowManager.play.style.display="none";
+				this.windowManager.pause.style.display="block";
 				if(currentStory.currentScene.actionsLib[action].timer!=undefined){
 					//console.log(currentStory.currentScene.actionsLib[action].timer);
 					currentStory.currentScene.actionsLib[action].timer.resume();
 				}
 			}
 	       console.log('Resume context');
-	    })
+	    }.bind(this))
 	}
 
 	pause(){
 		this.playing=false;
 		context.suspend().then(function() {
 			for(let action in currentStory.currentScene.actionsLib){
+
+				this.windowManager.play.style.display="block";
+				this.windowManager.pause.style.display="none";
 				if(currentStory.currentScene.actionsLib[action].timer!=undefined){
 					//console.log(currentStory.currentScene.actionsLib[action].timer);
 					currentStory.currentScene.actionsLib[action].timer.pause();
 				}
 			}
 	      console.log('Pause context');
-	    });
+	    }.bind(this));
 	}
 
 	skip(){
@@ -203,6 +209,16 @@ class Story{
 			this.newScene(this.scenesLib[newScene_])
 		}
 	}
+
+	start(){
+		currentStory.newScene('aa');
+		//currentStory.windowManager=new WindowManager();
+		loadScreen.hide();
+		currentStory.windowManager.createMainButtons();
+		updateContentSize();
+	}
+
+
 
 	getJSON(){
 		let jsonPlay={}
@@ -265,7 +281,10 @@ fetch("json/scenes.json")
 	}).then(function(data){
 		//console.log(data.scenes)
 		currentStory = new Story(data.scenes);//start reading from first scene
-
+		// window.onload=function(){
+		// 	console.log("loaded early")
+		// }
+		console.log(window.onload)
 		console.log("**")
 		currentStory.windowManager=new WindowManager();
 		loadScreen = new LoadScreen();
@@ -278,21 +297,30 @@ fetch("json/scenes.json")
 		// 
 		// currentStory.applyProperties();
 		
-		if(document.readyState=== 'complete'){//run imedeatly
-				currentStory.newScene('aa');
-				currentStory.windowManager=new WindowManager();
-				loadScreen.hide();
-				currentStory.windowManager.createMainButtons();
-				updateContentSize();
-		}else{//wait for page load
-			window.onload=function(){
-				currentStory.newScene('aa');
-				currentStory.windowManager=new WindowManager();
-				loadScreen.hide();
-				currentStory.windowManager.createMainButtons();
-				updateContentSize();
-			}
-		}
+		// if(document.readyState=== 'complete'){//run imedeatly
+				// console.log("LOAD FIRST Scene")
+				// currentStory.newScene('aa');
+
+				// currentStory.windowManager=new WindowManager();
+				// loadScreen.hide();
+				// currentStory.windowManager.createMainButtons();
+				// updateContentSize();
+		// }else{//wait for page load
+		// 	window.onload=function(){
+		// 		currentStory.newScene('aa');
+		// 		currentStory.windowManager=new WindowManager();
+		// 		loadScreen.hide();
+		// 		currentStory.windowManager.createMainButtons();
+		// 		updateContentSize();
+		// 	}
+		// }
+			// window.onload=function(){
+			// 	currentStory.newScene('aa');
+			// 	currentStory.windowManager=new WindowManager();
+			// 	loadScreen.hide();
+			// 	currentStory.windowManager.createMainButtons();
+			// 	updateContentSize();
+			// }
 
 		
 		
@@ -338,13 +366,3 @@ const drawLineSegment = (ctx, x, y, width, isEven) => {
   ctx.stroke();
 };
 
-var mouseDown = false;
-document.onload = function(){
-
-	document.body.onmousedown = function() { 
-	    mouseDown = true;
-	}
-	document.body.onmouseup = function() {
-	    mouseDown = false;
-	}
-}

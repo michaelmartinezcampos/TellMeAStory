@@ -110,6 +110,7 @@ class ImageContent extends Content{
 
 
 		//make sure this loads first ****
+		// console.log(this.htmlParent)
 		this.htmlParent.append(this.html.fe);
 		this.html.fe.style.display="block";
 	}

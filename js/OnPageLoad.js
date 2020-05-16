@@ -1,3 +1,37 @@
+var pageLoaded=false;
+
+var mouseDown = false;
+
+
+
+//this never fires????
+console.log("hi")
+window.onload = function(){
+	console.log("page loaded**")
+	pageLoaded=true;
+
+	document.body.onmousedown = function() { 
+	    mouseDown = true;
+	}
+	document.body.onmouseup = function() {
+	    mouseDown = false;
+	}
+
+
+
+	backEnd=backEndDisplay();
+
+	updateContentSize();
+
+	addFullScreen();
+ 	
+	document.getElementById("go_to_scene_veiw").addEventListener("click", function(){backEndDisplay()
+		});
+	document.addEventListener("click",handler,true);
+};
+
+
+
 var backEnd;
 
 function updateContentSize(){
@@ -18,12 +52,31 @@ function updateContentSize(){
 		document.getElementById("bottom_bar").style.height=height*.05+'px';
 
 
-		currentStory.windowManager.playPause.style['padding-top']=height*.01+'px';
-		currentStory.windowManager.playPause.style['padding-left']=width*.5-height*.03*.5+'px';
-		currentStory.windowManager.playPause.style.height=height*.03+'px';
+
+		// console.log("]]]]]]]]]]]]]]]]]]]]]]]]]]-]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]-------------------------");
+
+		// console.log(height*.01+'px')
+		// currentStory.windowManager.playPause.style['padding-top']=height*.01+'px';
+
+
+		// console.log(currentStory.windowManager.playPause)
+		// // console.log(document.getElementById("play-pause"));
+
+
+		// currentStory.windowManager.playPause.style['padding-left']=width*.5-height*.03*.5+'px';
+		// currentStory.windowManager.playPause.style.height=height*.03+'px';
+
+
+
+
+		//document.getElementById("play-pause").style.height=height*.03+'px';
 
 
 		document.getElementById("main_text").style['font-size']=window.innerWidth*.02+'px';
+
+		
+		console.log(document.getElementById("play-pause"))
+		console.log(currentStory.windowManager.playPause)
 
 
 
@@ -55,22 +108,7 @@ function updateContentSize(){
 }
 
 
-var pageLoaded=false;
 
-document.onload = function(){
-	console.log("page loaded**")
-	pageLoaded=true;
-
-	backEnd=backEndDisplay();
-
-	updateContentSize();
-
-	addFullScreen();
- 	
-	document.getElementById("go_to_scene_veiw").addEventListener("click", function(){backEndDisplay()
-		});
-	document.addEventListener("click",handler,true);
-};
 
 function handler(e){
 	    //e.stopPropagation();

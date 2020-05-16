@@ -86,6 +86,8 @@ class Action{
 	}
 	onEvent(){//this and action must be bound
 		//this.activateExitEffects();
+		//console.log(this.id)
+		console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 		this.activate();
 	}
 
@@ -93,6 +95,8 @@ class Action{
 		//console.log("adding EL to " + this.tail.id + " tigger " + this.head.id)
 		this.onEventBind = this.onEvent.bind(this)
 		//right now this is only for click events
+
+
 		this.tail.html.fe.addEventListener("click", this.onEventBind );
 	}
 	removeEventListener(){
@@ -104,6 +108,10 @@ class Action{
 		
 
 		//if(this.trigger=="time"){
+
+			console.log("**********************************" + this.head.id)
+
+
 
 			if(this.elicit=="display"){
 
@@ -154,6 +162,7 @@ class Action{
 
 		this.timer=new Timer(function(){
 			if(this.head instanceof Content){
+				console.log(this.head.id)
 				this.head.displayFrontEndHTML();
 
 				//these should just be the actions out not the clickable **

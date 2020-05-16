@@ -48,7 +48,7 @@ class AudioContent extends Content{
 
 			// Decode asynchronously
 
-			console.log(loadScreen)
+			//console.log(loadScreen)
 			loadScreen.numAudioFiles++;
 			loadScreen.update();
 			request.onload = function() {

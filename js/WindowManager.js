@@ -2,7 +2,7 @@ class WindowManager{
 	constructor(){
 		// this.sceneModual={};
 		// this.activeModual;
-
+		console.log("ADD WINDOW MANGER")
 		this.html={};
 		this.html.topBar=document.getElementById('top-bar');
 		this.html.content=document.getElementById('content');
@@ -24,30 +24,51 @@ class WindowManager{
 	}
 
 	addPlayPauseButton(){
-
-		this.playPause= document.createElement("img");
-
+		console.log("ADDING PLAY PAUSE!!!!!!!!!!!!!!!!!!!!!@@@@@@@@@")
+		this.playPause= document.createElement("div");
 		this.playPause.id="play-pause";
 
-		this.playPause.srcPause="img/special/pause.png";
+		this.play= document.createElement("img");
+		this.play.src="img/special/play.png";
+		this.play.id="play";
+		this.play.classList.add("play-pause");
+		this.playPause.appendChild(this.play);
 
-		this.playPause.srcPlay="img/special/play.png";
+		this.pause= document.createElement("img");
+		this.pause.src="img/special/pause.png";
+		this.pause.id="pause";
+		this.pause.classList.add("play-pause");
+		this.playPause.appendChild(this.pause);
+		this.pause.style.display="none";
+
+
 		
-		this.playPause.src=this.playPause.srcPause;
+
+		//this.playPause = document.getElementById("play-pause");
+
+		// this.playPause.srcPause="img/special/pause.png";
+
+		// this.playPause.srcPlay="img/special/play.png";
+		
+		// this.playPause.src="img/special/pause.png";
 
 		// this.playPause.altSrc="img/special/play.png";
 
-		document.getElementById("bottom_bar").append(this.playPause);
+		//console.log(this.playPause)
+		document.getElementById("bottom_bar").appendChild(this.playPause);
 		
 
 		this.playPause.addEventListener('click',function(){
-
 			this.togglePlayPause();
 		}.bind(this))
+
+		//this.playPause.style.height='50px'
+
 	}
 
 	togglePlayPause(){
 		currentStory.togglePlayPause();
+
 		//console.log(currentStory.playing)
 		
 
@@ -72,7 +93,7 @@ class WindowManager{
 		
 		// this.fullScreenButton= document.createElementNS("http://www.w3.org/2000/svg", "svg");
 		this.fullScreenButton= document.createElement("img");
-		// console.log(this.fullScreenButton)
+
 		this.fullScreenButton.id="fullScreenButton";
 		// this.fullScreenButton.style.width="60px";
 		// this.fullScreenButton.style.height="60";
