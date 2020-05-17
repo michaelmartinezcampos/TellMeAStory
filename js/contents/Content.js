@@ -29,7 +29,7 @@ class Content{
 		
 		// do i need this?
 		this.contentEditorOverlay=currentStory.contentEditorOverlay;//this is a univeral veiw (same for every content)
-		this.contentEditorModual=new ContentEditorModual(this, this.contentEditorOverlay);
+		// this.contentEditorModual=new ContentEditorModual(this, this.contentEditorOverlay);
 
 
 		this.addActionIn=function(headAction_){

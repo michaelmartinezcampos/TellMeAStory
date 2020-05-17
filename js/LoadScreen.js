@@ -114,7 +114,7 @@ class LoadScreen{
 		this.easedLoaded = speed + this.easedLoaded;
 		this.html.loadBar.style.width=this.easedLoaded+"%";
 
-		this.html.rocketContainer.style.top= window.innerHeight*(1-this.easedLoaded/100) +'px';
+		this.html.rocketContainer.style.top= ((window.innerHeight-191)*(1-this.easedLoaded/100)) +'px';
 		this.html.loadText.innerHTML=Math.round(this.easedLoaded) + " %"
 		this.fireHeight+=(speed*600-this.fireHeight)*.01
 		//console.log(this.fireHeight)
