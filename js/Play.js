@@ -69,12 +69,13 @@ function playStory(){
 
 class Story{
 
-	constructor(scenesData_){
+	constructor(){
 		this.contentEditorOverlay=new ContentEditorOverlay();
 		this.path="";//this will keep track of the path that has been taken
 		this.playing=false;
 		this.audioCount=0;
 	}
+	
 
 	loadScenesLib(scenesData_){
 		this.scenesLib={};
@@ -271,7 +272,10 @@ function clearMainText(){
 
 
 
-
+var loadScreen
+window.onload=function(){
+	
+} ;
 fetch("json/scenes.json")
 	.then(function(resp){
 		return resp.json();
@@ -280,14 +284,15 @@ fetch("json/scenes.json")
 		console.log(resp)
 	}).then(function(data){
 		//console.log(data.scenes)
-		currentStory = new Story(data.scenes);//start reading from first scene
+		currentStory = new Story();//start reading from first scene
 		// window.onload=function(){
 		// 	console.log("loaded early")
 		// }
-		console.log(window.onload)
-		console.log("**")
+		// console.log(window.onload)
+		// console.log("**")
 		currentStory.windowManager=new WindowManager();
-		loadScreen = new LoadScreen();
+		loadScreen = new LoadScreen()
+		
 
 		currentStory.loadScenesLib(data.scenes);//one or the other
 		currentStory.createScenesFrontEndHTMLs();

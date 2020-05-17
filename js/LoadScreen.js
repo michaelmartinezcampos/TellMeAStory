@@ -1,6 +1,6 @@
 
 
-var loadScreen;
+// var loadScreen;
 
 class LoadScreen{
 
@@ -30,13 +30,17 @@ class LoadScreen{
 
 		this.html.loadDisplay.append(this.html.rocketContainer);
 
-
+		console.log('LODING ROCKET')
 		this.html.rocket = document.createElement("img");
 		this.html.rocket.src='img/Rocket.gif';
 		this.html.rocketContainer.append(this.html.rocket);
 		this.html.rocket.style.position='absolute';
 		this.html.rocket.style.top='0px';
 		this.html.rocket.style['z-index']=10;
+		this.html.rocket.onload=function(){
+			console.log("rocket loaded")
+		}
+
 		
 		
 
@@ -100,7 +104,7 @@ class LoadScreen{
 
 		this.html.rocketContainer.style.top= window.innerHeight*(1-this.easedLoaded/100) +'px';
 		this.fireHeight+=(speed*600-this.fireHeight)*.01
-		console.log(this.fireHeight)
+		//console.log(this.fireHeight)
 		this.html.rocketFire.style.height= this.fireHeight + 'px';
 		
 	}
