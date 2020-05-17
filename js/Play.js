@@ -70,10 +70,12 @@ function playStory(){
 class Story{
 
 	constructor(){
-		console.log(ContentEditorOverlay)
-
+		console.log("1.1@")
+		//console.log(ContentEditorOverlay)
+		console.log("1.2@")
 		console.log( "yes");
-		this.contentEditorOverlay=new ContentEditorOverlay();
+		//this.contentEditorOverlay=new ContentEditorOverlay();
+		console.log("1.3@")
 		this.path="";//this will keep track of the path that has been taken
 		this.playing=false;
 		this.audioCount=0;
@@ -287,7 +289,9 @@ fetch("json/scenes.json")
 		console.log(resp)
 	}).then(function(data){
 		//console.log(data.scenes)
+		console.log("1@")
 		currentStory = new Story();//start reading from first scene
+		console.log("2@")
 		// window.onload=function(){
 		// 	console.log("loaded early")
 		// }
