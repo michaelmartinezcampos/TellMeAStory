@@ -19,18 +19,7 @@ class LoadScreen{
 	}
 
 	createDivs(){
-		//updateContentSize()
 		this.html.loadDisplay = document.createElement("div");
-		this.html.loadDisplay.id='load-window';
-
-		//picture of bedroom while loading
-		// this.html.loadImg = document.createElement("img");
-		// this.html.loadImg.id='load-img';
-		// this.html.loadImg.src = "img/Bedroom-small.jpg";
-		// this.html.loadImg.style.position='absolute';
-		// this.html.loadDisplay.append(this.html.loadImg);
-
-
 		this.html.loadBar = document.createElement("div");
 		this.html.loadDisplay.append(this.html.loadBar);
 
@@ -88,11 +77,10 @@ class LoadScreen{
 		document.getElementById('content').style.height = window.innerHeight + "px";
 		document.getElementById('content').style.width = window.innerWidth + "px";
 
-		this.html.loadDisplay.style.height="10px";
+		this.html.loadDisplay.style.height="100%";
 		this.html.loadDisplay.style.width="100%";
 
 		this.html.loadBar.style.height="100%";
-		this.html.loadBar.style.right="0px";
 		this.html.loadDisplay.style['background-color']="#292929";
 		this.html.loadBar.style['background-color']="#424242";
 
@@ -123,7 +111,6 @@ class LoadScreen{
 	draw(){
 		//console.log(this.loaded + " : " + this.easedLoaded)
 		let speed = (this.loaded-this.easedLoaded)*this.easing
-		this.html.loadBar.style.right="0px";
 		this.easedLoaded = speed + this.easedLoaded;
 		this.html.loadBar.style.width=this.easedLoaded+"%";
 

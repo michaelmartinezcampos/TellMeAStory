@@ -65,7 +65,6 @@ body, html {
 
 #load-amount{
   font-family: 'indieFlower', cursive;
-
 }
 
 
@@ -229,16 +228,6 @@ div#background_img{
 	top: 0px;
 	width:100%;
 	height: auto;
-}
-
-#load-window{
-
-  /*height: 100%;*/
-  width: 100%;
-}
-#load-img{
-  width: 100%;
-  filter: blur(2px);
 }
 
 .background-img{
