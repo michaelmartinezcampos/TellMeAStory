@@ -65,19 +65,16 @@ class ImageContent extends Content{
 
 		
 		this.html.fe = document.createElement("img");
-
-		this.html.fe.onload =function(){
-			this.imgLoad();
-
-			//only want this to fire the first time the image is loaded;
+		this.addEffects();
+		
+		this.html.fe.onload =function(){ // can only adjust the size after it is loaded and therefore knows the natural size
+			this.adjustSize();
 			this.html.fe.onload=null;
-
-			
 		}.bind(this)
 
 
 		this.html.fe.src=this.content.value;
-		this.html.fe.classList.add('background-img')
+		//this.html.fe.classList.add('icon-img')
 
 		// this.createEffects();
 		// this.applyGeneralEffects();
@@ -87,9 +84,13 @@ class ImageContent extends Content{
 		
 
 	}
-	imgLoad(){
+	addEffects(){
 		this.createEffects();
 		this.applyGeneralEffects();
+	}
+
+	adjustSize(){
+		this.html.fe.style.width=(this.html.fe.naturalWidth / 1920)*100 + "%";
 	}
 
 

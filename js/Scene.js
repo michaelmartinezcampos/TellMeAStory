@@ -21,7 +21,7 @@ class Scene{
 			// this.contents[i].createFrontEndHTML();
 			//console.log(this.actionsOut[i])
 			//console.log(this.id)
-			console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+			//console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 			this.actionsOut[i].activate();
 			// if(this.actionsOut[i].head instanceof Content){
 			// 	//this.actionsOut[i].head.displayFrontEndHTML();//actoins out are the actions driven by the scene itself
@@ -191,8 +191,10 @@ Scene.prototype.createFrontEndHTML=function(){
 
 	for(let id in this.contentsLib){
 		
+		if(this.contentsLib[id].parentScene == this){//prevent universal or shared content from rendering over and over
+			this.contentsLib[id].createFrontEndHTML();
+		}
 		
-		this.contentsLib[id].createFrontEndHTML();
 		
 	}
 }

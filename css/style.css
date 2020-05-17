@@ -228,10 +228,17 @@ div#background_img{
 	top: 0px;
 	width:100%;
 	height: auto;
+  z-index: 0;
 }
 
 .background-img{
+  width:100%;
+  z-index: 0;
+}
+
+.icon-img{
 	width:100%;
+  z-index: 10;
 }
 
 

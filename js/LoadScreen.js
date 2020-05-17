@@ -101,6 +101,7 @@ class LoadScreen{
 			this.loaded = (this.loadedAudioFiles/this.numAudioFiles*100) 
 
 			if(this.loaded == 100){
+				//console.log("Start the Story !!!")
 				currentStory.start();
 			}
 			//console.log((this.loadedAudioFiles/this.numAudioFiles*100));

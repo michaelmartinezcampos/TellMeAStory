@@ -175,6 +175,7 @@ class Story{
 		for(let sceneKey in this.scenesLib){//this will create the divs for all the scenes. they could be created on each scene load
 			this.scenesLib[sceneKey].createFrontEndHTML();//scene will cycle through each content (and action?) and create a div/span for each
 		}
+		console.log("finsihed creating the front end")
 	}
 	createScenesBackEndHTMLs(){
 		for(let sceneKey in this.scenesLib){//this will create the divs for all the scenes. they could be created on each scene load
@@ -289,50 +290,19 @@ fetch("json/scenes.json")
 		console.log(resp)
 	}).then(function(data){
 		//console.log(data.scenes)
-		console.log("1@")
+		
 		currentStory = new Story();//start reading from first scene
-		console.log("2@")
-		// window.onload=function(){
-		// 	console.log("loaded early")
-		// }
-		// console.log(window.onload)
-		// console.log("**")
+		
 		currentStory.windowManager=new WindowManager();
 		loadScreen = new LoadScreen()
 		
 
+		console.log("loading scen data");
 		currentStory.loadScenesLib(data.scenes);//one or the other
+		console.log("creating front end");
 		currentStory.createScenesFrontEndHTMLs();
 
-		//when do we create the back end effects????
-		// currentStory.createScenesBackEndHTMLs();
-		// 
-		// currentStory.applyProperties();
 		
-		// if(document.readyState=== 'complete'){//run imedeatly
-				// console.log("LOAD FIRST Scene")
-				// currentStory.newScene('aa');
-
-				// currentStory.windowManager=new WindowManager();
-				// loadScreen.hide();
-				// currentStory.windowManager.createMainButtons();
-				// updateContentSize();
-		// }else{//wait for page load
-		// 	window.onload=function(){
-		// 		currentStory.newScene('aa');
-		// 		currentStory.windowManager=new WindowManager();
-		// 		loadScreen.hide();
-		// 		currentStory.windowManager.createMainButtons();
-		// 		updateContentSize();
-		// 	}
-		// }
-			// window.onload=function(){
-			// 	currentStory.newScene('aa');
-			// 	currentStory.windowManager=new WindowManager();
-			// 	loadScreen.hide();
-			// 	currentStory.windowManager.createMainButtons();
-			// 	updateContentSize();
-			// }
 
 		
 		

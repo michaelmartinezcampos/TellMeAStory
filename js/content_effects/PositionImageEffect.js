@@ -3,9 +3,12 @@ class PositionImageEffect extends ImageEffect{
 		super(JSON_,parentContent_);
 	}
 	apply(){
+
+		console.log("POSITIONING!!!!!!!!! " + this.parentContent.id + " in scene "+ this.parentContent.parentScene.id)
 		if(this.vareables.type == "background"){
 
 			this.parentContent.htmlParent=document.getElementById("background_img");
+			this.parentContent.html.fe.classList.add('background-img')
 			//this.parentContent.htmlParent.append(this.parentContent.html.fe);
 
 		}else if(this.vareables.type == "absolute"){
@@ -14,10 +17,13 @@ class PositionImageEffect extends ImageEffect{
 
 			this.parentContent.html.fe.style.top=this.vareables.top;
 			this.parentContent.html.fe.style.left=this.vareables.left;
+			// console.log(this.parentContent.html.fe)
+			// console.log(this.parentContent.html.fe.naturalWidth)
 			this.parentContent.html.fe.style.width=(this.parentContent.html.fe.naturalWidth / 1920)*100 + "%";
 
 
 			this.parentContent.htmlParent=document.getElementById("content")
+			this.parentContent.html.fe.classList.add('icon-img')
 			//this.parentContent.htmlParent.append(this.parentContent.html.fe);
 
 		}

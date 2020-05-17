@@ -109,7 +109,7 @@ class Action{
 
 		//if(this.trigger=="time"){
 
-			console.log("**********************************" + this.head.id)
+			//console.log("**********************************" + this.head.id)
 
 
 
