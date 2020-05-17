@@ -63,6 +63,10 @@ body, html {
   overflow: hidden;
 }
 
+#load-amount{
+  font-family: 'indieFlower', cursive;
+}
+
 
 #bottom_bar{
 	position:absolute;

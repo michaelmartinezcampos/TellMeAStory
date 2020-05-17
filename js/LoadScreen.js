@@ -41,6 +41,18 @@ class LoadScreen{
 			console.log("rocket loaded")
 		}
 
+		this.html.loadText = document.createElement("div");
+		this.html.loadText.id='load-amount'
+		this.html.rocketContainer.append(this.html.loadText);
+		this.html.loadText.style.position='absolute';
+		this.html.loadText.style.top='50px';
+		this.html.loadText.style.width="200px"
+		this.html.loadText.style.color='gray';
+		this.html.loadText.style['font-size']='60px';
+
+		this.html.loadText.style.left='110px';
+		
+
 		
 		
 
@@ -103,6 +115,7 @@ class LoadScreen{
 		this.html.loadBar.style.width=this.easedLoaded+"%";
 
 		this.html.rocketContainer.style.top= window.innerHeight*(1-this.easedLoaded/100) +'px';
+		this.html.loadText.innerHTML=Math.round(this.easedLoaded) + " %"
 		this.fireHeight+=(speed*600-this.fireHeight)*.01
 		//console.log(this.fireHeight)
 		this.html.rocketFire.style.height= this.fireHeight + 'px';
