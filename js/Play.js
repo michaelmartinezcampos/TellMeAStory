@@ -70,6 +70,9 @@ function playStory(){
 class Story{
 
 	constructor(){
+		console.log(ContentEditorOverlay)
+
+		console.log( "yes");
 		this.contentEditorOverlay=new ContentEditorOverlay();
 		this.path="";//this will keep track of the path that has been taken
 		this.playing=false;
