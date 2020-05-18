@@ -968,6 +968,33 @@
           "delay": 9,
           "info": "make race car clickable"
         },
+
+        {
+          "id":"025",
+          "tailID": "001",
+          "headID": "007",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 9
+        },
+        {
+          "id":"026",
+          "tailID": "902",
+          "headID": "007",
+          "trigger": "click",
+          "elicit": "hide",
+          "delay": 0
+        },
+        {
+          "id":"027",
+          "tailID": "910",
+          "headID": "007",
+          "trigger": "click",
+          "elicit": "hide",
+          "delay": 0
+        },
+
+
         {
           "id": "dSCBA_0",
           "tailID": "902",
@@ -1167,20 +1194,47 @@
           "info": "highlight swetter"
         },{
           "id": "5001",
-          "tailID": "911",
-          "headID": "SC-BA-FIS",
-          "trigger": "click",
-          "elicit": "display",
-          "delay": 0,
-          "info": "goto swetter"
-        },{
-          "id": "5001",
           "tailID": "001",
           "headID": "913",
           "trigger": "click",
           "elicit": "clickable",
           "delay": 138,
           "info": "highlight Ukulele"
+        },
+
+        {
+          "id":"025",
+          "tailID": "001",
+          "headID": "007",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 138
+        },
+        {
+          "id":"026",
+          "tailID": "911",
+          "headID": "007",
+          "trigger": "click",
+          "elicit": "hide",
+          "delay": 0
+        },
+        {
+          "id":"027",
+          "tailID": "913",
+          "headID": "007",
+          "trigger": "click",
+          "elicit": "hide",
+          "delay": 0
+        },
+
+        {
+          "id": "5001",
+          "tailID": "911",
+          "headID": "SC-BA-FIS",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 0,
+          "info": "goto swetter"
         },{
           "id": "5001",
           "tailID": "913",
