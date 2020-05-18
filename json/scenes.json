@@ -702,58 +702,10 @@
         {
           "id":"023",
           "tailID": "005",
-          "headID": "903",
-          "trigger": "click",
-          "elicit": "clickable",
-          "delay": 8
-        },
-        {
-          "id":"024",
-          "tailID": "005",
-          "headID": "912",
-          "trigger": "click",
-          "elicit": "clickable",
-          "delay": 8
-        },
-        {
-          "id":"025",
-          "tailID": "005",
-          "headID": "007",
+          "headID": "START",
           "trigger": "click",
           "elicit": "display",
           "delay": 8
-        },
-        {
-          "id":"026",
-          "tailID": "912",
-          "headID": "007",
-          "trigger": "click",
-          "elicit": "hide",
-          "delay": 0
-        },
-        {
-          "id":"027",
-          "tailID": "903",
-          "headID": "007",
-          "trigger": "click",
-          "elicit": "hide",
-          "delay": 0
-        },
-        {
-          "id":"028",
-          "tailID": "903",
-          "headID": "SC",
-          "trigger": "click",
-          "elicit": "display",
-          "delay": 0
-        },
-        {
-          "id":"029",
-          "tailID": "912",
-          "headID": "TS",
-          "trigger": "click",
-          "elicit": "display",
-          "delay": 0
         }
       ],
       "contents": [
@@ -872,6 +824,69 @@
         }
         
       ]
+    },{
+      "name": "start",
+      "id": "START",
+      "actions": [
+        
+        {
+          "id":"023",
+          "tailID": "START",
+          "headID": "903",
+          "trigger": "click",
+          "elicit": "clickable",
+          "delay": 0
+        },
+        {
+          "id":"024",
+          "tailID": "START",
+          "headID": "912",
+          "trigger": "click",
+          "elicit": "clickable",
+          "delay": 0
+        },
+        {
+          "id":"025",
+          "tailID": "START",
+          "headID": "007",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 0
+        },
+        {
+          "id":"026",
+          "tailID": "912",
+          "headID": "007",
+          "trigger": "click",
+          "elicit": "hide",
+          "delay": 0
+        },
+        {
+          "id":"027",
+          "tailID": "903",
+          "headID": "007",
+          "trigger": "click",
+          "elicit": "hide",
+          "delay": 0
+        },
+        {
+          "id":"028",
+          "tailID": "903",
+          "headID": "SC",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 0
+        },
+        {
+          "id":"029",
+          "tailID": "912",
+          "headID": "TS",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 0
+        }
+      ],
+      "contents": []
     },
     {
       "name": "Stuffed Corgi",
@@ -941,7 +956,7 @@
           "headID": "902",
           "trigger": "click",
           "elicit": "clickable",
-          "delay": 10,
+          "delay": 9,
           "info": "make balaeriena clickable"
         },
         {
@@ -950,7 +965,7 @@
           "headID": "910",
           "trigger": "click",
           "elicit": "clickable",
-          "delay": 10,
+          "delay": 9,
           "info": "make race car clickable"
         },
         {
@@ -977,7 +992,7 @@
           "headID": "007",
           "trigger": "click",
           "elicit": "display",
-          "delay": 10
+          "delay": 9
         },
         {
           "id": "506",
@@ -1006,7 +1021,7 @@
           "effects": {
             "general": {
               "clipping": {
-                "start": 4,
+                "start": 0,
                 "duration": 46
               }
             },
@@ -1027,8 +1042,8 @@
           "effects": {
             "general": {
               "clipping": {
-                "start": 50,
-                "duration": 11
+                "start": 46,
+                "duration": 10
               }
             },
             "entrance": {},
@@ -1342,6 +1357,14 @@
           "elicit": "display",
           "delay": 0,
           "info": "start paying audio #3"
+        },{
+          "id": "5001",
+          "tailID": "002",
+          "headID": "END-AS",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 166,
+          "info": "Go to end looped"
         }
       ],
       "contents": [
@@ -1521,6 +1544,14 @@
           "elicit": "display",
           "delay": 0,
           "info": "play audio #2"
+        },{
+          "id": "5001",
+          "tailID": "001",
+          "headID": "END-AS",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 240,
+          "info": "Go to end looped"
         }
         
       ],
@@ -1911,6 +1942,14 @@
           "elicit": "display",
           "delay": 0,
           "info": "start paying the reset of the audio audio"
+        },{
+          "id": "5001",
+          "tailID": "001",
+          "headID": "END-AS",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 195,
+          "info": "Go to end looped"
         }
       ],
       "contents": [
@@ -2085,6 +2124,14 @@
           "elicit": "display",
           "delay": 0,
           "info": "start paying the reset of the audio audio"
+        },{
+          "id": "5001",
+          "tailID": "002",
+          "headID": "END-AS",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 200,
+          "info": "Go to end looped"
         }
       ],
       "contents": [
@@ -2718,6 +2765,14 @@
           "elicit": "display",
           "delay": 0,
           "info": "start paying audio #3"
+        },{
+          "id": "5001",
+          "tailID": "002",
+          "headID": "END-AS",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 104,
+          "info": "Go to end looped"
         }
         
       ],
@@ -2931,6 +2986,14 @@
           "elicit": "display",
           "delay": 0,
           "info": "start paying audio #3"
+        },{
+          "id": "5001",
+          "tailID": "002",
+          "headID": "END-AS",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 119,
+          "info": "Go to end looped"
         }
         
       ],
@@ -3347,6 +3410,14 @@
           "elicit": "display",
           "delay": 0,
           "info": "audiod #3"
+        },{
+          "id": "5001",
+          "tailID": "003",
+          "headID": "END-AS",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 115,
+          "info": "Go to end looped"
         }
         
       ],
@@ -3836,7 +3907,7 @@
         },{
           "id": "500",
           "tailID": "502",
-          "headID": "aa",
+          "headID": "START",
           "trigger": "click",
           "elicit": "display",
           "delay": 0,
