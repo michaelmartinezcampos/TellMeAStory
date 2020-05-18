@@ -75,8 +75,8 @@ function updateContentSize(){
 		document.getElementById("main_text").style['font-size']=window.innerWidth*.02+'px';
 
 		
-		console.log(document.getElementById("play-pause"))
-		console.log(currentStory.windowManager.playPause)
+		// console.log(document.getElementById("play-pause"))
+		// console.log(currentStory.windowManager.playPause)
 
 
 

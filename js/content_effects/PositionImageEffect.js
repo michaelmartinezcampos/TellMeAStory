@@ -4,7 +4,7 @@ class PositionImageEffect extends ImageEffect{
 	}
 	apply(){
 
-		console.log("POSITIONING!!!!!!!!! " + this.parentContent.id + " in scene "+ this.parentContent.parentScene.id)
+		//console.log("POSITIONING!!!!!!!!! " + this.parentContent.id + " in scene "+ this.parentContent.parentScene.id)
 		if(this.vareables.type == "background"){
 
 			this.parentContent.htmlParent=document.getElementById("background_img");

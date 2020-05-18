@@ -87,7 +87,7 @@ class Action{
 	onEvent(){//this and action must be bound
 		//this.activateExitEffects();
 		//console.log(this.id)
-		console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+		//console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 		this.activate();
 	}
 
@@ -104,52 +104,29 @@ class Action{
 	}
 
 	activate(){
-		
-		
+		//console.log("activate " + this.id)
+		if(this.elicit=="display"){
 
-		//if(this.trigger=="time"){
+			this.displayContent(this.delay)
+			
+			
+		}else if(this.elicit=="hide"){
+			//console.log("hiding")
+			this.hideContent(this.delay);
+		}
+		else if(this.elicit=="clickable"){
+			console.log("clickable " + this.head.id)
 
-			//console.log("**********************************" + this.head.id)
-
-
-
-			if(this.elicit=="display"){
-
-				this.displayContent(this.delay)
-				
-				
-			}else if(this.elicit=="hide"){
-				//console.log("hiding")
-				this.hideContent(this.delay);
-			}
-			else if(this.elicit=="clickable"){
-
-				this.activateContent(this.delay)
-				
-			}else if(this.elicit=="unclickable"){
-				this.deactivateContent(this.delay)
-				//}
-			}
-		// }else if(this.trigger=="click"){
-		// 	if(this.elicit=="display"){
-		// 		this.displayContent(this.delay)
-
-		// 	}else if(this.elicit=="hide"){
-		// 		this.hideContent(this.delay);
-		// 	}
-		// 	else if(this.elicit=="clickable"){
-
-		// 		this.activateContent(this.delay)
-				
-		// 	}else if(this.elicit=="unclickable"){
-		// 		this.deactivateContent(this.delay)
-		// 		//}
-		// 	}
-		// }
-
-
+			this.activateContent(this.delay)
+			
+		}else if(this.elicit=="unclickable"){
+			
+			this.deactivateContent(this.delay);
+		}
 	}
 	displayContent(delay_){
+
+		//console.log("display " + this.head.id + " from " + this.tail.id + " delay: " + delay_)
 		if(delay_==null){
 			delay_=0;
 		}
@@ -162,13 +139,13 @@ class Action{
 
 		this.timer=new Timer(function(){
 			if(this.head instanceof Content){
-				console.log(this.head.id)
+				//console.log(this.head.id)
 				this.head.displayFrontEndHTML();
 
 				//these should just be the actions out not the clickable **
 				this.head.activateActionsOut();
 			}else if(this.head instanceof Scene){
-				console.log(this.head.id)
+				//console.log(this.head.id)
 				currentStory.newScene(this.head,this.passOnInheritance);
 			}
 			//console.log(this)
@@ -190,6 +167,7 @@ class Action{
 		// console.log("h_" + this.id)
 		this.timer=new Timer(function(){
 			if(this.head instanceof Content){
+				this.deactivateContent(0);//deactivate before hiding
 				
 				this.head.activateExitEffects();
 			}else if(this.head instanceof Scene){
@@ -224,8 +202,10 @@ class Action{
 			delay_=0; 
 		}
 
+		console.log("unclickable " + this.head.id)
+
 		
-		// console.log("da_" + this.id)
+		//console.log("deactivate_" + this.id)
 		this.timer=new Timer(function(){
 			this.head.deactivateClickable();
 			this.removeTimer()

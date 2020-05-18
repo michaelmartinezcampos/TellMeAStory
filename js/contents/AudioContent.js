@@ -1,4 +1,5 @@
 let audioRepo={};
+let activeAudio={};
 //audioRepo.audioBuffer
 
 class AudioContent extends Content{
@@ -31,6 +32,7 @@ class AudioContent extends Content{
 	}
 
 	loadAudio(url_){
+
 
 		if(audioRepo[url_]==undefined){
 			audioRepo[url_]={};
@@ -183,6 +185,8 @@ class AudioContent extends Content{
 
 	play() { //startPosition_,duration_
 		//currentStory.playing=true;
+
+		activeAudio[this.parentScene.id+this.id]=this;
 		currentStory.audioCount++;
 		currentStory.updatePlayPause();
 		if (context.state === 'suspended') {
@@ -215,6 +219,7 @@ class AudioContent extends Content{
 		if(this.isPlaying){
 			console.log("already playing")
 		}else{
+
 			this.source = context.createBufferSource(); // creates a sound source
 			this.source.buffer = this.audioBuffer;                    // tell the source which sound to play
 			// this.analizer=context.createAnalyser()
@@ -235,7 +240,7 @@ class AudioContent extends Content{
 			this.source.connect(context.destination);       // connect the source to the context's destination (the speakers)
 
 
-		 	console.log(this.currentPlayTime)
+		 	//console.log(this.currentPlayTime)
 		 	this.source.start(0,this.currentPlayTime,this.durationLeft);  
 		 	//this.source.start(context.currentTime,this.currentPlayTime,this.durationLeft);                            // play the source now
 		                                           // note: on older systems, may have to use deprecated noteOn(time);
@@ -260,8 +265,10 @@ class AudioContent extends Content{
 
 	endOfPlayback(){
 		if(this.isPlaying){ //if isPlaying is true then its not just paused
-			console.log("end of playback " + this.id);
+			//console.log("end of playback " + this.id);
+			delete activeAudio[this.parentScene.id+this.id];
 			this.isActive=false;
+			this.isPlaying=false;
 			//reset to begining
 			this.durationLeft=this.duration;
 			this.currentPlayTime=this.start;

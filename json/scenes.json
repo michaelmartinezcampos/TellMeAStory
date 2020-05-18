@@ -21,7 +21,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -42,7 +44,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {
@@ -79,7 +83,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {
@@ -119,7 +125,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -140,7 +148,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {
@@ -177,7 +187,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {
@@ -214,7 +226,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {
@@ -251,7 +265,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {
@@ -288,7 +304,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {
@@ -325,7 +343,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {
@@ -362,7 +382,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {
@@ -399,7 +421,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {
@@ -439,7 +463,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {
@@ -487,22 +513,6 @@
               "hover": {},
               "pressed": {}
             },
-            "hover": {},
-            "mousePressed": {}
-          }
-        },
-        {
-          "id": "006",
-          "content": {
-            "type": "clear-text",
-            "value": ""
-          },
-          "properties": {},
-          "effects": {
-            "general": {},
-            "entrance": {},
-            "exit": {},
-            "clickable": {},
             "hover": {},
             "mousePressed": {}
           }
@@ -676,9 +686,9 @@
         {
           "id":"021",
           "tailID": "005",
-          "headID": "006",
+          "headID": "005",
           "trigger": "click",
-          "elicit": "display",
+          "elicit": "hide",
           "delay": 0
         },
         {
@@ -761,7 +771,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -781,7 +793,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -840,7 +854,9 @@
           "effects": {
             "general": {},
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {
               "generic": {
                 "glow": {
@@ -995,7 +1011,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -1014,7 +1032,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -1172,7 +1192,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -1192,7 +1214,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -1335,7 +1359,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -1354,7 +1380,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -1373,7 +1401,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -1509,7 +1539,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -1528,7 +1560,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -1709,7 +1743,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -1729,7 +1765,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -1748,7 +1786,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -1888,7 +1928,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -1908,7 +1950,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2058,7 +2102,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2078,7 +2124,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2098,7 +2146,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2272,7 +2322,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2291,7 +2343,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2467,7 +2521,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2487,7 +2543,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2506,7 +2564,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2676,7 +2736,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2695,7 +2757,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2714,7 +2778,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2883,7 +2949,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2902,7 +2970,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -2921,7 +2991,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -3093,7 +3165,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -3112,7 +3186,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -3289,7 +3365,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -3308,7 +3386,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -3327,7 +3407,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -3346,7 +3428,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -3549,7 +3633,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -3568,7 +3654,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}
@@ -3587,7 +3675,9 @@
               }
             },
             "entrance": {},
-            "exit": {},
+            "exit": {
+              "hide": true
+            },
             "clickable": {},
             "hover": {},
             "mousePressed": {}

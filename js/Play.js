@@ -26,6 +26,10 @@ document.onkeydown = function(e) {
         case 32://' ' - space bar
             currentStory.togglePlayPause();
             break;
+
+        case 81:
+        	currentStory.printActiveDelays();
+        	break;
         default:
     		console.log(e.keyCode)
     }
@@ -46,12 +50,18 @@ document.onkeydown = function(e) {
 
 window.AudioContext = window.AudioContext||window.webkitAudioContext;
 
+
+
 var context = new AudioContext();
 
 function stopAudio(){
-	context.close().then(function() {
-		context=new AudioContext();
-	});
+	for(let audioID in activeAudio){
+		activeAudio[audioID].skip();
+	}
+	
+	// context.close().then(function() {
+	// 	context=new AudioContext();
+	// });
 }
 
 function clearTimeOut(){
@@ -146,7 +156,17 @@ class Story{
 	       console.log('Resume context');
 	    }.bind(this))
 	}
+	printActiveDelays(){
+		console.log("---------------------------------------------")
+		for(let action in currentStory.currentScene.actionsLib){
+			if(currentStory.currentScene.actionsLib[action].timer!=undefined){
+				//console.log(currentStory.currentScene.actionsLib[action].timer);
+				console.log(action);
+			}
+		}
+		console.log("---------------------------------------------")
 
+	}
 	pause(){
 		this.playing=false;
 		context.suspend().then(function() {
