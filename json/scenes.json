@@ -1795,7 +1795,35 @@
           "elicit": "clickable",
           "delay": 73.5,
           "info": "highlight Ukulele"
-        },{
+        },
+
+        {
+          "id":"025",
+          "tailID": "002",
+          "headID": "007",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 73.5
+        },
+        {
+          "id":"026",
+          "tailID": "911",
+          "headID": "007",
+          "trigger": "click",
+          "elicit": "hide",
+          "delay": 0
+        },
+        {
+          "id":"027",
+          "tailID": "913",
+          "headID": "007",
+          "trigger": "click",
+          "elicit": "hide",
+          "delay": 0
+        },
+
+
+        {
           "id": "5001",
           "tailID": "911",
           "headID": "SC-RC-FIS",
