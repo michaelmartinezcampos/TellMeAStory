@@ -55,6 +55,7 @@ body, html {
   /*max-height:100%;*/
   /*width:auto;*/
 	height:100%;
+  width:100%;
 	/*padding-top: 56.25%;  1:1 Aspect Ratio */
 	top:0px;
 	left:0px;
@@ -92,17 +93,17 @@ body, html {
 #play-pause{
   transition: 0.5s;
   opacity: .5;
-  padding: 4px;
-  width: 20px;
-  height: 20px;
+  /*padding: 4px;*/
+ /* width: 20px;
+  height: 20px;*/
   margin-left: 48%
   position: absolute;
 }
 #play-pause:hover {
   transition: 0.2s;
-  padding: 2px;
-  width: 24px;
-  height: 24px;
+  /*padding: 2px;*/
+  /*width: 20px;
+  height: 24px;*/
   opacity: 1;
 }
 .play-pause{
@@ -114,7 +115,7 @@ body, html {
   transition: 0.5s;
   opacity: .5;
   padding:4px;
-  width: 20px;
+  /*width: 20px;*/
   position: absolute;
   right:0px;
 }
@@ -122,8 +123,8 @@ body, html {
   /*full-screen*/
   transition: 0.2s;
   opacity: 1;
-  padding:2px;
-  width: 24px;
+  /*padding:2px;*/
+  /*width: 24px;*/
 }
 /*#svgFullScreen:hover .fullscreen-tl {
   transition: 0.2s;

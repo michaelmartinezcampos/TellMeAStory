@@ -1,4 +1,4 @@
-//let scenes={};
+
 var currentStory;
 
 var timeDelays={};
@@ -35,33 +35,14 @@ document.onkeydown = function(e) {
     }
 };
 
-
-
-
-// function beginAudio(){
-//     context.trigger('pause');
-//     context.prop("currentTime",context.prop("currentTime")-context.prop("currentTime"));
-//     context.trigger('play');
-// }
-
-
-
-
-
 window.AudioContext = window.AudioContext||window.webkitAudioContext;
-
-
 
 var context = new AudioContext();
 
 function stopAudio(){
-	for(let audioID in activeAudio){
-		activeAudio[audioID].skip();
+	for(let audioID in currentStory.activeAudio){
+		currentStory.activeAudio[audioID].skip();
 	}
-	
-	// context.close().then(function() {
-	// 	context=new AudioContext();
-	// });
 }
 
 function clearTimeOut(){
@@ -80,15 +61,11 @@ function playStory(){
 class Story{
 
 	constructor(){
-		console.log("1.1@")
-		//console.log(ContentEditorOverlay)
-		console.log("1.2@")
-		console.log( "yes");
-		//this.contentEditorOverlay=new ContentEditorOverlay();
-		console.log("1.3@")
 		this.path="";//this will keep track of the path that has been taken
 		this.playing=false;
 		this.audioCount=0;
+
+		this.activeAudio={};
 	}
 	
 
@@ -110,18 +87,14 @@ class Story{
 	  					
 	  					this.scenesLib[sceneID].contentsLib[contentID] = this.scenesLib["uni"].contentsLib[contentID]
 	  				}
-	  				//console.log(this.scenesLib[sceneID])
 	  			}
 	  		}
-	  		//console.log("*************************")
 	  	}
 
 	  	for(let i=0; i<scenesData_.length;i++){//think about the order of loading. right now to goes through scene by scene maybe load all scens first and then do content
 	  		this.scenesLib[scenesData_[i].id].addActions(scenesData_[i])
 	  	}
-
 	}
-
 	updatePlayPause(){
 		if(this.audioCount>0){
 			this.playing=true;
@@ -132,14 +105,22 @@ class Story{
 
 	togglePlayPause(){
 		if(this.playing==true){
-		//if(context.state=="suspended"){
-
 			this.pause();
 		}else{
 			this.play();
 		}
-
 		this.windowManager.updatePlayPauseButton()
+	}
+
+
+	enablePlayPause(){
+		this.play()//so that pause is shown
+		console.log("enable play pause");
+	}
+
+	disablePlayPause(){
+		this.pause()//so that pause is shown
+		console.log("disable play pause");
 	}
 
 	play(){
@@ -149,24 +130,13 @@ class Story{
 				this.windowManager.play.style.display="none";
 				this.windowManager.pause.style.display="block";
 				if(currentStory.currentScene.actionsLib[action].timer!=undefined){
-					//console.log(currentStory.currentScene.actionsLib[action].timer);
 					currentStory.currentScene.actionsLib[action].timer.resume();
 				}
 			}
 	       console.log('Resume context');
 	    }.bind(this))
 	}
-	printActiveDelays(){
-		console.log("---------------------------------------------")
-		for(let action in currentStory.currentScene.actionsLib){
-			if(currentStory.currentScene.actionsLib[action].timer!=undefined){
-				//console.log(currentStory.currentScene.actionsLib[action].timer);
-				console.log(action);
-			}
-		}
-		console.log("---------------------------------------------")
 
-	}
 	pause(){
 		this.playing=false;
 		context.suspend().then(function() {
@@ -242,7 +212,7 @@ class Story{
 		//currentStory.windowManager=new WindowManager();
 		loadScreen.hide();
 		currentStory.windowManager.createMainButtons();
-		updateContentSize();
+		//updateContentSize();
 	}
 
 
@@ -298,10 +268,7 @@ function clearMainText(){
 
 
 
-var loadScreen
-window.onload=function(){
-	
-} ;
+
 fetch("json/scenes.json")
 	.then(function(resp){
 		return resp.json();

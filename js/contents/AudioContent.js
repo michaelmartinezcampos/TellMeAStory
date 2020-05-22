@@ -1,5 +1,5 @@
 let audioRepo={};
-let activeAudio={};
+//let activeAudio={};
 //audioRepo.audioBuffer
 
 class AudioContent extends Content{
@@ -186,7 +186,10 @@ class AudioContent extends Content{
 	play() { //startPosition_,duration_
 		//currentStory.playing=true;
 
-		activeAudio[this.parentScene.id+this.id]=this;
+		currentStory.activeAudio[this.parentScene.id+this.id]=this;
+
+		currentStory.enablePlayPause();
+
 		currentStory.audioCount++;
 		currentStory.updatePlayPause();
 		if (context.state === 'suspended') {
@@ -195,32 +198,12 @@ class AudioContent extends Content{
 
 
 		
-		// if(startPosition_==null){
-		// 	startPosition_ = this.start;
-		// }
-		// if(duration_==null){
-		// 	duration_ = this.duration;
-		// }
-		// if(startPosition_==null){
-		// 	startPosition_=0;
-		// }
-
-
-		
-		
-		//console.log("playSound")
-		//let audio = audio_
-		// console.log(startPosition_)
-
-		// this.createSource();//should i move to when the audio loads?
-		// this.connectBuffer()
-
-		
 		if(this.isPlaying){
 			console.log("already playing")
 		}else{
 
 			this.source = context.createBufferSource(); // creates a sound source
+			//console.log(this.source)
 			this.source.buffer = this.audioBuffer;                    // tell the source which sound to play
 			// this.analizer=context.createAnalyser()
 			//this.source.buffer = this.audioBuffer;                    // tell the source which sound to play
@@ -239,6 +222,8 @@ class AudioContent extends Content{
 
 			this.source.connect(context.destination);       // connect the source to the context's destination (the speakers)
 
+			// var loopingEnabled = AudioBufferSourceNode.loop;
+			// AudioBufferSourceNode.loop = false;
 
 		 	//console.log(this.currentPlayTime)
 		 	this.source.start(0,this.currentPlayTime,this.durationLeft);  
@@ -265,8 +250,12 @@ class AudioContent extends Content{
 
 	endOfPlayback(){
 		if(this.isPlaying){ //if isPlaying is true then its not just paused
-			//console.log("end of playback " + this.id);
-			delete activeAudio[this.parentScene.id+this.id];
+			delete currentStory.activeAudio[this.parentScene.id+this.id];
+
+			if(Object.keys(currentStory.activeAudio).length == 0){
+				currentStory.disablePlayPause();
+			}
+
 			this.isActive=false;
 			this.isPlaying=false;
 			//reset to begining
@@ -310,6 +299,8 @@ class AudioContent extends Content{
 			// console.log(effect)
 			if(effect=="clipping"){
 				this.effects.general[effect]=new ClippingAudioEffect(this.JSONData.effects.general[effect],this)
+			}else if(effect=="repeat"){
+				this.effects.general[effect]=new RepeatAudioEffect(this.JSONData.effects.general[effect],this)
 			}else{
 				this.effects.general[effect]=new ContentEffect(this.JSONData.effects.general[effect],this)
 			}

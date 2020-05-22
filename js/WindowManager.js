@@ -2,7 +2,8 @@ class WindowManager{
 	constructor(){
 		// this.sceneModual={};
 		// this.activeModual;
-		console.log("ADD WINDOW MANGER")
+
+
 		this.html={};
 		this.html.topBar=document.getElementById('top-bar');
 		this.html.content=document.getElementById('content');
@@ -12,6 +13,8 @@ class WindowManager{
 		this.addPlayPauseButton();
 		//this.createSceneModual();
 		this.createTopButtons();
+
+
 	}
 	
 	createMainButtons(){
@@ -24,9 +27,10 @@ class WindowManager{
 	}
 
 	addPlayPauseButton(){
-		console.log("ADDING PLAY PAUSE!!!!!!!!!!!!!!!!!!!!!@@@@@@@@@")
 		this.playPause= document.createElement("div");
 		this.playPause.id="play-pause";
+
+		
 
 		this.play= document.createElement("img");
 		this.play.src="img/special/play.png";
@@ -40,6 +44,8 @@ class WindowManager{
 		this.pause.classList.add("play-pause");
 		this.playPause.appendChild(this.pause);
 		this.pause.style.display="none";
+
+
 
 
 		

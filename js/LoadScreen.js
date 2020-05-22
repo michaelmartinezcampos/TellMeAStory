@@ -30,17 +30,14 @@ class LoadScreen{
 
 		this.html.loadDisplay.append(this.html.rocketContainer);
 
-		console.log('LODING ROCKET')
+		
 		this.html.rocket = document.createElement("img");
 		this.html.rocket.src='img/Rocket.gif';
 		this.html.rocketContainer.append(this.html.rocket);
 		this.html.rocket.style.position='absolute';
 		this.html.rocket.style.top='0px';
 		this.html.rocket.style['z-index']=10;
-		this.html.rocket.onload=function(){
-			console.log("rocket loaded")
-		}
-
+		
 		this.html.loadText = document.createElement("div");
 		this.html.loadText.id='load-amount'
 		this.html.rocketContainer.append(this.html.loadText);
@@ -74,8 +71,8 @@ class LoadScreen{
 
 
 		
-		document.getElementById('content').style.height = window.innerHeight + "px";
-		document.getElementById('content').style.width = window.innerWidth + "px";
+		// document.getElementById('content').style.height = window.innerHeight + "px";
+		// document.getElementById('content').style.width = window.innerWidth + "px";
 
 		this.html.loadDisplay.style.height="100%";
 		this.html.loadDisplay.style.width="100%";
@@ -94,6 +91,9 @@ class LoadScreen{
 	hide(){
 		clearInterval(this.updateInterval);
 		currentStory.windowManager.html.content.removeChild(this.html.loadDisplay);
+		updateContentSize();
+		// currentStory.windowManager.addFullScreen();
+		// currentStory.windowManager.addPlayPauseButton();
 	}
 
 	update(){
