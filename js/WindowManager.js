@@ -34,13 +34,13 @@ class WindowManager{
 		
 
 		this.play= document.createElement("img");
-		this.play.src="img/special/play.png";
+		this.play.src="img/special/play-w.png";
 		this.play.id="play";
 		this.play.classList.add("play-pause");
 		this.playPause.appendChild(this.play);
 
 		this.pause= document.createElement("img");
-		this.pause.src="img/special/pause.png";
+		this.pause.src="img/special/pause-w.png";
 		this.pause.id="pause";
 		this.pause.classList.add("play-pause");
 		this.playPause.appendChild(this.pause);
@@ -182,7 +182,7 @@ class WindowManager{
 		// this.fullScreenButton.style.width="60px";
 		// this.fullScreenButton.style.height="60";
 		//console.log(fullScreenSVG(20,20,2))
-		this.fullScreenButton.src="img/special/fullScreen.png"
+		this.fullScreenButton.src="img/special/fullScreen-w.png"
 
 		//this.fullScreenButton.id="fullScreenButton";
 

@@ -48,11 +48,12 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 .volume-lable{
   font-family: Arial, Helvetica, sans-serif;
   z-index: 10;
-  left:102%;
+  left:104%;
   position: absolute;
   opacity: 0;
   width: 100%;
   transition: opacity .2s;
+  color:white;
 }
 .slider:hover +.volume-lable{
   opacity: 1;
@@ -62,9 +63,12 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 .slider {
   -webkit-appearance: none;
   width: 100%;
-  height: 40%;
+  height: 30%;
 
-  background: #d3d3d3;
+  background: rgba(0,0,0,.1);
+  border: white;
+  border-style: solid;
+  border-width: thin;
   outline: none;
   opacity: 0.5;
   -webkit-transition: .2s;
@@ -87,13 +91,13 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 4px;
+  width: 0px;
   height: 8px;
-  background: #000;
+  /*background: #000;*/
   cursor: pointer;
  /*cursor: ew-resize;*/
   /*background: #434343;*/
-  box-shadow: -300px 0 0 300px #000;
+  box-shadow: -300px 0 0 300px #fff;
 }
 
 .slider::-moz-range-thumb {
@@ -137,7 +141,7 @@ body, html {
 	z-index:1000;
 	width:100%;
 	height: 60px;
-	background-color: white;
+	/*background-color: white;*/
 	opacity: 0;
 	transition: opacity 3s
 }
@@ -155,18 +159,29 @@ body, html {
 #play-pause{
   transition: 0.5s;
   opacity: .5;
+  padding: 50px;
   /*padding: 4px;*/
  /* width: 20px;
   height: 20px;*/
+
   margin-left: 48%
   position: absolute;
 }
+#play-pause::before {
+  right: 50%;
+}
+
+#play-pause::after {
+  left: 50%;
+}
 #play-pause:hover {
   transition: 0.2s;
+  
   /*padding: 2px;*/
   /*width: 20px;
   height: 24px;*/
   opacity: 1;
+  transform: scale(1.4);
 }
 .play-pause{
   width:100%;
@@ -183,8 +198,10 @@ body, html {
 }
 #fullScreenButton:hover {
   /*full-screen*/
+
   transition: 0.2s;
   opacity: 1;
+  transform: scale(1.4);
   /*padding:2px;*/
   /*width: 24px;*/
 }

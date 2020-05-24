@@ -8,14 +8,12 @@ var timeDelays={};
 document.onkeydown = function(e) {
     switch (e.keyCode) {
         case 37:
-            console.log('left');
             break;
         case 38:// up arrow 
             currentStory.togglePlayPause();
             break;
         case 39:
         	currentStory.skip();
-            console.log('right');
             break;
         case 40:// down arrow 
             currentStory.togglePlayPause();
@@ -112,13 +110,34 @@ class Story{
 		// 	this.playing=false;
 		// }
 	}
+	isPlaying(){
+		for(let audioContent in this.activeMainAudio){
+			if(this.activeMainAudio[audioContent].isPlaying){
+				return true;
+			}
+			//should also check if there are delays...
+		}
+		return false;
+	}
+	isPlayable(){
+		for(let audioContent in this.activeMainAudio){
+			//if this has any length there are active audio files
+			return true;
+			
+			//should also check if there are delays...
+		}
+		return false;
+
+	}
 
 	togglePlayPause(){
 		console.log("TOGGLE PLAY     is playing " + this.playing)
-		if(this.playing==true){
+		if(this.isPlaying()){
+			console.log("pause")
 			this.pause();
 		}else{
 			this.play();
+			console.log("play")
 		}
 		
 
