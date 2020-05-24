@@ -79,14 +79,14 @@ class LoadScreen{
 
 		this.html.loadBar.style.height="100%";
 		this.html.loadDisplay.style['background-color']="#292929";
-		this.html.loadBar.style['background-color']="#424242";
+		this.html.loadBar.style['background-color']="#333";
 
 
 
 	}
 
 	show(){
-		currentStory.windowManager.html.content.appendChild(this.html.loadDisplay);
+		document.getElementById('content').appendChild(this.html.loadDisplay);
 	}
 	hide(){
 		clearInterval(this.updateInterval);

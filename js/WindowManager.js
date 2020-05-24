@@ -11,6 +11,7 @@ class WindowManager{
 
 		this.addFullScreen();
 		this.addPlayPauseButton();
+		this.addVolumeSliders();
 		//this.createSceneModual();
 		this.createTopButtons();
 
@@ -45,22 +46,6 @@ class WindowManager{
 		this.playPause.appendChild(this.pause);
 		this.pause.style.display="none";
 
-
-
-
-		
-
-		//this.playPause = document.getElementById("play-pause");
-
-		// this.playPause.srcPause="img/special/pause.png";
-
-		// this.playPause.srcPlay="img/special/play.png";
-		
-		// this.playPause.src="img/special/pause.png";
-
-		// this.playPause.altSrc="img/special/play.png";
-
-		//console.log(this.playPause)
 		document.getElementById("bottom_bar").appendChild(this.playPause);
 		
 
@@ -70,6 +55,99 @@ class WindowManager{
 
 		//this.playPause.style.height='50px'
 
+	}
+
+	addVolumeSliders(){
+		this.volumes= document.createElement("div");
+		this.volumes.style.position="absolute";
+		this.volumes.style.top="0px";
+		this.volumes.style.left="0px";
+		this.volumes.style.height="100%";
+		this.volumes.style.width="25%";
+	
+
+		document.getElementById("bottom_bar").appendChild(this.volumes);
+
+
+
+
+		this.mainVolumeSlider= document.createElement("input");
+		this.mainVolumeSlider.type="range";
+		this.mainVolumeSlider.classList.add("slider");
+		// this.mainVolumeSlider.orient="vertical";
+		this.mainVolumeSlider.style.position="absolute";
+		this.mainVolumeSlider.style.top="0px";
+		this.mainVolumeSlider.style.left="0px";
+		this.mainVolumeSlider.min=0 
+		this.mainVolumeSlider.max=100
+		this.mainVolumeSlider.step=1
+		this.mainVolumeSlider.value=currentStory.volume['main']*100;
+
+		this.mainVolumeSlider.addEventListener("input", function(){
+			currentStory.setMainVolume(this.mainVolumeSlider.value/100);
+		}.bind(this));
+		
+
+		this.volumes.appendChild(this.mainVolumeSlider);
+
+
+		this.mainVolumeLable= document.createElement("lable");
+		this.mainVolumeLable.innerHTML="Main Volume"
+		this.mainVolumeLable.classList.add("volume-lable");
+		this.volumes.appendChild(this.mainVolumeLable);
+
+
+
+
+		this.backgroundVolumeSlider= document.createElement("input");
+		this.backgroundVolumeSlider.type="range";
+		this.backgroundVolumeSlider.classList.add("slider");
+		this.backgroundVolumeSlider.style.position="absolute";
+		this.backgroundVolumeSlider.style.bottom="0px";
+		this.backgroundVolumeSlider.style.left="0px";
+		this.backgroundVolumeSlider.step=1
+		this.backgroundVolumeSlider.min=0 
+
+		this.backgroundVolumeSlider.max=100
+		
+		this.backgroundVolumeSlider.value=currentStory.volume['background']*100;
+
+		this.backgroundVolumeSlider.addEventListener("input", function(){
+			currentStory.setMainVolume(this.mainVolumeSlider.value/100);
+		}.bind(this));
+
+		// this.backgroundVolumeSlider.value=0.1;
+		// console.log(currentStory.volume['background'])
+		
+
+
+
+		//this.mainVolumeSlider.
+		//this.mainVolumeSlider.value=75
+		this.backgroundVolumeSlider.step=1
+
+		this.volumes.appendChild(this.backgroundVolumeSlider);
+
+		this.backgroundVolumeLable= document.createElement("lable");
+		this.backgroundVolumeLable.innerHTML="Background Volume"
+		this.backgroundVolumeLable.classList.add("volume-lable");
+		this.backgroundVolumeLable.style.bottom="0px"
+		this.volumes.appendChild(this.backgroundVolumeLable);
+
+
+
+
+
+		// this.mainVolumeSlider.addEventListener("change", function(){
+		// 	console.log(this.value)
+		   
+		//     //counter = parseInt(this.value);
+		// });
+		// this.mainVolumeSlider.addEventListener("click", function(){
+		// 	console.log(this.value)
+		    
+		//     //counter = parseInt(this.value);
+		// });
 	}
 
 	togglePlayPause(){

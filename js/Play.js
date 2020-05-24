@@ -40,8 +40,8 @@ window.AudioContext = window.AudioContext||window.webkitAudioContext;
 var context = new AudioContext();
 
 function stopAudio(){
-	for(let audioID in currentStory.activeAudio){
-		currentStory.activeAudio[audioID].skip();
+	for(let audioID in currentStory.activeMainAudio){
+		currentStory.activeMainAudio[audioID].skip();
 	}
 }
 
@@ -65,7 +65,17 @@ class Story{
 		this.playing=false;
 		this.audioCount=0;
 
-		this.activeAudio={};
+
+		this.volume={};
+		this.volume['main']=1;
+		this.volume['background']=.8;
+
+
+		// this.mainVolume=1;
+		// this.backgroundVolume=1;
+
+		this.activeMainAudio={};
+		this.activeBackgroundAudio={};
 	}
 	
 
@@ -96,61 +106,126 @@ class Story{
 	  	}
 	}
 	updatePlayPause(){
-		if(this.audioCount>0){
-			this.playing=true;
-		}else{
-			this.playing=false;
-		}
+		// if(this.audioCount>0){
+		// 	this.playing=true;
+		// }else{
+		// 	this.playing=false;
+		// }
 	}
 
 	togglePlayPause(){
+		console.log("TOGGLE PLAY     is playing " + this.playing)
 		if(this.playing==true){
 			this.pause();
 		}else{
 			this.play();
 		}
+		
+
 		this.windowManager.updatePlayPauseButton()
+		console.log("End TOGGLE PLAY     is playing " + this.playing)
 	}
 
 
 	enablePlayPause(){
-		this.play()//so that pause is shown
-		console.log("enable play pause");
+		//this.play()//so that pause is shown
+		//console.log("enable play pause");
+		this.windowManager.play.style.display="none";
+		this.windowManager.pause.style.display="block";
 	}
 
 	disablePlayPause(){
-		this.pause()//so that pause is shown
-		console.log("disable play pause");
+		// this.pause()//so that pause is shown
+		// console.log("disable play pause");
+		this.windowManager.play.style.display="block";
+		this.windowManager.pause.style.display="none";
+
 	}
 
 	play(){
+		// console.log("PLAYING *********************")
+		// this.updateVolume();
 		this.playing=true;
-		context.resume().then(function() {
-			for(let action in currentStory.currentScene.actionsLib){
-				this.windowManager.play.style.display="none";
-				this.windowManager.pause.style.display="block";
-				if(currentStory.currentScene.actionsLib[action].timer!=undefined){
-					currentStory.currentScene.actionsLib[action].timer.resume();
-				}
+
+		//restart all the action timers
+		this.windowManager.play.style.display="none";
+		this.windowManager.pause.style.display="block";
+
+		for(let action in currentStory.currentScene.actionsLib){
+			
+			if(currentStory.currentScene.actionsLib[action].timer!=undefined){
+				currentStory.currentScene.actionsLib[action].timer.resume();
 			}
-	       console.log('Resume context');
-	    }.bind(this))
+		}
+
+		//play all the main audio
+		console.log("PLAY???")
+		for(let audioContent in this.activeMainAudio){
+			this.activeMainAudio[audioContent].play();
+		}
+
+		//play the background audio
+		// for(let audioContent in this.activeBackgroundAudio){
+		// 	this.activeBackgroundAudio[audioContent].play();
+		// }
+
+
+		// context.resume().then(function() {
+		// 	for(let action in currentStory.currentScene.actionsLib){
+		// 		this.windowManager.play.style.display="none";
+		// 		this.windowManager.pause.style.display="block";
+		// 		if(currentStory.currentScene.actionsLib[action].timer!=undefined){
+		// 			currentStory.currentScene.actionsLib[action].timer.resume();
+		// 		}
+		// 	}
+	 //       console.log('Resume context');
+	 //    }.bind(this))
 	}
 
 	pause(){
+		console.log("PAUSING *********************")
 		this.playing=false;
-		context.suspend().then(function() {
-			for(let action in currentStory.currentScene.actionsLib){
 
-				this.windowManager.play.style.display="block";
-				this.windowManager.pause.style.display="none";
-				if(currentStory.currentScene.actionsLib[action].timer!=undefined){
-					//console.log(currentStory.currentScene.actionsLib[action].timer);
-					currentStory.currentScene.actionsLib[action].timer.pause();
-				}
+		console.log("this.playing " + this.playing);
+
+	 	this.windowManager.play.style.display="block";
+		this.windowManager.pause.style.display="none";
+	 	//pause all the action timers
+	 	for(let action in currentStory.currentScene.actionsLib){
+
+			if(currentStory.currentScene.actionsLib[action].timer!=undefined){
+				currentStory.currentScene.actionsLib[action].timer.pause();
 			}
-	      console.log('Pause context');
-	    }.bind(this));
+		}
+
+		//pause all the main audio
+		for(let audioContent in this.activeMainAudio){
+			this.activeMainAudio[audioContent].pause();
+		}
+
+		console.log("this.playing " + this.playing);
+
+		//pause the background audio
+		// for(let audioContent in this.activeBackgroundAudio){
+		// 	this.activeBackgroundAudio[audioContent].pause();
+		// }
+	}
+	setMainVolume(volume_){
+		
+		//set volume for all the main audio
+		this.volume['main']=volume_;
+		for(let audioContent in this.activeMainAudio){
+			//this.activeMainAudio[audioContent].setVolume(volume_);
+			this.activeMainAudio[audioContent].updateVolume();
+		}
+	}
+	setBackgroundVolume(volume_){
+		
+		//set volume for all the main audio
+		this.volume['background']=volume_;
+		for(let audioContent in this.activeBackgroundAudio){
+			this.activeBackgroundAudio[audioContent].updateVolume();
+		}
 	}
 
 	skip(){
@@ -268,7 +343,7 @@ function clearMainText(){
 
 
 
-
+var dataLoaded=false;
 fetch("json/scenes.json")
 	.then(function(resp){
 		return resp.json();
@@ -278,16 +353,23 @@ fetch("json/scenes.json")
 	}).then(function(data){
 		//console.log(data.scenes)
 		
-		currentStory = new Story();//start reading from first scene
 		
-		currentStory.windowManager=new WindowManager();
-		loadScreen = new LoadScreen()
+		
+		window.onload.data=data;
+		dataLoaded=true;
 		
 
-		console.log("loading scen data");
-		currentStory.loadScenesLib(data.scenes);//one or the other
-		console.log("creating front end");
-		currentStory.createScenesFrontEndHTMLs();
+		//console.log("loading scen data");
+
+	
+		if(pageLoaded){//if the page is already loaded otherwise do this on page load
+
+
+
+			currentStory.loadScenesLib(data.scenes);//one or the other
+			
+			currentStory.createScenesFrontEndHTMLs();
+		}
 
 		
 

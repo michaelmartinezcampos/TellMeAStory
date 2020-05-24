@@ -19,7 +19,10 @@
                 "start": 0,
                 "duration": 467
               },
-              "repeat":true
+              "repeat":true,
+              "track":{
+                "value":"background"
+              }
             },
             "entrance": {},
             "exit": {
@@ -548,12 +551,12 @@
       "actions": [
         {
           "id":"01",
-          "tailID": "aa",
+          "tailID": "001",
           "headID": "799",
-          "trigger": "time",
+          "trigger": "click",
           "elicit": "display",
           "delay": 0,
-          "info":"background content"
+          "info":"background content it should start auto but need an interaction"
         },
         {
           "id":"01",

@@ -65,9 +65,12 @@ class ImageContent extends Content{
 
 		
 		this.html.fe = document.createElement("img");
+		this.html.fe.setAttribute('draggable', false);
+		//this.html.fe.onmousedown = 'return false';
 		this.addEffects();
 		
 		this.html.fe.onload =function(){ // can only adjust the size after it is loaded and therefore knows the natural size
+			
 			this.adjustSize();
 			this.html.fe.onload=null;
 		}.bind(this)

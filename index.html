@@ -43,6 +43,7 @@
     <script src="js/content_effects/AudioEffect.js"></script>
     <script src="js/content_effects/ClippingAudioEffect.js"></script>
     <script src="js/content_effects/RepeatAudioEffect.js"></script>
+    <script src="js/content_effects/TrackAudioEffect.js"></script>
     
 
     <!-- <script src="js/content_effects/TextEffect.js"></script> -->
@@ -95,22 +96,19 @@
   		<script type="text/javascript">
        
   		</script> -->
+
+
 	</div>
 
-  	<div id='content' onmousedown = 'return false' onselectstart = 'return true'>
+  	<div id='content'>
 
 	  	<div id='background_img' style='position:absolute; z-index:-10;' alt='background image'></div>
 
 	  	<div id='main_text' style='position:absolute; z-index:0;' alt='text'> </div>
 
-      <div id='bottom_bar' style='display:none' alt='text'></div>
-
-        <div id='loading-hiden' alt='text' style='display:none;'>
-          <img src='img/Rocket.gif'>
-          <img src='img/Rocket-Fire.gif'>
-        </div> 
-
-    
+     
+    <div id='bottom_bar' onmousedown = 'return true' onselectstart = 'return true' style='display:none' alt='text'>
+      </div>
 
 
 
@@ -119,9 +117,19 @@
 
 
 	 </div>
+    
+
+        <div id='loading-hiden' alt='text' style='display:none;'>
+          <img src='img/Rocket.gif'>
+          <img src='img/Rocket-Fire.gif'>
+        </div> 
+
    <div id="editor">
    </div>
 
+  <script>
+    loadScreen = new LoadScreen()
+  </script>
 
   	
   	

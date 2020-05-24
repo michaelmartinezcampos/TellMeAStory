@@ -10,6 +10,12 @@ class AudioContent extends Content{
 		super(contentJson_,parentScene_)
 		this.loadAudio(this.content.value); //creates and loads the audioBuffer object
 
+		this.loop=false;
+		this.track="main";//default track
+
+		this.gainNode = context.createGain();
+		this.gainNode.gain.value=currentStory.volume[this.track]; //default
+
 		//this._audioContext = audioContext;
 	    //this._buffer = buffer; // AudioBuffer
 	    //this._source; // AudioBufferSourceNode
@@ -23,6 +29,16 @@ class AudioContent extends Content{
 		this.play();
 		//this.playing=false;
 		
+	}
+
+	// setVolume(volume_){
+	// 	//this.volume=volume_;
+	// 	this.gainNode.gain.value=volume_;
+	// }
+
+	updateVolume(){
+
+		this.gainNode.gain.value=currentStory.volume[this.track];
 	}
 
 
@@ -186,7 +202,16 @@ class AudioContent extends Content{
 	play() { //startPosition_,duration_
 		//currentStory.playing=true;
 
-		currentStory.activeAudio[this.parentScene.id+this.id]=this;
+		this.updateVolume();
+
+		console.log("PLAY " + this.id + "   - " + this.track)
+
+		if(this.track=="main"){
+			currentStory.activeMainAudio[this.parentScene.id+this.id]=this;
+		}else if(this.track=="background"){
+			currentStory.activeBackgroundAudio[this.parentScene.id+this.id]=this;
+		}
+		
 
 		currentStory.enablePlayPause();
 
@@ -204,6 +229,9 @@ class AudioContent extends Content{
 
 			this.source = context.createBufferSource(); // creates a sound source
 			//console.log(this.source)
+
+			this.source.loop=this.loop;
+
 			this.source.buffer = this.audioBuffer;                    // tell the source which sound to play
 			// this.analizer=context.createAnalyser()
 			//this.source.buffer = this.audioBuffer;                    // tell the source which sound to play
@@ -217,10 +245,20 @@ class AudioContent extends Content{
 		 	this.isPlaying=true;
 		 	this.isActive=true;
 
+
+
 		 	this.source.playbackRate.value = 1;
 
+		 	
 
-			this.source.connect(context.destination);       // connect the source to the context's destination (the speakers)
+
+			this.source.connect(this.gainNode)
+
+			//if(this.track=="main"){
+
+			//}
+
+			this.gainNode.connect(context.destination);       // connect the source to the context's destination (the speakers)
 
 			// var loopingEnabled = AudioBufferSourceNode.loop;
 			// AudioBufferSourceNode.loop = false;
@@ -250,14 +288,16 @@ class AudioContent extends Content{
 
 	endOfPlayback(){
 		if(this.isPlaying){ //if isPlaying is true then its not just paused
-			delete currentStory.activeAudio[this.parentScene.id+this.id];
+			delete currentStory.activeMainAudio[this.parentScene.id+this.id];
 
-			if(Object.keys(currentStory.activeAudio).length == 0){
+			if(Object.keys(currentStory.activeMainAudio).length == 0){
 				currentStory.disablePlayPause();
 			}
 
 			this.isActive=false;
 			this.isPlaying=false;
+
+
 			//reset to begining
 			this.durationLeft=this.duration;
 			this.currentPlayTime=this.start;
@@ -301,6 +341,8 @@ class AudioContent extends Content{
 				this.effects.general[effect]=new ClippingAudioEffect(this.JSONData.effects.general[effect],this)
 			}else if(effect=="repeat"){
 				this.effects.general[effect]=new RepeatAudioEffect(this.JSONData.effects.general[effect],this)
+			}else if(effect=="track"){
+				this.effects.general[effect]=new TrackAudioEffect(this.JSONData.effects.general[effect],this)
 			}else{
 				this.effects.general[effect]=new ContentEffect(this.JSONData.effects.general[effect],this)
 			}
@@ -448,7 +490,7 @@ https://css-tricks.com/making-an-audio-waveform-visualizer-with-vanilla-javascri
 
 AudioDisplay.prototype.updatePlayPosition = function(){
 	//console.log(this.audio)
-	console.log(mouseDown)
+	//console.log(mouseDown)
 	let scrollToEasing
 	if(mouseDown==false){
 		this.html.playBar.style.top=this.audioContent.getCurrentPlayTime()*100 + "px";
@@ -460,7 +502,7 @@ AudioDisplay.prototype.updatePlayPosition = function(){
 		//console.log(this.audioContent.content.contentEditorModual.html.viewport.scrollTop)
 		let easing=.1;
 
-		console.log(this)
+		//console.log(this)
 
 		scrollToEasing = this.audioContent.contentEditorModual.html.viewport.scrollTop + ((this.html.playBar.offsetTop-400) - this.audioContent.contentEditorModual.html.viewport.scrollTop)*easing;
 		//let scrollToEasing = this.audioContent.content.contentEditorModual.html.viewport.scrollTop + ((this.html.playBar.offsetTop - 400) - this.audioObjectHandler.content.contentEditorModual.html.viewport.scrollTop)*easing;
