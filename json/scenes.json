@@ -4029,6 +4029,30 @@
           "elicit": "display",
           "delay": 0,
           "info": "intro scene"
+        },{
+          "id": "500",
+          "tailID": "503",
+          "headID": "502",
+          "trigger": "click",
+          "elicit": "hide",
+          "delay": 0,
+          "info": "hide another story"
+        },{
+          "id": "500",
+          "tailID": "503",
+          "headID": "503",
+          "trigger": "click",
+          "elicit": "hide",
+          "delay": 0,
+          "info": "hide goodnight"
+        },{
+          "id": "500",
+          "tailID": "502",
+          "headID": "END-END",
+          "trigger": "click",
+          "elicit": "display",
+          "delay": 0,
+          "info": "end end scene"
         }
       ],
       "contents": [
@@ -4145,7 +4169,7 @@
       ]
     },{
       "name": "End",
-      "id": "END-End",
+      "id": "END-END",
       "actions": [
         {
           "id": "500",
@@ -4159,11 +4183,11 @@
         {
           "id": "500",
           "tailID": "END-END",
-          "headID": "502",
+          "headID": "503",
           "trigger": "time",
           "elicit": "display",
-          "delay": 0,
-          "info": "black-bottom"
+          "delay": 1,
+          "info": "black-all"
         }
       ],
       "contents": [
@@ -4207,87 +4231,33 @@
             "hover": {},
             "mousePressed": {}
           }
-        },{
-          "id": "502",
-          "content": {
-            "type": "img",
-            "value": "img/OneMoreStory.jpg"
-          },
-          "effects": {
-            "general": {
-              "position": {
-                "type": "absolute",
-                "top": "40%",
-                "left": "30%"
-              }, 
-              "opacity":{
-                "opacity":"0.7"
-              }
-            },
-            "entrance": {},
-            "exit": {
-              "hide": true
-            },
-            "clickable": {
-              "generic": {
-                "glow": {
-                  "className": "glow-gif"
-                }
-              },
-              "hover": {},
-              "pressed": {}
-            },
-            "hover": {
-              "glow": {
-                "className": "glow-gif-blue"
-              }
-            },
-            "mousePressed": {
-              "glow": {
-                "className": "glow-gif-red"
-              }
-            }
-          }
-        },{
+        },
+        {
           "id": "503",
           "content": {
             "type": "img",
-            "value": "img/Goodnight.jpg"
+            "value": "img/black.jpg"
           },
+          "properties": {},
           "effects": {
             "general": {
               "position": {
                 "type": "absolute",
-                "top": "40%",
-                "left": "55%"
-              }, 
+                "top": "0%",
+                "left": "0%"
+              },
               "opacity":{
-                "opacity":"0.7"
+                "opacity":"0.9"
               }
+
             },
             "entrance": {},
             "exit": {
               "hide": true
             },
-            "clickable": {
-              "generic": {
-                "glow": {
-                  "className": "glow-gif"
-                }
-              },
-              "hover": {},
-              "pressed": {}
-            },
-            "hover": {
-              "glow": {
-                "className": "glow-gif-blue"
-              }
-            },
-            "mousePressed": {
-              "glow": {
-                "className": "glow-gif-red"
-              }
-            }
+            "clickable": {},
+            "hover": {},
+            "mousePressed": {}
           }
         }
       ]
