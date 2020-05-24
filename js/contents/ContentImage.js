@@ -15,6 +15,8 @@ class ImageContent extends Content{
 			return new OpacityImageEffect(effectJSON_,this)
 		}else if(effectName_=="hide"){
 			return new HideImageEffect(effectJSON_,this)
+		}else if(effectName_=="translate"){
+			return new TranslateImageEffect(effectJSON_,this)
 		}
 		else{
 			return new ImageEffect(effectJSON_,this)
@@ -89,6 +91,7 @@ class ImageContent extends Content{
 	}
 	addEffects(){
 		this.createEffects();
+		
 		this.applyGeneralEffects();
 	}
 
@@ -97,14 +100,6 @@ class ImageContent extends Content{
 	}
 
 
-
-
-
-	// applyGeneralEffects(){
-	// 	for(let effect in this.effects.general){
-	// 		this.effects.general[effect].apply();
-	// 	}
-	// }
 	
 
 
@@ -116,6 +111,7 @@ class ImageContent extends Content{
 		//make sure this loads first ****
 		// console.log(this.htmlParent)
 		this.htmlParent.append(this.html.fe);
+		this.applyEntranceEffects();
 		this.html.fe.style.display="block";
 	}
 

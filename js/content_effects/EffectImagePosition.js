@@ -15,8 +15,16 @@ class PositionImageEffect extends ImageEffect{
 			this.parentContent.html.fe.style.position="absolute";
 			
 
-			this.parentContent.html.fe.style.top=this.vareables.top;
-			this.parentContent.html.fe.style.left=this.vareables.left;
+			// this.parentContent.html.fe.style.top=this.vareables.top;
+			// this.parentContent.html.fe.style.left=this.vareables.left;
+			// this.parentContent.html.fe.style.right=this.vareables.right;
+			// this.parentContent.html.fe.style.bottom=this.vareables.bottom;
+			for(let vareable in this.vareables){
+				this.parentContent.html.fe.style[vareable]=this.vareables[vareable];
+			}
+			
+
+
 			// console.log(this.parentContent.html.fe)
 			// console.log(this.parentContent.html.fe.naturalWidth)
 			this.parentContent.html.fe.style.width=(this.parentContent.html.fe.naturalWidth / 1920)*100 + "%";

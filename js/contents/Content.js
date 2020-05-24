@@ -64,6 +64,12 @@ class Content{
 			this.effects.general[effect].apply();
 		}
 	}
+	applyEntranceEffects(){
+		
+		for(let effect in this.effects.entrance){
+			this.effects.entrance[effect].apply();
+		}
+	}
 	activateExitEffects(){
 		//console.log("Activating exit")
 		//console.log(this.effects.exit)

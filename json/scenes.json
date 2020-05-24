@@ -4047,7 +4047,7 @@
           "info": "hide goodnight"
         },{
           "id": "500",
-          "tailID": "502",
+          "tailID": "503",
           "headID": "END-END",
           "trigger": "click",
           "elicit": "display",
@@ -4179,15 +4179,14 @@
           "elicit": "display",
           "delay": 0,
           "info": "black-top"
-        },
-        {
+        },{
           "id": "500",
           "tailID": "END-END",
-          "headID": "503",
+          "headID": "502",
           "trigger": "time",
           "elicit": "display",
-          "delay": 1,
-          "info": "black-all"
+          "delay": 0,
+          "info": "black-bottom"
         }
       ],
       "contents": [
@@ -4206,20 +4205,60 @@
                 "left": "0%"
               },
               "opacity":{
-                "opacity":"0.5"
+                "opacity":"0.95"
               }
 
             },
             "entrance": {
-              "move":{
+              "translate":{
                 "from":{
                   "xPos":"0%",
-                  "yPos":"-50%"
-                },"too (dont need a too??)":{
+                  "yPos":"-99%"
+                },"to":{
                   "xPos":"0%",
                   "yPos":"0%"
                 },"properties":{
-                  "time":1.5,
+                  "time":0.5,
+                  "type":"linear"
+                }
+              }
+            },
+            "exit": {
+              "hide": true
+            },
+            "clickable": {},
+            "hover": {},
+            "mousePressed": {}
+          }
+        },{
+          "id": "502",
+          "content": {
+            "type": "img",
+            "value": "img/black-half.jpg"
+          },
+          "properties": {},
+          "effects": {
+            "general": {
+              "position": {
+                "type": "absolute",
+                "left": "0%",
+                "bottom": "0%"
+              },
+              "opacity":{
+                "opacity":"0.95"
+              }
+
+            },
+            "entrance": {
+              "translate":{
+                "from":{
+                  "xPos":"0%",
+                  "yPos":"100%"
+                },"to":{
+                  "xPos":"0%",
+                  "yPos":"0%"
+                },"properties":{
+                  "time":0.5,
                   "type":"linear"
                 }
               }

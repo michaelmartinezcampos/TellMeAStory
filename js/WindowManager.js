@@ -11,7 +11,7 @@ class WindowManager{
 
 		this.addFullScreen();
 		this.addPlayPauseButton();
-		this.displayPlayButton();
+		this.displayPauseButton();
 		// currentStory.updatePlayPause();
 		this.addVolumeSliders();
 		//this.createSceneModual();
