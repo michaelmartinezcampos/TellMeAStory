@@ -72,6 +72,9 @@ class WindowManager{
 	}
 
 	addPlayPauseButton(){
+		// this.playPauseExplander= document.createElement("div");
+		// this.playPause.id="play-pause-explander";
+
 		this.playPause= document.createElement("div");
 		this.playPause.id="play-pause";
 		this.playPause.classList.add("deactivated");

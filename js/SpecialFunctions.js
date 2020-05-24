@@ -25,7 +25,7 @@ function updateContentSize(){
 	//currentStory.windowManager.playPause.style['padding-top']=height*.01+'px';
 	currentStory.windowManager.playPause.style['position']='absolute';
 	currentStory.windowManager.playPause.style['left']=width*.5+'px';
-	currentStory.windowManager.playPause.style['padding-top']=height*.01+'px';
+	currentStory.windowManager.playPause.style['padding']=height*.01+'px';
 
 	currentStory.windowManager.playPause.style.height=height*.03+'px';
 	currentStory.windowManager.playPause.style.width=height*.03+'px';
@@ -33,7 +33,7 @@ function updateContentSize(){
 
 
 	currentStory.windowManager.fullScreenButton.style['right']=width*.01+'px';
-	currentStory.windowManager.fullScreenButton.style['padding-top']=height*.01+'px';
+	currentStory.windowManager.fullScreenButton.style['padding']=height*.01+'px';
 	
 	currentStory.windowManager.fullScreenButton.style.height=height*.03+'px';
 	currentStory.windowManager.fullScreenButton.style.width=height*.03+'px';
@@ -44,6 +44,7 @@ function updateContentSize(){
 	// currentStory.windowManager.mainVolumeLable.style['color']="red";
 
 	currentStory.windowManager.backgroundVolumeLable.style['font-size']=height*.02+"px";
+	currentStory.windowManager.backgroundVolumeLable.style['width']=width*.2+"px";
 	// currentStory.windowManager.backgroundVolumeLable.style['color']="blue";
 	// currentStory.windowManager.backgroundVolumeLable.style['font-size']=height*.03+"px";
 	//currentStory.windowManager.backgroundVolumeLable.style['font-size']=height*.4+"px";
