@@ -159,7 +159,7 @@ class Story{
 		}
 
 		//play all the main audio
-		console.log("PLAY???")
+		//console.log("PLAY???")
 		for(let audioContent in this.activeMainAudio){
 			this.activeMainAudio[audioContent].play();
 		}
@@ -223,7 +223,9 @@ class Story{
 		
 		//set volume for all the main audio
 		this.volume['background']=volume_;
+		console.log(this.activeBackgroundAudio)
 		for(let audioContent in this.activeBackgroundAudio){
+			console.log(audioContent)
 			this.activeBackgroundAudio[audioContent].updateVolume();
 		}
 	}

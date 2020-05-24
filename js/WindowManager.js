@@ -113,7 +113,7 @@ class WindowManager{
 		this.backgroundVolumeSlider.value=currentStory.volume['background']*100;
 
 		this.backgroundVolumeSlider.addEventListener("input", function(){
-			currentStory.setMainVolume(this.mainVolumeSlider.value/100);
+			currentStory.setBackgroundVolume(this.backgroundVolumeSlider.value/100);
 		}.bind(this));
 
 		// this.backgroundVolumeSlider.value=0.1;
