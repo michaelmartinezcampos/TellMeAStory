@@ -159,7 +159,7 @@ body, html {
 #play-pause{
   transition: 0.5s;
   opacity: .5;
-  padding: 50px;
+  /*padding: 50px;*/
   /*padding: 4px;*/
  /* width: 20px;
   height: 20px;*/
@@ -167,13 +167,14 @@ body, html {
   margin-left: 48%
   position: absolute;
 }
-#play-pause::before {
+
+/*#play-pause::before {
   right: 50%;
 }
 
 #play-pause::after {
   left: 50%;
-}
+}*/
 #play-pause:hover {
   transition: 0.2s;
   
@@ -182,6 +183,18 @@ body, html {
   height: 24px;*/
   opacity: 1;
   transform: scale(1.4);
+}
+#play-pause.deactivated{
+  /*background-color: red;*/
+  opacity: 0;
+}
+#play-pause.explaned{
+  
+  transform: scale(12) translate(0,-100%);
+}
+#bottom_bar.explaned{
+  
+  opacity: .5;
 }
 .play-pause{
   width:100%;

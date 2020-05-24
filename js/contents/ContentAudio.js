@@ -204,7 +204,9 @@ class AudioContent extends Content{
 
 		this.updateVolume();
 
-		console.log("PLAY " + this.id + "   - " + this.track)
+		currentStory.windowManager.displayPauseButton();
+
+		//console.log("PLAY " + this.id + "   - " + this.track)
 
 		if(this.track=="main"){
 			currentStory.activeMainAudio[this.parentScene.id+this.id]=this;
@@ -212,8 +214,8 @@ class AudioContent extends Content{
 			currentStory.activeBackgroundAudio[this.parentScene.id+this.id]=this;
 		}
 		
-
-		currentStory.enablePlayPause();
+		
+		//currentStory.enablePlayPause();
 
 		currentStory.audioCount++;
 		currentStory.updatePlayPause();
@@ -276,6 +278,8 @@ class AudioContent extends Content{
 		 		// this.isPlaying=false;
 			}.bind(this);
 		}
+
+		currentStory.updatePlayPause()
 	}
 
 	// createSource(){
@@ -290,9 +294,11 @@ class AudioContent extends Content{
 		if(this.isPlaying){ //if isPlaying is true then its not just paused
 			delete currentStory.activeMainAudio[this.parentScene.id+this.id];
 
-			if(Object.keys(currentStory.activeMainAudio).length == 0){
-				currentStory.disablePlayPause();
-			}
+			currentStory.updatePlayPause()//if nothing is playing it will be blocked
+
+			// if(Object.keys(currentStory.activeMainAudio).length == 0){
+			// 	currentStory.disablePlayPause();
+			// }
 
 			this.isActive=false;
 			this.isPlaying=false;

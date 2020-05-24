@@ -74,6 +74,7 @@ class Story{
 
 		this.activeMainAudio={};
 		this.activeBackgroundAudio={};
+		
 	}
 	
 
@@ -104,11 +105,11 @@ class Story{
 	  	}
 	}
 	updatePlayPause(){
-		// if(this.audioCount>0){
-		// 	this.playing=true;
-		// }else{
-		// 	this.playing=false;
-		// }
+		if(this.isPlayable()){
+			this.windowManager.activatePlayPause();
+		}else{
+			this.windowManager.deactivatePlayPause();
+		}
 	}
 	isPlaying(){
 		for(let audioContent in this.activeMainAudio){
@@ -146,20 +147,20 @@ class Story{
 	}
 
 
-	enablePlayPause(){
-		//this.play()//so that pause is shown
-		//console.log("enable play pause");
-		this.windowManager.play.style.display="none";
-		this.windowManager.pause.style.display="block";
-	}
+	// enablePlayPause(){
+	// 	//this.play()//so that pause is shown
+	// 	//console.log("enable play pause");
+	// 	this.windowManager.play.style.display="none";
+	// 	this.windowManager.pause.style.display="block";
+	// }
 
-	disablePlayPause(){
-		// this.pause()//so that pause is shown
-		// console.log("disable play pause");
-		this.windowManager.play.style.display="block";
-		this.windowManager.pause.style.display="none";
+	// disablePlayPause(){
+	// 	// this.pause()//so that pause is shown
+	// 	// console.log("disable play pause");
+	// 	this.windowManager.play.style.display="block";
+	// 	this.windowManager.pause.style.display="none";
 
-	}
+	// }
 
 	play(){
 		// console.log("PLAYING *********************")
@@ -167,8 +168,7 @@ class Story{
 		this.playing=true;
 
 		//restart all the action timers
-		this.windowManager.play.style.display="none";
-		this.windowManager.pause.style.display="block";
+		this.windowManager.displayPauseButton();
 
 		for(let action in currentStory.currentScene.actionsLib){
 			
@@ -202,13 +202,13 @@ class Story{
 	}
 
 	pause(){
-		console.log("PAUSING *********************")
+		// console.log("PAUSING *********************")
 		this.playing=false;
 
-		console.log("this.playing " + this.playing);
+		// console.log("this.playing " + this.playing);
 
-	 	this.windowManager.play.style.display="block";
-		this.windowManager.pause.style.display="none";
+	 	this.windowManager.displayPlayButton();
+		
 	 	//pause all the action timers
 	 	for(let action in currentStory.currentScene.actionsLib){
 
@@ -242,9 +242,7 @@ class Story{
 		
 		//set volume for all the main audio
 		this.volume['background']=volume_;
-		console.log(this.activeBackgroundAudio)
 		for(let audioContent in this.activeBackgroundAudio){
-			console.log(audioContent)
 			this.activeBackgroundAudio[audioContent].updateVolume();
 		}
 	}

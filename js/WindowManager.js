@@ -11,9 +11,13 @@ class WindowManager{
 
 		this.addFullScreen();
 		this.addPlayPauseButton();
+		this.displayPlayButton();
+		// currentStory.updatePlayPause();
 		this.addVolumeSliders();
 		//this.createSceneModual();
 		this.createTopButtons();
+
+
 
 
 	}
@@ -27,9 +31,50 @@ class WindowManager{
 		// this.sceneModual.createTopButtons();
 	}
 
+	deactivatePlayPause(){
+		// this.play.style.display="block";
+		// this.pause.style.display="none";
+		if(!this.playPause.classList.contains("deactivated")){
+			this.playPause.classList.add("deactivated")
+		}
+	}
+	activatePlayPause(){
+		// this.play.style.display="none";
+		// this.pause.style.display="block";
+		if(this.playPause.classList.contains("deactivated")){
+			this.playPause.classList.remove("deactivated")
+		}
+	}
+
+	displayPlayButton(){
+		this.explandPlayPause()
+		this.play.style.display="block";
+		this.pause.style.display="none";
+	}
+	displayPauseButton(){
+		this.contractPlayPause();
+		this.play.style.display="none";
+		this.pause.style.display="block";
+	}
+	explandPlayPause(){
+		if(!this.playPause.classList.contains("explaned")){
+			this.playPause.classList.add("explaned");
+		}
+		if(!this.html.bottomBar.classList.contains("explaned")){
+			this.html.bottomBar.classList.add("explaned");
+		}
+	}
+	contractPlayPause(){
+		
+		this.playPause.classList.remove("explaned");
+		this.html.bottomBar.classList.remove("explaned");
+	
+	}
+
 	addPlayPauseButton(){
 		this.playPause= document.createElement("div");
 		this.playPause.id="play-pause";
+		this.playPause.classList.add("deactivated");
 
 		
 
