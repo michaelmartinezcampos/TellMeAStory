@@ -1,6 +1,6 @@
 var mouseDragTempObj={};
 
-absoluteLocation="https://eyklein.github.io/TellMeAStory/";
+
 class Content{
 
 	constructor(contentJson_,parentScene_){

@@ -3,6 +3,8 @@ var currentStory;
 
 var timeDelays={};
 
+var absoluteLocation="https://eyklein.github.io/TellMeAStory/";
+
 
 
 document.onkeydown = function(e) {
@@ -365,7 +367,7 @@ function clearMainText(){
 
 
 var dataLoaded=false;
-fetch("json/scenes.json")
+fetch(absoluteLocation + "json/scenes.json")
 	.then(function(resp){
 		return resp.json();
 	}).catch(function(resp){
