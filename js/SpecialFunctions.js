@@ -14,6 +14,8 @@ function updateContentSize(){
 		 height=(window.innerHeight);
 	}
 
+	console.log("w: " + width + " , h: " + height )
+
 	document.getElementById("content").style.width=width+'px';
 	document.getElementById("content").style.height=height+'px';
 
@@ -38,8 +40,9 @@ function updateContentSize(){
 	currentStory.windowManager.fullScreenButton.style.height=height*.03+'px';
 	currentStory.windowManager.fullScreenButton.style.width=height*.03+'px';
 
-	document.getElementById("main_text").style['font-size']=window.innerWidth*.02+'px';
+	document.getElementById("main_text").style['font-size']=width*.02+'px';
 
+	
 	currentStory.windowManager.mainVolumeLable.style['font-size']=height*.02+"px";
 	// currentStory.windowManager.mainVolumeLable.style['color']="red";
 

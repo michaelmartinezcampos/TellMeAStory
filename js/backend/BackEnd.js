@@ -5,4 +5,14 @@ class BackEnd{
 		this.effectEditor
 
 	}
+	displaySceneEditor(){
+
+	}
+	displayObjectEditor(){
+
+	}
+	displayEffectEditor(){
+
+	}
+	
 }
