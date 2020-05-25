@@ -2,13 +2,17 @@ let audioRepo={};
 //let activeAudio={};
 //audioRepo.audioBuffer
 
+
+
 class AudioContent extends Content{
 
 
 	constructor(contentJson_,parentScene_){ //,url_, content_, propertiesJSON_
 
+		
+
 		super(contentJson_,parentScene_)
-		this.loadAudio(this.content.value); //creates and loads the audioBuffer object
+		this.loadAudio(absoluteLocation + this.content.value); //creates and loads the audioBuffer object
 
 		this.loop=false;
 		this.track="main";//default track

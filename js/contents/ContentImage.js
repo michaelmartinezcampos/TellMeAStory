@@ -78,7 +78,7 @@ class ImageContent extends Content{
 		}.bind(this)
 
 
-		this.html.fe.src=this.content.value;
+		this.html.fe.src=absoluteLocation + this.content.value;
 		//this.html.fe.classList.add('icon-img')
 
 		// this.createEffects();
