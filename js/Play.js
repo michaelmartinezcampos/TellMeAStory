@@ -24,8 +24,10 @@ document.onkeydown = function(e) {
         case 32://' ' - space bar
             currentStory.togglePlayPause();
             break;
-
         case 81:
+        	currentStory.printActiveDelays();
+        	break;
+        case 66:
         	currentStory.printActiveDelays();
         	break;
         default:
