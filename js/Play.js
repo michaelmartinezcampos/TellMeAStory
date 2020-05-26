@@ -3,7 +3,8 @@ var currentStory;
 
 var timeDelays={};
 
-var absoluteLocation="https://eyklein.github.io/TellMeAStory/";
+//var absoluteLocation="https://eyklein.github.io/TellMeAStory/";
+var absoluteLocation="";
 
 
 
