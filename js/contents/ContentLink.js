@@ -17,7 +17,6 @@ class TextContent extends Content{
 	createEffects(){
 		// console.log(this.JSONData)
 		for(let effect in this.JSONData.effects.general){
-			console.log(effect)
 			if(effect=="fill"){
 				this.effects.general[effect]=new FillTextEffect(this.JSONData.effects.general[effect],this)
 			}else if(effect=="stroke"){
@@ -26,10 +25,6 @@ class TextContent extends Content{
 				this.effects.general[effect]=new PositionTextEffect(this.JSONData.effects.general[effect],this)
 			}else if(effect=="z-index"){
 				this.effects.general[effect] = new ZIndexEffect(this.JSONData.effects.general[effect],this)
-			}else if(effect=="font"){
-				this.effects.general[effect] = new FontTextEffect(this.JSONData.effects.general[effect],this)
-			}else if(effect=="link"){
-				this.effects.general[effect] = new LinkTextEffect(this.JSONData.effects.general[effect],this)
 			}else{
 				this.effects.general[effect]=new ContentEffect(this.JSONData.effects.general[effect],this)
 			}

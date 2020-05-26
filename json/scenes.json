@@ -524,7 +524,11 @@
             "general": {
               "fill": {
                 "color": "#888"
+              },"position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
               }
+
             },
             "entrance": {},
             "exit": {
@@ -796,8 +800,9 @@
           },
           "effects": {
             "general": {
-              "position": {
-                "value": "text-main"
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
               },
               "fill": {
                 "color": "#fff"
@@ -805,11 +810,7 @@
               "stroke": {
                 "color": "#00ff00",
                 "thickness": "0px"
-              },
-              "font": {
-                "size": "2vw"
-              },
-              "font-name": "null"
+              }
             },
             "entrance": {
               "fade": {
@@ -839,7 +840,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -1124,7 +1130,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -1334,7 +1345,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -1528,7 +1544,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -1553,7 +1574,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -1695,7 +1721,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -1950,7 +1981,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -1975,7 +2011,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -2122,7 +2163,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -2326,7 +2372,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -2351,7 +2402,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -2522,7 +2578,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -2744,7 +2805,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -2769,7 +2835,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -2965,7 +3036,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -2990,7 +3066,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -3186,7 +3267,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -3211,7 +3297,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -3382,7 +3473,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -3632,7 +3728,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -3657,7 +3758,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -3682,7 +3788,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -3879,7 +3990,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -3905,7 +4021,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -3931,7 +4052,12 @@
           },
           "properties": {},
           "effects": {
-            "general": {},
+            "general": {
+              "position":{
+                "type":"appendIn",
+                "parentClass":"main_text"
+              }
+            },
             "entrance": {},
             "exit": {
               "hide": true
@@ -4187,6 +4313,14 @@
           "elicit": "display",
           "delay": 0,
           "info": "black-bottom"
+        },{
+          "id": "500",
+          "tailID": "END-END",
+          "headID": "001",
+          "trigger": "time",
+          "elicit": "display",
+          "delay": 1,
+          "info": "black-bottom"
         }
       ],
       "contents": [
@@ -4287,6 +4421,41 @@
               },
               "opacity":{
                 "opacity":"0.9"
+              }
+
+            },
+            "entrance": {},
+            "exit": {
+              "hide": true
+            },
+            "clickable": {},
+            "hover": {},
+            "mousePressed": {}
+          }
+        },{
+          "id": "001",
+          "content": {
+            "type": "text",
+            "value": "< Back"
+          },
+          "properties": {},
+          "effects": {
+            "general": {
+              "position": {
+                "type": "absolute",
+                "bottom": "10%",
+                "left": "10%"
+              },
+              "opacity":{
+                "opacity":"0.9"
+              },"z-index":{
+                "index":100
+              },"fill":{
+                "color":"#fff"
+              },"font":{
+                "font-family":"indieFlower"
+              },"link":{
+                "src":"https://www.aeaea.co/one-more-story"
               }
 
             },

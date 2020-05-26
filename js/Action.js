@@ -115,7 +115,7 @@ class Action{
 			this.hideContent(this.delay);
 		}
 		else if(this.elicit=="clickable"){
-			console.log("clickable " + this.head.id)
+			// console.log("clickable " + this.head.id)
 
 			this.activateContent(this.delay)
 			
@@ -202,7 +202,7 @@ class Action{
 			delay_=0; 
 		}
 
-		console.log("unclickable " + this.head.id)
+		// console.log("unclickable " + this.head.id)
 
 		
 		//console.log("deactivate_" + this.id)

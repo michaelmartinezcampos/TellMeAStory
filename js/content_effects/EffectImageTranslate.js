@@ -4,13 +4,12 @@ class TranslateImageEffect extends ImageEffect{
 		console.log("TRANSLATE")
 	}
 	apply(){
-		console.log("TRANSLATE activate")
+		
 		this.parentContent.html.fe.style.position="absolute";
 
 		let fromXPos = parseInt(this.vareables.from.xPos.replace( /(^.+)(\w\d+\w)(.+$)/i,'$2'))
 		let fromYPos = parseInt(this.vareables.from.yPos.replace( /(^.+)(\w\d+\w)(.+$)/i,'$2'))
 
-		console.log(this.vareables)
 		let toXPos = parseInt(this.vareables.to.xPos.replace( /(^.+)(\w\d+\w)(.+$)/i,'$2'))
 		let toYPos = parseInt(this.vareables.to.yPos.replace( /(^.+)(\w\d+\w)(.+$)/i,'$2'))
 		//this.vareables.from.yPos
@@ -24,7 +23,6 @@ class TranslateImageEffect extends ImageEffect{
 
 			let yPos=fromYPos+(toYPos-fromYPos)/numIncrements*currentIncrement;
 
-			console.log("translate(" + xPos + "%," + yPos + "%)");
 				
 
 			this.parentContent.html.fe.style.transform = "translate(" + xPos + "%," + yPos + "%)";
