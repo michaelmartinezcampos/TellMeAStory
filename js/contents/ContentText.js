@@ -17,7 +17,7 @@ class TextContent extends Content{
 	createEffects(){
 		// console.log(this.JSONData)
 		for(let effect in this.JSONData.effects.general){
-			console.log(effect)
+			
 			if(effect=="fill"){
 				this.effects.general[effect]=new FillTextEffect(this.JSONData.effects.general[effect],this)
 			}else if(effect=="stroke"){

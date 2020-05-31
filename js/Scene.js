@@ -10,7 +10,12 @@ class Scene{
 		this.name=this.sceneData.name;
 		this.play=play_;
 		this.html={};
-		this.html.be={};
+		this.prevScenes={}//the previous scene
+		this.nextScenes={}//the next scene(s)
+
+		this.nextScenesArray=[]//the next scene(s)
+		this.scenesUp;//all the scenes that led up to this one (only get one posibility)
+		this.index;
 		//this.backEndModual={};
 
 		//console.log(this.play);
@@ -18,17 +23,7 @@ class Scene{
 
 	displayFrontEnd(){
 		for(let i=0;i<this.actionsOut.length;i++){
-			// this.contents[i].createFrontEndHTML();
-			//console.log(this.actionsOut[i])
-			//console.log(this.id)
-			//console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 			this.actionsOut[i].activate();
-			// if(this.actionsOut[i].head instanceof Content){
-			// 	//this.actionsOut[i].head.displayFrontEndHTML();//actoins out are the actions driven by the scene itself
-				
-			// 	//?? why activate actoins out for each head
-			// 	//this.actionsOut[i].head.activateActionsOut();
-			// }
 		}
 	}
 
@@ -76,6 +71,69 @@ class Scene{
 		}
 	}
 
+	addBackEnd(){
+		this.be={};
+		this.be.html=document.createElement("div");
+		this.be.html.style['background-color']="blue";
+		this.be.html.style.width="75px";
+		this.be.html.style.width="50px";
+
+		
+
+
+		this.be.spacing={}
+		this.be.spacing.myUnitWidth=Math.max(1,size(this.nextScenes));
+	}
+
+	getBackEndLeftPos(){
+		this.scenesUp[this.scenesUp];
+	}
+
+	setBackEndPosition(){
+		this.be.html.position="absolute";
+		this.be.html.top=100 + this.index*100 + "px";
+
+		let posX = this.partentS
+
+
+
+
+		this.be.html.left=100 + this.index*100 + "px";
+
+	}
+	getUnitWidths(){//reterns all the unit widths with cascading children
+		let childrensWidths=[];
+
+		let deaperNextScenes={}
+		for(let ns in this.nextScenes){
+			if(this.nextScenes[ns].scene.index > this.index){
+				deaperNextScenes[ns]=this.nextScenes[ns]
+			}
+
+		}
+		if(size(deaperNextScenes)>0){
+			for(let ns in deaperNextScenes){
+				// console.log(ns)
+
+				childrensWidths.push(deaperNextScenes[ns].scene.getUnitWidths())
+			}
+			Math.sumArray(childrensWidths)
+
+			return Math.sumArray(childrensWidths)
+		}else{
+
+			//this.be.width = this.be.spacing.myUnitWidth;
+			return this.be.spacing.myUnitWidth;
+		}
+	}
+
+	setBESpacingWidth(){
+		
+		this.be.spacing.unitWidths=this.getUnitWidths(); //could be more efficent ??? 
+	}
+
+
+
 
 	addInheritance(inheritedContent_){
 		//console.log(inheritedContent_)
@@ -83,6 +141,25 @@ class Scene{
 			for(let i in inheritedContent_){
 				this.contentsLib[inheritedContent_[i].id]=inheritedContent_[i];
 				//console.log(inheritedContent_[i].id)
+			}
+		}
+	}
+
+	setIndexNumberRecusive(lastIndex_,array_){
+		
+		if(this.index==undefined){
+			this.index=lastIndex_+1;
+			this.scenesUp = array_;
+			let nextArray=[];
+			for(let i in array_){
+				nextArray.push(array_[i])
+			}
+
+			nextArray.push(this)
+
+			for(let scene in this.nextScenes){
+				
+				this.nextScenes[scene].scene.setIndexNumberRecusive(this.index, nextArray);
 			}
 		}
 	}

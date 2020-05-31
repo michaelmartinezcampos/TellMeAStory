@@ -3,7 +3,6 @@ class PositionTextEffect extends TextEffect{
 		super(JSON_,parentContent_);
 	}
 	apply(){
-		console.log(this.vareables.type)
 		if(this.vareables.type == "appendIn"){
 			
 			// console.log(this.parentContent.id)

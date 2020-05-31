@@ -31,7 +31,7 @@ document.onkeydown = function(e) {
         	currentStory.printActiveDelays();
         	break;
         case 66:
-        	currentStory.printActiveDelays();
+        	currentStory.backEnd.display();
         	break;
         default:
     		console.log(e.keyCode)
@@ -85,10 +85,13 @@ class Story{
 
 	loadScenesLib(scenesData_){
 		this.scenesLib={};
+
+		//make scenes
 	  	for(let i=0; i<scenesData_.length;i++){//think about the order of loading. right now to goes through scene by scene maybe load all scens first and then do content
 	  		this.scenesLib[scenesData_[i].id]=new Scene(scenesData_[i], this)
 	  	}
 
+	  	//add content to each scene
 	  	for(let i=0; i<scenesData_.length;i++){//think about the order of loading. right now to goes through scene by scene maybe load all scens first and then do content
 	  		this.scenesLib[scenesData_[i].id].addContents(scenesData_[i]);
 	  	}
@@ -105,10 +108,97 @@ class Story{
 	  		}
 	  	}
 
+	  	//add actions
 	  	for(let i=0; i<scenesData_.length;i++){//think about the order of loading. right now to goes through scene by scene maybe load all scens first and then do content
 	  		this.scenesLib[scenesData_[i].id].addActions(scenesData_[i])
 	  	}
+
+	  	this.setLastAndNextScenes();
+	  	this.setSceneIndexNumbers();
+
+	  	this.addScenesBackEnd();
+	  	this.setWidthSceneBackEnd();
+
+
+
+
 	}
+
+	setLastAndNextScenes(){
+		//
+		
+		for(let scene in this.scenesLib){
+			for(let action in this.scenesLib[scene].actionsLib){
+				if(this.scenesLib[scene].actionsLib[action].head instanceof Scene){
+					let previousScene = this.scenesLib[scene].actionsLib[action].scene;
+					let currentScene = this.scenesLib[scene].actionsLib[action].head;
+					
+					//set last scenes
+					if(currentScene.prevScenes[previousScene.id] == undefined){
+						currentScene.prevScenes[previousScene.id]={};
+						currentScene.prevScenes[previousScene.id].count=1;
+						currentScene.prevScenes[previousScene.id].scene = previousScene;
+						currentScene.prevScenes[previousScene.id].order=size(currentScene.prevScenes)
+						
+					}
+					else{
+						currentScene.prevScenes[previousScene.id].count++;
+					}
+
+					//set next scenes
+					if(previousScene.nextScenes[currentScene.id] == undefined){
+						previousScene.nextScenes[currentScene.id]={};
+						previousScene.nextScenes[currentScene.id].count=1;
+						previousScene.nextScenes[currentScene.id].scene = currentScene;
+						previousScene.nextScenes[currentScene.id].order=size(previousScene.nextScenes);
+
+						previousScene.nextScenesArray.push(currentScene);
+					}else{
+						previousScene.nextScenes[currentScene.id].count++;
+					}
+				}
+			}
+		}
+	}
+
+
+	setSceneIndexNumbers(){
+		let baseScenes=[]
+
+		//get base scenes
+		for(let scene in this.scenesLib){
+			if(size(this.scenesLib[scene].prevScenes)==0){
+				//this.scenesLib[scene].index=0;
+				baseScenes.push(this.scenesLib[scene]);
+				//baseScenes[this.scenesLib[scene].id]	
+			}
+		}
+		for(let scene in baseScenes){
+			//console.log(baseScenes[scene]);
+			baseScenes[scene].setIndexNumberRecusive(0,[])
+		}
+
+	}
+	addScenesBackEnd(){
+		for(let scene in this.scenesLib){
+			this.scenesLib[scene].addBackEnd();
+		}
+
+	}
+	setWidthSceneBackEnd(){
+
+		for(let scene in this.scenesLib){
+			this.scenesLib[scene].setBESpacingWidth();
+		}
+		
+	}
+
+	setLeftOffsets(){
+		for(let scene in this.scenesLib){
+			
+		}
+	}
+
 	updatePlayPause(){
 		if(this.isPlayable()){
 			this.windowManager.activatePlayPause();
@@ -388,11 +478,11 @@ fetch(absoluteLocation + "json/scenes.json")
 	
 		if(pageLoaded){//if the page is already loaded otherwise do this on page load
 
+			populateStory(data.scenes)
 
-
-			currentStory.loadScenesLib(data.scenes);//one or the other
+			// currentStory.loadScenesLib(data.scenes);//one or the other
 			
-			currentStory.createScenesFrontEndHTMLs();
+			// currentStory.createScenesFrontEndHTMLs();
 		}
 
 		

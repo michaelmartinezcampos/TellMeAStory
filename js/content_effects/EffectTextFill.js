@@ -6,9 +6,6 @@ class FillTextEffect extends TextEffect{
 	}
 
 	apply(){
-		// console.log("*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&applying fill property&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-		console.log("Fill color is " + this.vareables.color)
-		console.log(this.parentContent.parentScene.id + " , " + this.parentContent.id)
 		this.parentContent.html.fe.style.color=this.vareables.color;
 	}
 }

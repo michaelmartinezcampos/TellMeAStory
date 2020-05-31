@@ -6,7 +6,6 @@ class RepeatAudioEffect extends AudioEffect{
 	}
 
 	apply(){
-		console.log(this.parentContent)
 		this.parentContent.loop=this.vareables.repeat;
 
 

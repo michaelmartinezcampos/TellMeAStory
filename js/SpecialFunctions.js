@@ -57,3 +57,14 @@ function updateContentSize(){
 	
 
 }
+
+Math.sumArray=function(array_){
+	let sum = array_.reduce(function(a, b){
+        return a + b;
+    }, 0);
+    return sum;
+}
+
+function size(obj_){
+	return Object.keys(obj_).length;
+}

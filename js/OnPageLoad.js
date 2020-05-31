@@ -2,7 +2,7 @@ var pageLoaded=false;
 
 var mouseDown = false;
 
-var backEnd;
+//var backEnd;
 
 
 
@@ -14,18 +14,32 @@ window.onload=function(){
 	// currentStory.windowManager.addPlayPauseButton();
 	//updateContentSize()
 
+
 	currentStory = new Story();//start reading from first scene
+
+
 		
 	currentStory.windowManager=new WindowManager();
 	pageLoaded=true;
 	if(dataLoaded){//if the data is already loaded
 
 		// console.log(window.onload.data)
-		currentStory.loadScenesLib(window.onload.data.scenes);//one or the other
+		populateStory(window.onload.data.scenes)
 		
-		currentStory.createScenesFrontEndHTMLs();
 	}
 };
+
+var backEnd;
+
+function populateStory(sceneData_){
+	currentStory.loadScenesLib(sceneData_);//one or the other
+		
+	currentStory.createScenesFrontEndHTMLs();
+
+
+	currentStory.backEnd = new BackEnd(currentStory);
+
+}
 
 
 
