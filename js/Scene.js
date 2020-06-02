@@ -10,12 +10,15 @@ class Scene{
 		this.name=this.sceneData.name;
 		this.play=play_;
 		this.html={};
-		this.prevScenes={}//the previous scene
+		this.prevScenes={}//the previous scene(s) that get to this scene
 		this.nextScenes={}//the next scene(s)
 
 		this.nextScenesArray=[]//the next scene(s)
+		this.prevScenesArray=[]//the next scene(s)
 		this.scenesUp;//all the scenes that led up to this one (only get one posibility)
 		this.index;
+
+
 		//this.backEndModual={};
 
 		//console.log(this.play);
@@ -73,10 +76,21 @@ class Scene{
 
 	addBackEnd(){
 		this.be={};
+		this.be.node=new PositionNode(this);
+
+
 		this.be.html=document.createElement("div");
 		this.be.html.style['background-color']="blue";
-		this.be.html.style.width="75px";
-		this.be.html.style.width="50px";
+		this.be.html.style.width="80px";
+		this.be.html.style.height="30px";
+		this.be.html.style.position="absolute";
+		this.be.html.innerHTML=this.id;
+		this.be.html.style.opacity=.8;
+
+		this.be.spacing={};
+		this.be.spacing.top=0;//default
+		this.be.spacing.left=0;
+
 
 		
 
@@ -90,15 +104,12 @@ class Scene{
 	}
 
 	setBackEndPosition(){
-		this.be.html.position="absolute";
-		this.be.html.top=100 + this.index*100 + "px";
+		console.log("SET BECK END POSITION -------- left : " +this.be.spacing.left)
+		
+		this.be.html.style.top=this.be.spacing.top + "px";
+		this.be.html.style.left=this.be.spacing.left + "px";
 
-		let posX = this.partentS
-
-
-
-
-		this.be.html.left=100 + this.index*100 + "px";
+		
 
 	}
 	getUnitWidths(){//reterns all the unit widths with cascading children
@@ -162,6 +173,10 @@ class Scene{
 				this.nextScenes[scene].scene.setIndexNumberRecusive(this.index, nextArray);
 			}
 		}
+	}
+	positionBE(){
+		this.be.html.style.top=this.be.node.position.y*60 + "px";
+		this.be.html.style.left=this.be.node.position.x*50 + "px";
 	}
 
 

@@ -4,6 +4,15 @@ class StoryEditor{
 		this.story=story_;
 		this.parent=null;
 
+		this.html=document.createElement("div");
+		this.html.id="story-editor"
+		this.html.style.position='absolute';
+		this.html.style.top='0px';
+		this.html.style.left='0px';
+
+		this.addSceneDivs()
+
+
 
 		this.sceneEditors = {};
 		for(let scene in this.story.scenesLib){
@@ -11,10 +20,21 @@ class StoryEditor{
 		}
 	}
 
-	display(){
-		console.log("display story")
+	addSceneDivs(){
 		for(let scene in this.story.scenesLib){
-			
+			//document.getElementById("")
+			this.html.appendChild(this.story.scenesLib[scene].be.html)
+			//this.backEnd.editorWindow.html.appendChild(this.story.scenesLib[scene].be.html)
 		}
+	}
+
+	display(){
+		//console.log("display story")
+		for(let scene in this.story.scenesLib){
+			this.story.scenesLib[scene].positionBE();
+		}
+
+		this.backEnd.editorWindow.html.appendChild(this.html)
+		//this.backEnd.editorWindow.html.appendChild(this.html)
 	}
 }

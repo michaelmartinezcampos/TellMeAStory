@@ -79,6 +79,8 @@ class Story{
 
 		this.activeMainAudio={};
 		this.activeBackgroundAudio={};
+
+		//this.setLeftOffsets()
 		
 	}
 	
@@ -119,6 +121,12 @@ class Story{
 	  	this.addScenesBackEnd();
 	  	this.setWidthSceneBackEnd();
 
+	  	this.setSceneNodeParents();
+	  	this.setSceneNodePrevSiblings();
+	  	this.setSceneNodePositions();
+
+	  	// this.setLeftOffsets();
+
 
 
 
@@ -139,6 +147,8 @@ class Story{
 						currentScene.prevScenes[previousScene.id].count=1;
 						currentScene.prevScenes[previousScene.id].scene = previousScene;
 						currentScene.prevScenes[previousScene.id].order=size(currentScene.prevScenes)
+
+						currentScene.prevScenesArray.push(previousScene);
 						
 					}
 					else{
@@ -192,12 +202,42 @@ class Story{
 		}
 		
 	}
-
-	setLeftOffsets(){
+	setSceneNodeParents(){
 		for(let scene in this.scenesLib){
-			
+			this.scenesLib[scene].be.node.setParent();
 		}
 	}
+	setSceneNodePrevSiblings(){
+		for(let scene in this.scenesLib){
+			this.scenesLib[scene].be.node.setPrevSiblings();
+		}
+	}
+
+	setSceneNodePositions(){
+		for(let scene in this.scenesLib){
+			this.scenesLib[scene].be.node.setPosition()
+		}
+	}
+
+	
+
+	// setLeftOffsets(){
+	// 	console.log("setLeftOffsets ----1----")
+	// 	for(let scene in this.scenesLib){
+	// 		let offset = 0;
+	// 		for(let i in this.scenesLib[scene].nextScenesArray){
+				
+	// 			this.scenesLib[scene].nextScenesArray[i].be.spacing.left = offset;
+
+	// 			this.scenesLib[scene].nextScenesArray[i].be.spacing.top=this.scenesLib[scene].nextScenesArray[i].index*40;
+				
+	// 			this.scenesLib[scene].nextScenesArray[i].setBackEndPosition();
+
+	// 			offset = offset+this.scenesLib[scene].nextScenesArray[i].be.spacing.unitWidths*40
+	// 		}
+			
+	// 	}
+	// }
 
 	updatePlayPause(){
 		if(this.isPlayable()){
