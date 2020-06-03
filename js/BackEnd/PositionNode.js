@@ -21,6 +21,10 @@ class PositionNode{ //not to be confused with nodejs
 		this.posIndex.x;
 		this.posIndex.y;
 
+		this.spacingIndex={}
+		this.spacingIndex.x;
+		this.spacingIndex.y;
+
 		
 
 
@@ -34,24 +38,25 @@ class PositionNode{ //not to be confused with nodejs
 	setParents(){
 		this.parentNodes=[];
 		for(let scene in this.scene.prevScenes){ //first one will be the main parent the rest will be clones
-			this.parentNodes.push(this.scene.prevScenes[scene])
+			this.parentNodes.push(this.scene.prevScenes[scene].scene.be.node)
 		}
 	}
 	setChildren(){
 		this.childrenNodes=[];
 		for(let scene in this.scene.nextScenes){
-			this.childrenNodes.push(this.scene.nextScenes[scene])
+			this.childrenNodes.push(this.scene.nextScenes[scene].scene.be.node)
 		}
 	}
 
 	setPrevSiblings(){
-		this.prevSiblingNodes=getPrevSiblings();
+		this.prevSiblingNodes=this.getPrevSiblings();
 	}
 
 	getPrevSiblings(){
+
 		if(this.parentNodes.length>0){
-			
-			let myPositionInFam = this.parentNodes[0].indexOf(this)
+			// console.log(this.parentNodes[0].scene)
+			let myPositionInFam = this.parentNodes[0].childrenNodes.indexOf(this)
 
 
 			return this.parentNodes[0].childrenNodes.slice(0,myPositionInFam);
@@ -66,7 +71,10 @@ class PositionNode{ //not to be confused with nodejs
 
 	}
 	setPositionIndexTopDown(){
-
+		for(let node of this.childrenNodes){
+			node.setPositionIndexTopDown()
+		}
+		this.posIndex.x=this.prevSiblingNodes
 		this.posIndex.x=this.parentNodes[0].posIndex.x+this.prevSiblingNodes.length;
 		for(let node of this.childrenNodes){
 			node.setPositionIndexDown();
