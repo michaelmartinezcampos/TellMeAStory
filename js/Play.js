@@ -123,7 +123,7 @@ class Story{
 
 	  	this.setSceneNodeParents();
 	  	this.setSceneNodeChildren();
-	  	// this.setSceneNodePrevSiblings();
+	  	this.setSceneNodePrevSiblings();
 	  	// this.setSceneNodePositions();
 
 	  	// this.setLeftOffsets();
@@ -213,11 +213,11 @@ class Story{
 			this.scenesLib[scene].be.node.setChildren();
 		}
 	}
-	// setSceneNodePrevSiblings(){
-	// 	for(let scene in this.scenesLib){
-	// 		this.scenesLib[scene].be.node.setPrevSiblings();
-	// 	}
-	// }
+	setSceneNodePrevSiblings(){
+		for(let scene in this.scenesLib){
+			this.scenesLib[scene].be.node.setPrevSiblings();
+		}
+	}
 
 	// setSceneNodePositions(){
 	// 	for(let scene in this.scenesLib){
