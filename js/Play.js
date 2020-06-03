@@ -122,8 +122,9 @@ class Story{
 	  	this.setWidthSceneBackEnd();
 
 	  	this.setSceneNodeParents();
-	  	this.setSceneNodePrevSiblings();
-	  	this.setSceneNodePositions();
+	  	this.setSceneNodeChildren();
+	  	// this.setSceneNodePrevSiblings();
+	  	// this.setSceneNodePositions();
 
 	  	// this.setLeftOffsets();
 
@@ -148,7 +149,7 @@ class Story{
 						currentScene.prevScenes[previousScene.id].scene = previousScene;
 						currentScene.prevScenes[previousScene.id].order=size(currentScene.prevScenes)
 
-						currentScene.prevScenesArray.push(previousScene);
+						//currentScene.prevScenesArray.push(previousScene);
 						
 					}
 					else{
@@ -162,7 +163,7 @@ class Story{
 						previousScene.nextScenes[currentScene.id].scene = currentScene;
 						previousScene.nextScenes[currentScene.id].order=size(previousScene.nextScenes);
 
-						previousScene.nextScenesArray.push(currentScene);
+						//previousScene.nextScenesArray.push(currentScene);
 					}else{
 						previousScene.nextScenes[currentScene.id].count++;
 					}
@@ -204,20 +205,25 @@ class Story{
 	}
 	setSceneNodeParents(){
 		for(let scene in this.scenesLib){
-			this.scenesLib[scene].be.node.setParent();
+			this.scenesLib[scene].be.node.setParents();
 		}
 	}
-	setSceneNodePrevSiblings(){
+	setSceneNodeChildren(){
 		for(let scene in this.scenesLib){
-			this.scenesLib[scene].be.node.setPrevSiblings();
+			this.scenesLib[scene].be.node.setChildren();
 		}
 	}
+	// setSceneNodePrevSiblings(){
+	// 	for(let scene in this.scenesLib){
+	// 		this.scenesLib[scene].be.node.setPrevSiblings();
+	// 	}
+	// }
 
-	setSceneNodePositions(){
-		for(let scene in this.scenesLib){
-			this.scenesLib[scene].be.node.setPosition()
-		}
-	}
+	// setSceneNodePositions(){
+	// 	for(let scene in this.scenesLib){
+	// 		this.scenesLib[scene].be.node.setPosition()
+	// 	}
+	// }
 
 	
 

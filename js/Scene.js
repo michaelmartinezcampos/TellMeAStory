@@ -13,8 +13,8 @@ class Scene{
 		this.prevScenes={}//the previous scene(s) that get to this scene
 		this.nextScenes={}//the next scene(s)
 
-		this.nextScenesArray=[]//the next scene(s)
-		this.prevScenesArray=[]//the next scene(s)
+		// this.nextScenesArray=[]//the next scene(s)
+		// this.prevScenesArray=[]//the next scene(s)
 		this.scenesUp;//all the scenes that led up to this one (only get one posibility)
 		this.index;
 
