@@ -25,6 +25,7 @@ class Scene{
 	}
 
 	displayFrontEnd(){
+		window.location.hash = this.id;
 		for(let i=0;i<this.actionsOut.length;i++){
 			this.actionsOut[i].activate();
 		}
