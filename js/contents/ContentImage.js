@@ -68,6 +68,8 @@ class ImageContent extends Content{
 		
 		this.html.fe = document.createElement("img");
 		this.html.fe.setAttribute('draggable', false);
+		//console.log(this.id)
+		this.html.fe.id=this.id;
 		//this.html.fe.onmousedown = 'return false';
 		this.addEffects();
 		
